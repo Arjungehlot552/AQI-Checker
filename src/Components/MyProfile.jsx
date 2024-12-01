@@ -78,14 +78,17 @@ const MyProfile = () => {
     };
 
     return (
-        <div className="max-w-3xl mx-auto p-6 rounded-lg shadow-lg mb-24 mt-24">
-            <h2 className="text-3xl font-semibold text-blue-800 mb-6 text-center">My Profile</h2>
+        <div  style={{ backgroundColor: "rgb(5, 8, 22)" }} className='p-20'>
+
+        
+        <div  className="max-w-3xl mx-auto p-10 bg-gray-900 border  rounded-lg shadow-lg mt-20">
+            <h2 className="text-3xl font-semibold text-white mb-6 text-center">My Profile</h2>
             <div className="flex flex-col items-center sm:flex-row sm:items-start sm:justify-center mb-6">
                 <div className="flex flex-col items-center mb-4 sm:mb-0 sm:mr-6">
                     <img
                         src={userData.profilePhoto || 'https://via.placeholder.com/100'}
                         alt="Photo"
-                        className="w-24 h-24 rounded-full object-cover border mb-2"
+                        className="w-24 h-24 rounded-full bg-white object-cover border mb-2"
                     />
                     <input
                         type="file"
@@ -100,7 +103,7 @@ const MyProfile = () => {
                         placeholder="First Name"
                         value={userData.name}
                         onChange={handleChange}
-                        className="w-full p-2 rounded border"
+                        className="w-full p-2 bg-gray-800 text-white rounded border"
                     />
                     <input
                         type="text"
@@ -108,7 +111,7 @@ const MyProfile = () => {
                         placeholder="Surname"
                         value={userData.surname}
                         onChange={handleChange}
-                        className="w-full p-2 rounded border"
+                        className="w-full p-2 bg-gray-800 text-white rounded border"
                     />
                     <input
                         type="number"
@@ -116,7 +119,7 @@ const MyProfile = () => {
                         placeholder="Age"
                         value={userData.age}
                         onChange={handleChange}
-                        className="w-full p-2 rounded border"
+                        className="w-full p-2 bg-gray-800 text-white rounded border"
                     />
                     <input
                         type="text"
@@ -124,7 +127,7 @@ const MyProfile = () => {
                         placeholder="Contact Number"
                         value={userData.contactNumber}
                         onChange={handleChange}
-                        className="w-full p-2 rounded border"
+                        className="w-full p-2 bg-gray-800 text-white rounded border"
                     />
                     <input
                         type="email"
@@ -132,14 +135,14 @@ const MyProfile = () => {
                         placeholder="Email"
                         value={userData.email}
                         onChange={handleChange}
-                        className="w-full p-2 rounded border"
+                        className="w-full p-2 bg-gray-800 text-white rounded border"
                     />
                     <textarea
                         name="address"
                         placeholder="Address"
                         value={userData.address}
                         onChange={handleChange}
-                        className="w-full p-2 rounded border"
+                        className="w-full p-2 bg-gray-800 text-white rounded border"
                         rows="2"
                     />
                     <textarea
@@ -147,7 +150,7 @@ const MyProfile = () => {
                         placeholder="Additional Information (optional)"
                         value={userData.additionalInfo}
                         onChange={handleChange}
-                        className="w-full p-2 rounded border"
+                        className="w-full p-2 bg-gray-800 text-white rounded border"
                         rows="2"
                     />
                 </div>
@@ -172,6 +175,7 @@ const MyProfile = () => {
                     Delete Profile
                 </button>
             </div>
+        </div>
         </div>
     );
 };

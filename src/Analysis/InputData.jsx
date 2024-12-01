@@ -49,7 +49,7 @@ function PollutionAnalysis() {
           <h2 className="text-white text-center text-3xl font-semibold">
             Pollution Analysis & AQI Calculation
           </h2>
-          <button className="bg-blue text-white border py-3 px-2 rounded-lg text-lg font-bold shadow-md transform transition hover:bg-green-600 hover:text-white hover:scale-105 focus:ring-4 focus:ring-blue-300 focus:outline-none">
+          <button className="bg-blue text-white border py-3 px-2 rounded-lg text-lg font-bold shadow-md transform transition hover:bg-green-600 hover:text-white hover:scale-105 ">
             Auto Fill
           </button>
         </div>
@@ -123,7 +123,7 @@ function PollutionAnalysis() {
             <h2 className="text-white text-center text-3xl font-semibold">
               This is your Nearest Station AQI Value
             </h2>
-            <button className="border text-white py-3 px-6 rounded-lg text-lg font-bold  transform transition hover:bg-green-600 hover:text-white hover:scale-105 focus:ring-4 focus:ring-blue-300 focus:outline-none">
+            <button className="border text-white py-3 px-6 rounded-lg text-lg font-bold  transform transition hover:bg-green-600 hover:text-white hover:scale-105 ">
               Get AQI
             </button>
           </div>
@@ -148,30 +148,32 @@ function PollutionAnalysis() {
         </form>
 
         {/* Display the result */}
+        {/* Display the result */}
         {finalAqi !== null && (
-          <div className="mt-10 text-center">
-            <h2 className="text-3xl font-bold text-gray-50 mb-4">Final AQI Calculation</h2>
-            <div className="text-4xl font-extrabold text-blue-600">
-              <p><span className="text-3xl text-white font-light font-sans">Station value :</span> {finalAqi}</p>
-              <p><span className="text-3xl text-white font-light font-sans">fluctuate Value :</span> {fluctuatedAqi}</p>
-              <hr></hr>
-              <p><span className="text-3xl text-green-500 font-bold font-sans">Actual value :</span> {remainingAqi}</p>
+          <div className="mt-12 text-center bg-gradient-to-r from-blue-600 to-indigo-900 p-8 rounded-lg shadow-xl">
+            <h2 className="text-4xl font-bold text-white mb-6 animate__animated animate__fadeIn">Final AQI Calculation</h2>
 
+            <div className="text-4xl font-extrabold text-blue-400 mb-6">
+              <p><span className="text-xl text-white font-medium">Station value:</span> <span className="text-3xl">{finalAqi}</span></p>
+              <p><span className="text-xl text-white font-medium">Fluctuated Value:</span> <span className="text-3xl">{fluctuatedAqi}</span></p>
+              <hr className="my-4 border-t-2 border-blue-600"></hr>
+              <p><span className="text-xl text-white font-medium">Actual value:</span> <span className="text-3xl text-green-500 ">{remainingAqi}</span></p>
             </div>
 
-            <div className="text-lg text-gray-50 mt-4">
-              <strong>Impact Breakdown:</strong>
-              <ul className="list-disc pl-6 text-white space-y-2">
-                <li>Industries: {industries} industries contributing {industries * 10} AQI</li>
-                <li>Schools: {schools} schools contributing {schools * 5} AQI</li>
-                <li>Colleges: {colleges} colleges contributing {colleges * 5} AQI</li>
-                <li>Construction: {construction} sites contributing {construction * 8} AQI</li>
-                <li>Events: {events} events contributing {events * 6} AQI</li>
-                <li>Traffic Zones: {trafficZones} zones contributing {trafficZones * 12} AQI</li>
+            <div className="text-lg text-white mt-6 space-y-4">
+              <strong className="text-xl">Impact Breakdown:</strong>
+              <ul className="list-disc pl-8">
+                <li className="hover:text-blue-300">Industries: {industries} industries contributing {industries * 10} AQI</li>
+                <li className="hover:text-blue-300">Schools: {schools} schools contributing {schools * 5} AQI</li>
+                <li className="hover:text-blue-300">Colleges: {colleges} colleges contributing {colleges * 5} AQI</li>
+                <li className="hover:text-blue-300">Construction: {construction} sites contributing {construction * 8} AQI</li>
+                <li className="hover:text-blue-300">Events: {events} events contributing {events * 6} AQI</li>
+                <li className="hover:text-blue-300">Traffic Zones: {trafficZones} zones contributing {trafficZones * 12} AQI</li>
               </ul>
             </div>
           </div>
         )}
+
       </div>
 
       {/* Toast Notifications */}

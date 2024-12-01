@@ -6,7 +6,7 @@ const api = {
   base: "https://api.openweathermap.org/data/2.5/",
 };
 
-const WeatherApp = () => {
+const WeatherApp = ({}) => {
   const [aqi, setAqi] = useState(null);
   const [pinCode, setPinCode] = useState('');
   const [weather, setWeather] = useState(null);
@@ -75,8 +75,8 @@ const WeatherApp = () => {
   const aqiDetails = getAqiCategory(aqi);
 
   return (
-    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="p-6 border-2 rounded-3xl border-emerald-200 text-white min-h-screen flex flex-col items-center">
-      <h1 className="text-4xl font-bold mb-4">Real-time Air Quality Index (AQI) Live</h1>
+    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="p-6  w-full  border-emerald-200 text-white min-h-screen flex flex-col items-center">
+      <h1 className="text-4xl font-bold mb-4">Check weather according to your pincode</h1>
       <p className="mb-6 text-center">
         Stay updated on the current air pollution levels and weather conditions in your area, <br />
         with detailed information on major pollutants.

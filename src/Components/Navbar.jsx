@@ -110,7 +110,7 @@ const Navbar = () => {
                       className="text-gray-800 px-4 py-2 hover:bg-gray-200 cursor-pointer"
                       onClick={() => handleNavigation("/MyProfile")}
                     >
-                      My Profile
+                      Edit Profile
                     </div>
                     <div
                       className="text-gray-800 px-4 py-2 hover:bg-gray-200 cursor-pointer"

@@ -80,10 +80,11 @@ const Home = () => {
       {/* <DailyForecast /> */}
       
       <Swiper />
-      <InputData />
+      
       <AQIScale />
       <MapComponent />
       <MoreWeather />
+      <InputData />
       <SearchAqi />
       <ForeCast />
       <Cigarette />
