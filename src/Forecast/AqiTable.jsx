@@ -1,166 +1,74 @@
-import React, { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React from "react";
 
-function PollutionAnalysis() {
-  const [industries, setIndustries] = useState(0);
-  const [schools, setSchools] = useState(0);
-  const [colleges, setColleges] = useState(0);
-  const [construction, setConstruction] = useState(0);
-  const [events, setEvents] = useState(0);
-  const [trafficZones, setTrafficZones] = useState(0);
-  const [aqi, setAqi] = useState(0);
-  const [finalAqi, setFinalAqi] = useState(null);
-  const [fluctuatedAqi, setFluctuatedAqi] = useState(null);
-
-  // Function to handle form submission
-  const handleSubmit = () => {
-    // Validate input data
-    if (industries === 0 || schools === 0 || colleges === 0 || construction === 0 || events === 0 || trafficZones === 0 || aqi === 0) {
-      toast.error("Please fill in all the required fields for accurate AQI analysis!");
-      return;
-    }
-
-    // Pollution impact calculation for each category
-    const industryImpact = industries * 10;
-    const schoolImpact = schools * 5;
-    const collegeImpact = colleges * 5;
-    const constructionImpact = construction * 8;
-    const eventImpact = events * 6;
-    const trafficImpact = trafficZones * 12; // Traffic zones impact
-
-    // Subtracting the pollution contributions from the current AQI value
-    const adjustedAqi = aqi - (industryImpact + schoolImpact + collegeImpact + constructionImpact + eventImpact + trafficImpact);
-
-    // Random fluctuation for the AQI based on data analysis
-    const fluctuation = Math.random() * 20 - 10; // Random fluctuation between -10 and +10
-    const fluctuatedAqiValue = adjustedAqi + fluctuation;
-
-    // Display success message and update final AQI and fluctuated AQI states
-    setFinalAqi(adjustedAqi);
-    setFluctuatedAqi(fluctuatedAqiValue);
-    toast.success(`Final AQI Value: ${adjustedAqi.toFixed(2)} (Impact from factors considered)`);
-  };
+const AQITable = () => {
+  const data = [
+    { location: "Bagsewaniya", status: "Poor", AQI: 125, pm25: 62, pm10: 137, temp: 20, humidity: 42 },
+    { location: "Kasera Bazar", status: "Poor", AQI: 118, pm25: 60, pm10: 128, temp: 21, humidity: 44 },
+    { location: "Rusalli", status: "Poor", AQI: 125, pm25: 62, pm10: 137, temp: 20, humidity: 41 },
+    { location: "Sector D Industrial Area", status: "Poor", AQI: 128, pm25: 59, pm10: 142, temp: 20, humidity: 42 },
+    { location: "TT Nagar", status: "Poor", AQI: 125, pm25: 63, pm10: 137, temp: 20, humidity: 43 },
+  ];
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "rgb(5, 8, 22)" }}>
-      <div className="text-white p-10 rounded-lg shadow-xl w-full max-w-3xl mx-auto">
-        <h1 className="text-4xl font-extrabold text-center mb-8 text-blue-600">Pollution Analysis & AQI Calculation</h1>
-
-        <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
-          <div className="flex justify-between">
-            <label className="text-lg font-semibold">Enter the number of industries nearby:</label>
-            <input
-              type="number"
-              min="0"
-              value={industries}
-              onChange={(e) => setIndustries(Number(e.target.value))}
-              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
-            />
-          </div>
-
-          <div className="flex justify-between">
-            <label className="text-lg font-semibold">Enter the number of schools nearby:</label>
-            <input
-              type="number"
-              min="0"
-              value={schools}
-              onChange={(e) => setSchools(Number(e.target.value))}
-              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
-            />
-          </div>
-
-          <div className="flex justify-between">
-            <label className="text-lg font-semibold">Enter the number of colleges nearby:</label>
-            <input
-              type="number"
-              min="0"
-              value={colleges}
-              onChange={(e) => setColleges(Number(e.target.value))}
-              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
-            />
-          </div>
-
-          <div className="flex justify-between">
-            <label className="text-lg font-semibold">Enter the number of construction sites nearby:</label>
-            <input
-              type="number"
-              min="0"
-              value={construction}
-              onChange={(e) => setConstruction(Number(e.target.value))}
-              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
-            />
-          </div>
-
-          <div className="flex justify-between">
-            <label className="text-lg font-semibold">Enter the number of events nearby:</label>
-            <input
-              type="number"
-              min="0"
-              value={events}
-              onChange={(e) => setEvents(Number(e.target.value))}
-              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
-            />
-          </div>
-
-          <div className="flex justify-between">
-            <label className="text-lg font-semibold">Enter the number of traffic zones:</label>
-            <input
-              type="number"
-              min="0"
-              value={trafficZones}
-              onChange={(e) => setTrafficZones(Number(e.target.value))}
-              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
-            />
-          </div>
-
-          <div className="flex justify-between">
-            <label className="text-lg font-semibold">Enter the current AQI value:</label>
-            <input
-              type="number"
-              value={aqi}
-              onChange={(e) => setAqi(Number(e.target.value))}
-              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
-            />
-          </div>
-
-          <button
-            onClick={handleSubmit}
-            className="bg-blue-600 text-white py-3 rounded-md w-full text-lg mt-6 hover:bg-blue-700 transition"
-          >
-            Analyze Pollution Impact
-          </button>
-        </form>
-
-        {finalAqi !== null && (
-          <div className="mt-10 text-center">
-            <h2 className="text-3xl font-bold mb-4">Final AQI Calculation</h2>
-            <div className="text-4xl font-extrabold text-yellow-400 mb-4">
-              Real AQI: {finalAqi.toFixed(2)}
-            </div>
-            <div className="text-4xl font-extrabold text-green-300">
-              Fluctuated AQI: {fluctuatedAqi.toFixed(2)}
-            </div>
-
-            <div className="text-lg mt-4">
-              <strong>Impact Breakdown:</strong>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Industries: {industries} industries contributing {industries * 10} AQI</li>
-                <li>Schools: {schools} schools contributing {schools * 5} AQI</li>
-                <li>Colleges: {colleges} colleges contributing {colleges * 5} AQI</li>
-                <li>Construction: {construction} sites contributing {construction * 8} AQI</li>
-                <li>Events: {events} events contributing {events * 6} AQI</li>
-                <li>Traffic Zones: {trafficZones} zones contributing {trafficZones * 12} AQI</li>
-              </ul>
-            </div>
-          </div>
-        )}
+    <div className="min-h-screen w-full  text-white flex flex-col items-center p-6">
+      {/* Header Section */}
+      <div className="text-center mb-8">
+        <h1 className="text-4xl font-extrabold tracking-wide text-blue-400">Bhopal's Air Quality</h1>
+        <p className="text-lg text-gray-300 mt-2">Real-time Air Pollution Levels by Location</p>
       </div>
 
-      {/* Toast Notifications */}
-      <ToastContainer position="top-right" autoClose={5000} />
+      {/* Table Section */}
+      <div className="w-full max-w-6xl bg-gray-800 rounded-xl shadow-2xl p-6 overflow-x-auto border border-gray-700">
+        <table className="w-full table-auto">
+          <thead>
+            <tr className="bg-gradient-to-r from-gray-700 to-gray-600 text-gray-300">
+              <th className="px-4 py-3 text-left">Location</th>
+              <th className="px-4 py-3 text-left">Status</th>
+              <th className="px-4 py-3 text-left">AQI</th>
+              <th className="px-4 py-3 text-left">PM2.5 (µg/m³)</th>
+              <th className="px-4 py-3 text-left">PM10 (µg/m³)</th>
+              <th className="px-4 py-3 text-left">Temp. (°C)</th>
+              <th className="px-4 py-3 text-left">Humi. (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <tr
+                key={index}
+                className={`hover:bg-gradient-to-r hover:from-blue-600 hover:to-gray-700 ${
+                  index % 2 === 0 ? "bg-gray-800" : "bg-gray-700"
+                } transition duration-300`}
+              >
+                <td className="px-4 py-3">{item.location}</td>
+                <td className="px-4 py-3">
+                  <span
+                    className={`py-1 px-3 rounded-md text-sm font-semibold ${
+                      item.status === "Poor"
+                        ? "bg-red-600 text-white"
+                        : "bg-green-500 text-white"
+                    }`}
+                  >
+                    {item.status}
+                  </span>
+                </td>
+                <td className="px-4 py-3">{item.AQI}</td>
+                <td className="px-4 py-3">{item.pm25}</td>
+                <td className="px-4 py-3">{item.pm10}</td>
+                <td className="px-4 py-3">{item.temp}</td>
+                <td className="px-4 py-3">{item.humidity}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Footer Section */}
+      <div className="mt-10 text-gray-400">
+        <p>Data provided by the local pollution monitoring system.</p>
+        <p className="text-sm mt-1">Last Updated: Just Now</p>
+      </div>
     </div>
   );
-}
+};
 
-export default PollutionAnalysis;
+export default AQITable;
