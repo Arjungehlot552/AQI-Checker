@@ -1,0 +1,137 @@
+import React, { useState } from 'react';
+
+const api = {
+    key: "59b3e3201bb813c0b51f78631d5b30c8",
+    base: "https://api.openweathermap.org/data/2.5/",
+};
+
+const Header = ({ search, setSearch, searchPressed }) => (
+    <header className="bg-cover mt-8 bg-center h-[50vh] w-full flex flex-col justify-center items-center text-white p-4"
+        style={{ backgroundImage: "url('https://img.freepik.com/premium-photo/ai-robot-hand-holds-growing-tree-soil-inside-light-bulb-innovative-technology-concept-energy-saving_76964-43938.jpg')" }}>
+        <h1 className="text-4xl font-bold text-center">Real-time Temperature & AQI Check</h1>
+        <div className="mt-4 w-full max-w-md">
+            <input
+                type="text"
+                className="w-full p-2 rounded-lg text-black"
+                placeholder="Search by Location, City, or Country"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+            />
+            <button onClick={searchPressed} className="bg-blue-500 text-white mt-2 py-2 px-4 rounded-lg w-full sm:w-auto">Search</button>
+        </div>
+    </header>
+);
+
+const SearchResult = ({ weather, aqiData }) => (
+    <section className="mt-8 mb-6 p-4  rounded-lg shadow-lg w-full max-w-2xl mx-auto">
+        <h2 className="text-2xl font-semibold mb-4">Search Results</h2>
+        {weather.main ? (
+            <div className="flex items-center flex-wrap">
+                <img
+                    src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
+                    alt={weather.weather[0].description}
+                    className="w-12 h-12"
+                />
+                <div className="ml-4">
+                    <h3 className="text-xl font-bold">{weather.name}, {weather.sys.country}</h3>
+                    <p className="text-gray-700">{weather.weather[0].description}</p>
+                    <p className="text-orange-600 font-bold text-lg">{weather.main.temp}°C</p>
+
+                    {aqiData && aqiData.air_quality ? (
+                        <div>
+                            <p className="text-lg font-bold">AQI: {aqiData.air_quality['us-epa-index']}</p>
+                            <p>CO: {aqiData.air_quality.co.toFixed(2)} μg/m³</p>
+                            <p>NO2: {aqiData.air_quality.no2.toFixed(2)} μg/m³</p>
+                            <p>O3: {aqiData.air_quality.o3.toFixed(2)} μg/m³</p>
+                            <p>SO2: {aqiData.air_quality.so2.toFixed(2)} μg/m³</p>
+                            <p>PM2.5: {aqiData.air_quality.pm2_5.toFixed(2)} μg/m³</p>
+                            <p>PM10: {aqiData.air_quality.pm10.toFixed(2)} μg/m³</p>
+                        </div>
+                    ) : (
+                        <p className="text-gray-500">AQI data is currently unavailable.</p>
+                    )}
+                </div>
+            </div>
+        ) : (
+            <p className="text-gray-500">Enter a location to see weather details.</p>
+        )}
+    </section>
+);
+
+const TemperatureRanking = ({ data, deleteEntry }) => (
+    <aside className="mt-8 mb-7 p-4 bg-gray-100 rounded-lg shadow-lg w-full max-w-sm mx-auto lg:mx-0">
+        <h2 className="text-2xl font-semibold mb-4">Search History</h2>
+        <div className="space-y-4">
+            {data.map((item, index) => (
+                <div key={index} className="bg-white p-3 rounded-lg shadow flex justify-between items-center">
+                    <div>
+                        <p className="font-bold">{item.name}, {item.country}</p>
+                        <p className="text-sm text-gray-600">{item.temp}°C</p>
+                        <p className="text-sm text-gray-500">{item.weatherDescription}</p>
+                    </div>
+                    <button
+                        onClick={() => deleteEntry(index)}
+                        className="text-red-500 hover:text-red-700 font-bold"
+                    >
+                        Delete
+                    </button>
+                </div>
+            ))}
+        </div>
+    </aside>
+);
+
+const Resources = () => {
+    const [search, setSearch] = useState("");
+    const [weather, setWeather] = useState({});
+    const [aqiData, setAqiData] = useState({});
+    const [searchHistory, setSearchHistory] = useState([]);
+
+    const searchPressed = () => {
+        fetch(`${api.base}weather?q=${search}&units=metric&APPID=${api.key}`)
+            .then(res => res.json())
+            .then((result) => {
+                setWeather(result);
+
+                if (result && result.coord) {
+                    fetch(`https://api.weatherapi.com/v1/current.json?key=cf49f073deb74befa6271611241411&q=${result.coord.lat},${result.coord.lon}`)
+                        .then(aqiRes => aqiRes.json())
+                        .then(aqiResult => {
+                            setAqiData(aqiResult);
+
+                            if (result.main && !searchHistory.some(item => item.name === result.name)) {
+                                const newHistoryItem = {
+                                    name: result.name,
+                                    country: result.sys.country,
+                                    temp: result.main.temp,
+                                    weatherDescription: `${result.weather[0].main} - ${result.weather[0].description}`
+                                };
+                                setSearchHistory([...searchHistory, newHistoryItem]);
+                            }
+                        });
+                }
+            });
+    };
+
+    const deleteEntry = (index) => {
+        const updatedHistory = [...searchHistory];
+        updatedHistory.splice(index, 1);
+        setSearchHistory(updatedHistory);
+    };
+
+    return (
+        <div className="flex flex-col items-center">
+            <Header search={search} setSearch={setSearch} searchPressed={searchPressed} />
+            <div className="flex flex-col lg:flex-row w-full max-w-6xl">
+                <div className="flex-grow">
+                    <SearchResult weather={weather} aqiData={aqiData} />
+                </div>
+                <div className="lg:ml-4 w-full lg:w-1/3">
+                    <TemperatureRanking data={searchHistory} deleteEntry={deleteEntry} />
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Resources;

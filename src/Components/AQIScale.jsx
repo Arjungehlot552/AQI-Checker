@@ -1,0 +1,59 @@
+import React from 'react';
+
+const AQIData = [
+  {
+    color: 'bg-green-500',
+    label: 'Good',
+    range: '0 - 50',
+    description: 'Air quality is satisfactory, and air pollution poses little or no risk.',
+  },
+  {
+    color: 'bg-yellow-500',
+    label: 'Moderate',
+    range: '51 - 100',
+    description: 'Air quality is acceptable; however, there may be a risk for some people.',
+  },
+  {
+    color: 'bg-orange-500',
+    label: 'Unhealthy for Sensitive Groups',
+    range: '101 - 150',
+    description: 'Members of sensitive groups may experience health effects.',
+  },
+  {
+    color: 'bg-red-500',
+    label: 'Unhealthy',
+    range: '151 - 200',
+    description: 'Some members of the general public may experience health effects.',
+  },
+  {
+    color: 'bg-purple-500',
+    label: 'Very Unhealthy',
+    range: '201 - 300',
+    description: 'Health alert: The risk of health effects is increased for everyone.',
+  },
+  {
+    color: 'bg-gray-800',
+    label: 'Hazardous',
+    range: '301 and higher',
+    description: 'Health warning of emergency conditions; everyone is more likely to be affected.',
+  },
+];
+
+const AQIScale = () => {
+  return (
+    <div  style={{ backgroundColor: "rgb(5, 8, 22)" }} className="flex flex-col  mb-32 mt-32  items-center justify-center min-h-screenp-10">
+      <h1 className="text-4xl text-[#289BD1]  font-bold mb-10">Air Quality Index (AQI) Scale</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-5xl">
+        {AQIData.map((item, index) => (
+          <div key={index} className={`rounded-lg shadow-lg p-6 text-white ${item.color}`}>
+            <h2 className="text-xl font-semibold">{item.label}</h2>
+            <p className="text-lg">{item.range}</p>
+            <p className="mt-2">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default AQIScale;
