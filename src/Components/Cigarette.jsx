@@ -3,7 +3,7 @@ import React from "react";
 const Cigarette = () => {
   return (
     <div
-      style={{ backgroundColor: "rgb(5, 8, 22)" }}
+      // style={{ backgroundColor: "rgb(5, 8, 22)" }}
       className="text-white min-h-screen w-full flex flex-col items-center py-12 px-4"
     >
       {/* Header Section */}
@@ -27,9 +27,9 @@ const Cigarette = () => {
               alt="Cigarette"
             />
             {/* Smoke Animation */}
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 animate-smoke">
-              <div className="w-2 h-8 bg-white rounded-full opacity-50 mb-2 animate-smoke-bounce"></div>
-              <div className="w-2 h-8 bg-white rounded-full opacity-30 mb-4 animate-smoke-bounce delay-100"></div>
+                       <div className="absolute  top-0 left-1/2 transform -translate-x-1/2 animate-smoke">
+              <div className="w-2 h-8 bg-white/60 shadow-lg rounded-full opacity-50 mb-2 animate-smoke-bounce"></div>
+              <div className="w-2 h-8 bg-white/60 shadow-lg rounded-full opacity-30 mb-4 animate-smoke-bounce delay-100"></div>
               {/* <div className="w-2 h-8 bg-white rounded-full opacity-20 mb-6 animate-smoke-bounce delay-200"></div> */}
             </div>
           </div>
@@ -63,16 +63,20 @@ const Cigarette = () => {
 
         {/* Solutions Section */}
         <div className="text-center mb-8">
-          <h2 className="text-2xl font-semibold mb-6">Solutions for Current AQI</h2>
+          <h2 className="text-2xl font-semibold mb-6">
+            Solutions for Current AQI
+          </h2>
           <div className="flex flex-wrap justify-center gap-4">
-            {["Air Purifier", "Car Filter", "N95 Mask", "Stay Indoor"].map((item, index) => (
-              <button
-                key={index}
-                className="bg-gray-800 hover:bg-gray-700 text-white py-3 px-6 rounded-lg transition-transform duration-300 transform hover:scale-105"
-              >
-                {item} <span className="text-red-500 font-bold">Must</span>
-              </button>
-            ))}
+            {["Air Purifier", "Car Filter", "N95 Mask", "Stay Indoor"].map(
+              (item, index) => (
+                <button
+                  key={index}
+                  className="bg-gray-800 hover:bg-gray-700 text-white py-3 px-6 rounded-lg transition-transform duration-300 transform hover:scale-105"
+                >
+                  {item} <span className="text-red-500 font-bold">Must</span>
+                </button>
+              )
+            )}
           </div>
         </div>
 

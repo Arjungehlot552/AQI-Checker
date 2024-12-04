@@ -8,6 +8,8 @@ const AQIPage = () => {
   const [historicalAQIData, setHistoricalAQIData] = useState([]);
   const apiKey = "b63160ff-205c-40cc-a6c6-aea3ab7d6aa1"; // Replace with your API key
 
+  
+  
   const fetchLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -32,6 +34,8 @@ const AQIPage = () => {
 
       if (result.status === "success") {
         setLocationData(result.data);
+      
+        localStorage.setItem("aqiValue", result.data.current.pollution.aqius);
         fetchHistoricalData(result.data.city, result.data.state, result.data.country);
         setError("");
       } else {
@@ -53,11 +57,12 @@ const AQIPage = () => {
     setHistoricalAQIData(data);
   };
 
+  
   const getAqiLevel = (aqius) => {
     let level = "";
     let message = "";
     let color = "";
-    
+
     if (aqius <= 50) {
       level = "Good";
       message = "Air quality is satisfactory.";
@@ -104,10 +109,10 @@ const AQIPage = () => {
       return "bg-gradient-to-r from-[#7e0023] to-red-900"; // Extremely Hazardous
     }
   };
-  
+
 
   return (
-    <div  style={{ backgroundColor: "rgb(5, 8, 22)" }} className="pt-0 min-h-screen border-2 rounded-3xl border-emerald-200 flex flex-col items-center justify-center  text-white p-6">
+    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="pt-0 min-h-screen border-2 rounded-3xl border-emerald-200 flex flex-col items-center justify-center  text-white p-6">
       <h1 className="text-4xl font-bold mb-6 animate-pulse text-center">Real-Time AQI Checker</h1>
       <button
         onClick={fetchLocation}
@@ -132,13 +137,13 @@ const AQIPage = () => {
             <p>State: {locationData.state}</p>
             <p>Country: {locationData.country}</p>
             <div className="mt-4">
-              <p className="text-lg font-bold">Current AQI Level: 
+              <p className="text-lg font-bold">Current AQI Level:
                 <span className={`${getAqiLevel(locationData.current.pollution.aqius).color} text-lg`}>
                   {getAqiLevel(locationData.current.pollution.aqius).level}
                 </span>
               </p>
               <p>{getAqiLevel(locationData.current.pollution.aqius).message}</p>
-              <p className="text-2xl font-bold">AQI: 
+              <p className="text-2xl font-bold">AQI:
                 <span className={`${getAqiLevel(locationData.current.pollution.aqius).color} text-2xl font-bold`}>
                   {locationData.current.pollution.aqius}
                 </span>
@@ -167,11 +172,11 @@ const AQIPage = () => {
                   <Line
                     type="monotone"
                     dataKey="aqi"
-                    stroke={historicalAQIData[historicalAQIData.length - 1].aqi <= 50 ? "#4caf50" : 
-                           historicalAQIData[historicalAQIData.length - 1].aqi <= 100 ? "#ffeb3b" : 
-                           historicalAQIData[historicalAQIData.length - 1].aqi <= 150 ? "#ff9800" : 
-                           historicalAQIData[historicalAQIData.length - 1].aqi <= 200 ? "#f44336" : 
-                           "#9c27b0"}
+                    stroke={historicalAQIData[historicalAQIData.length - 1].aqi <= 50 ? "#4caf50" :
+                      historicalAQIData[historicalAQIData.length - 1].aqi <= 100 ? "#ffeb3b" :
+                        historicalAQIData[historicalAQIData.length - 1].aqi <= 150 ? "#ff9800" :
+                          historicalAQIData[historicalAQIData.length - 1].aqi <= 200 ? "#f44336" :
+                            "#9c27b0"}
                     activeDot={{ r: 8 }}
                   />
                 </LineChart>

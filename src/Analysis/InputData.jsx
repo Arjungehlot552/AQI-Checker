@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function PollutionAnalysis() {
+
   const [industries, setIndustries] = useState(0);
   const [schools, setSchools] = useState(0);
   const [colleges, setColleges] = useState(0);
@@ -13,6 +14,22 @@ function PollutionAnalysis() {
   const [finalAqi, setFinalAqi] = useState(null);
   const [remainingAqi, setRemainingAqi] = useState(null);
   const [fluctuatedAqi, setFluctuatedAqi] = useState(null);
+  const [myaqivalue, setmyaqivalue] = useState(0);
+
+  // Fetch AQI value from localStorage on component mount
+  useEffect(() => {
+    const aqiValue = localStorage.getItem("aqiValue");
+    if (aqiValue) {
+      setmyaqivalue(Number(aqiValue));
+    }
+  }, []);
+
+  const handleGetAQI = () => {
+    const aqiValue = localStorage.getItem("aqiValue");
+    if (aqiValue) {
+      setmyaqivalue(Number(aqiValue));
+    }
+  };
 
   // Function to handle form submission
   const handleSubmit = () => {
@@ -119,21 +136,27 @@ function PollutionAnalysis() {
               className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
             />
           </div>
-          <div className="flex flex-col md:flex-row justify-center items-center p-4 mb-8  space-y-4 md:space-y-0 md:space-x-6">
+          <div className="flex flex-col md:flex-row justify-center items-center p-4 mb-8 space-y-4 md:space-y-0 md:space-x-6">
             <h2 className="text-white text-center text-3xl font-semibold">
               This is your Nearest Station AQI Value
             </h2>
-            <button className="border text-white py-3 px-6 rounded-lg text-lg font-bold  transform transition hover:bg-green-600 hover:text-white hover:scale-105 ">
+            <button
+              onClick={handleGetAQI}
+              type="button"
+              className="border text-white py-3 px-6 rounded-lg text-lg font-bold transform transition hover:bg-green-600 hover:text-white hover:scale-105"
+            >
               Get AQI
             </button>
           </div>
 
           <div className="flex justify-between items-center">
-            <label className="text-lg text-white font-semibold">Current AQI:</label>
+            <label className="text-lg text-white font-semibold">
+              Current AQI:
+            </label>
             <input
               type="number"
-              value={aqi}
-              onChange={(e) => setAqi(Number(e.target.value))}
+              value={myaqivalue} // Set the input value from state
+              onChange={(e) => setmyaqivalue(Number(e.target.value))} // Allow user edits
               className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
             />
           </div>
@@ -157,18 +180,18 @@ function PollutionAnalysis() {
               <p><span className="text-xl text-white font-medium">Station value:</span> <span className="text-3xl">{finalAqi}</span></p>
               <p><span className="text-xl text-white font-medium">Fluctuated Value:</span> <span className="text-3xl">{fluctuatedAqi}</span></p>
               <hr className="my-4 border-t-2 border-blue-600"></hr>
-              <p><span className="text-xl text-white font-medium">Actual value:</span> <span className="text-3xl text-green-500 ">{remainingAqi}</span></p>
+              <p><span className="text-xl text-white font-medium">Actual value:</span> <span className="text-3xl text-green-500 ">{Math.abs(remainingAqi)}</span></p>
             </div>
 
             <div className="text-lg text-white mt-6 space-y-4">
               <strong className="text-xl">Impact Breakdown:</strong>
               <ul className="list-disc pl-8">
-                <li className="hover:text-blue-300">Industries: {industries} industries contributing {industries * 10} AQI</li>
-                <li className="hover:text-blue-300">Schools: {schools} schools contributing {schools * 5} AQI</li>
-                <li className="hover:text-blue-300">Colleges: {colleges} colleges contributing {colleges * 5} AQI</li>
-                <li className="hover:text-blue-300">Construction: {construction} sites contributing {construction * 8} AQI</li>
-                <li className="hover:text-blue-300">Events: {events} events contributing {events * 6} AQI</li>
-                <li className="hover:text-blue-300">Traffic Zones: {trafficZones} zones contributing {trafficZones * 12} AQI</li>
+                <li className="hover:text-blue-300">Industries: {industries} industries contributing {industries * 10.0} AQI</li>
+                <li className="hover:text-blue-300">Schools: {schools} schools contributing {schools * 5.0} AQI</li>
+                <li className="hover:text-blue-300">Colleges: {colleges} colleges contributing {colleges * 5.0} AQI</li>
+                <li className="hover:text-blue-300">Construction: {construction} sites contributing {construction * 8.0} AQI</li>
+                <li className="hover:text-blue-300">Events: {events} events contributing {events * 6.0} AQI</li>
+                <li className="hover:text-blue-300">Traffic Zones: {trafficZones} zones contributing {trafficZones * 6.0} AQI</li>
               </ul>
             </div>
           </div>
