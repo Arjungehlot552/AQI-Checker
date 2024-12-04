@@ -15,6 +15,7 @@ import { Route, Routes } from 'react-router-dom'; // Remove BrowserRouter import
 import Blog from './Components/Blog';
 import AboutUs from './Components/AboutUs';
 import DailyForecast from './Forecast/DailyForecast';
+import Condition from "../src/Terms&Codition/Condition"
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path='/myredeem' element={<MyRedeem />} />
         <Route path="/blog" element={<Blog />}/>
         <Route path="/about" element={<AboutUs />}/>
+        <Route path="/terms" element={<Condition />}/>
         <Route path="/CustomMapPath/:searchQuery" element={<DailyForecast />}/>
         
       </Routes>

@@ -25,6 +25,8 @@ import MonitorMap from './MonitorMap';
 import CustomMapPath from './CustomMapPath';
 import DailyForecast from '../Forecast/DailyForecast'
 import InputData from '../Analysis/InputData';
+import EditorsPick from '../Media/Editor';
+import Main from '../Home/Main';
 
 // import AuthPage from './AuthPage';
 
@@ -78,9 +80,11 @@ const Home = () => {
       {/* <CustomMapPath /> */}
       {/* <MonitorMap /> */}
       {/* <DailyForecast /> */}
+
+      <Main />
       
       <Swiper />
-      
+      <EditorsPick />
       <AQIScale />
       <MapComponent />
       <MoreWeather />
