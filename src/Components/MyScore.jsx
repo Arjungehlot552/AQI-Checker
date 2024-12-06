@@ -20,84 +20,84 @@ const MyScore = () => {
       id: 1, 
       name: "Electric Bill Redemption", 
       points: 150, 
-      image: "https://img.freepik.com/premium-photo/red-satin-bow-tied-with-red-ribbon-black-background_118124-328584.jpg?w=1380",
+      image: "https://imgcdn.stablediffusionweb.com/2024/9/5/945bf4f1-9f74-4b13-858f-48395bc87509.jpg",
       description: "Redeem points to pay your electric bills."
     },
     { 
       id: 2, 
       name: "Water Bill Redemption", 
       points: 100, 
-      image: "https://img.freepik.com/premium-photo/red-satin-bow-tied-with-red-ribbon-black-background_118124-328584.jpg?w=1380",
+      image: "https://imgcdn.stablediffusionweb.com/2024/9/5/945bf4f1-9f74-4b13-858f-48395bc87509.jpg",
       description: "Use your points to pay your water bills."
     },
     { 
       id: 3, 
       name: "Government Bill Redemption", 
       points: 200, 
-      image: "https://img.freepik.com/premium-photo/red-satin-bow-tied-with-red-ribbon-black-background_118124-328584.jpg?w=1380",
+      image: "https://imgcdn.stablediffusionweb.com/2024/9/5/945bf4f1-9f74-4b13-858f-48395bc87509.jpg",
       description: "Redeem points for various government bills, such as tax, fines, and more."
     },
     { 
       id: 4, 
       name: "Gift Voucher", 
       points: 250, 
-      image: "https://img.freepik.com/premium-photo/red-satin-bow-tied-with-red-ribbon-black-background_118124-328584.jpg?w=1380",
+      image: "https://imgcdn.stablediffusionweb.com/2024/9/5/945bf4f1-9f74-4b13-858f-48395bc87509.jpg",
       description: "Redeem points for a gift voucher that can be used at various retailers."
     },
     { 
       id: 5, 
       name: "Government Travelers Discount", 
       points: 300, 
-      image: "https://img.freepik.com/premium-photo/red-satin-bow-tied-with-red-ribbon-black-background_118124-328584.jpg?w=1380",
+      image: "https://imgcdn.stablediffusionweb.com/2024/9/5/945bf4f1-9f74-4b13-858f-48395bc87509.jpg",
       description: "Get a discount on government traveler services such as trains, buses, and flights."
     },
     { 
       id: 6, 
       name: "Tax Benefits", 
       points: 350, 
-      image: "https://img.freepik.com/premium-photo/red-satin-bow-tied-with-red-ribbon-black-background_118124-328584.jpg?w=1380",
+      image: "https://imgcdn.stablediffusionweb.com/2024/9/5/945bf4f1-9f74-4b13-858f-48395bc87509.jpg",
       description: "Redeem points for tax benefits such as rebates or deductions."
     },
     { 
       id: 7, 
       name: "Mobile Bill Payment", 
       points: 80, 
-      image: "https://img.freepik.com/premium-photo/red-satin-bow-tied-with-red-ribbon-black-background_118124-328584.jpg?w=1380",
+      image: "https://imgcdn.stablediffusionweb.com/2024/9/5/945bf4f1-9f74-4b13-858f-48395bc87509.jpg",
       description: "Pay your mobile phone bills using your redeemed points."
     },
     { 
       id: 8, 
       name: "Internet Bill Payment", 
       points: 120, 
-      image: "https://img.freepik.com/premium-photo/red-satin-bow-tied-with-red-ribbon-black-background_118124-328584.jpg?w=1380",
+      image: "https://imgcdn.stablediffusionweb.com/2024/9/5/945bf4f1-9f74-4b13-858f-48395bc87509.jpg",
       description: "Use points to pay your internet provider bills."
     },
     { 
       id: 9, 
       name: "Healthcare Discount", 
       points: 220, 
-      image: "https://img.freepik.com/premium-photo/red-satin-bow-tied-with-red-ribbon-black-background_118124-328584.jpg?w=1380",
+      image: "https://imgcdn.stablediffusionweb.com/2024/9/5/945bf4f1-9f74-4b13-858f-48395bc87509.jpg",
       description: "Redeem points for healthcare services, including doctor visits and medications."
     },
     { 
       id: 10, 
       name: "Restaurant Discount", 
       points: 180, 
-      image: "https://img.freepik.com/premium-photo/red-satin-bow-tied-with-red-ribbon-black-background_118124-328584.jpg?w=1380",
+      image: "https://imgcdn.stablediffusionweb.com/2024/9/5/945bf4f1-9f74-4b13-858f-48395bc87509.jpg",
       description: "Get a discount at select restaurants using your points."
     },
     { 
       id: 11, 
       name: "Online Shopping Discount", 
       points: 130, 
-      image: "https://img.freepik.com/premium-photo/red-satin-bow-tied-with-red-ribbon-black-background_118124-328584.jpg?w=1380",
+      image: "https://imgcdn.stablediffusionweb.com/2024/9/5/945bf4f1-9f74-4b13-858f-48395bc87509.jpg",
       description: "Redeem points for discounts on online shopping sites."
     },
     { 
       id: 12, 
       name: "Electric Vehicle Charging Discount", 
       points: 200, 
-      image: "https://img.freepik.com/premium-photo/red-satin-bow-tied-with-red-ribbon-black-background_118124-328584.jpg?w=1380",
+      image: "https://imgcdn.stablediffusionweb.com/2024/9/5/945bf4f1-9f74-4b13-858f-48395bc87509.jpg",
       description: "Use points to get discounts on electric vehicle charging."
     }
   ];
@@ -123,7 +123,7 @@ const MyScore = () => {
             key={product.id}
             className="bg-gray-900 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"
           >
-            <img src={product.image} alt={product.name} className="w-full h-[10rem] rounded mb-4" />
+            <img src={product.image} alt={product.name} className="w-[80%] ml-11 h-[10rem] rounded mb-4" />
             <h3 className="text-xl font-semibold text-white text-center">{product.name}</h3>
             <p className="text-lg text-gray-50 text-center">Points Needed: {product.points}</p>
             <button

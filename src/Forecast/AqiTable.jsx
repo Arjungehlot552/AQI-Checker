@@ -13,7 +13,7 @@ const AQITable = () => {
     <div className="min-h-screen w-full  text-white flex flex-col items-center p-6">
       {/* Header Section */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-extrabold tracking-wide text-blue-400">Bhopal's Air Quality</h1>
+        <h1 className="text-4xl font-extrabold tracking-wide text-blue-400">Delhi's Air Quality</h1>
         <p className="text-lg text-gray-300 mt-2">Real-time Air Pollution Levels by Location</p>
       </div>
 

@@ -33,10 +33,10 @@ const AQIAppPage = () => {
           {/* Download Buttons */}
           <div className="mt-10 flex flex-col md:flex-row justify-center md:justify-start gap-4">
             <a href="/" className="hover:opacity-80">
-              <img src={googlePlay} alt="Download on Google Play" className="w-40 mt-3 text-white" />
+              <img src={googlePlay} alt="Download on Google Play" className="w-48 mt-3 bg-white text-white" />
             </a>
             <a href="/" className="hover:opacity-80">
-              <img src={appStore} alt="Download on App Store" className="w-40" />
+              <img src={appStore} alt="Download on App Store" className="w-32  bg-white" />
             </a>
           </div>
         </div>

@@ -67,7 +67,7 @@ const MyAQIMap = () => {
                 });
 
                 
-                console.log("My AQI city name",data)
+                // console.log("My AQI city name",data)
 
                 const forecastData = Array.from({ length: 10 }, () => {
                     return currentAQI + Math.floor(Math.random() * 61) - 10; // Random fluctuation

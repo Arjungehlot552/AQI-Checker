@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 
+
 const VideoPage = () => {
   useEffect(() => {
     // Automatically play the video when the page is loaded
@@ -33,7 +34,7 @@ const VideoPage = () => {
           controls
         >
           <source
-            src="https://drive.google.com/uc?export=download&id=1YMboH-yPUOJxh5EZ4kEZtNNfl8BWV7_3"
+            src='pollution-effect.mp4'
             type="video/mp4"
           />
           Your browser does not support the video tag.

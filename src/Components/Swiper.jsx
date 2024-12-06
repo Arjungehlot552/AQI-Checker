@@ -14,7 +14,7 @@ const AQISwiper = () => {
   ];
 
   return (
-    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="relative lg:mt-20 lg:pt-10  h-[80vh] w-full overflow-hidden">
+    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="relative  lg:mt-20 lg:pt-10 lg:ml-28 h-[80vh] w-[80%] overflow-hidden">
       <Swiper
         modules={[Autoplay, Pagination]}
         spaceBetween={30}

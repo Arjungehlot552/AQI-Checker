@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
-import Newspaper from "../Images/Newspaper.png";
+
 
 export default function Main() {
   const phrase = "Welcome to DPCC Web";
@@ -55,22 +55,22 @@ export default function Main() {
         {/* Right Section (Image Grid) */}
         <div className="lg:w-1/2 grid grid-cols-2 gap-6">
           <img
-            src={Newspaper}
+            src='https://sscbs.du.ac.in/wp-content/uploads/2024/09/IMG-20240905-WA0003.jpg'
             alt="Economic Times"
             className="rounded-lg h-60 w-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out hover:rotate-2 hover:shadow-pink-500"
           />
           <img
-            src={Newspaper}
+            src='https://dyncdn.exampathfinder.net/epf_n_attachments/organisation/OoKfvyM1/logo.png'
             alt="Economic Times"
             className="rounded-lg h-60 w-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out hover:-rotate-2 hover:shadow-blue-500"
           />
           <img
-            src={Newspaper}
+            src='https://www.jammable.com/cdn-cgi/image/width=3840,quality=25,format=webp/https://imagecdn.voicify.ai/models/5a15dc54-9ec9-40c8-981c-c03d9b32bd0e.png'
             alt="Economic Times"
             className="rounded-lg h-60 w-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out hover:rotate-3 hover:shadow-green-500"
           />
           <img
-            src={Newspaper}
+            src='https://www.cheggindia.com/wp-content/uploads/2024/05/Districts-from-NCR--1024x614.png'
             alt="Economic Times"
             className="rounded-lg h-60 w-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out hover:-rotate-3 hover:shadow-yellow-500"
           />

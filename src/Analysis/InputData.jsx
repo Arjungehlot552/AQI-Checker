@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+// import Meter from './Meter'
 function PollutionAnalysis() {
 
   const [industries, setIndustries] = useState(0);
@@ -15,6 +15,7 @@ function PollutionAnalysis() {
   const [remainingAqi, setRemainingAqi] = useState(null);
   const [fluctuatedAqi, setFluctuatedAqi] = useState(null);
   const [myaqivalue, setmyaqivalue] = useState(0);
+  const [customDirection, setCustomDirection] = useState("");
 
   // Fetch AQI value from localStorage on component mount
   useEffect(() => {
@@ -33,7 +34,7 @@ function PollutionAnalysis() {
 
   // Function to handle form submission
   const handleSubmit = () => {
-    if (industries === -1 || schools === -1 || colleges === -1 || construction === -1 || events === -1 || trafficZones === -1 || aqi === 0) {
+    if (industries === -1 || schools === -1 || colleges === -1 || construction === -1 || events === -1 || trafficZones === -1 || aqi === -1) {
       toast.error("Please fill in all the required fields for accurate AQI analysis!");
       return;
     }
@@ -62,7 +63,7 @@ function PollutionAnalysis() {
     <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="min-h-screen flex items-center justify-center p-8  to-blue-700">
       <div className="bg-gray-800 p-10 rounded-lg shadow-xl w-full max-w-3xl">
 
-        <div className="flex flex-col md:flex-row mb-10 justify-center items-center  p-4 rounded-lg  space-y-4 md:space-y-0 md:space-x-6">
+        <div className="flex flex-col md:flex-row mb-5 justify-center items-center lg:pb-16 lg:pt-10  p-4 rounded-lg  space-y-4 md:space-y-0 md:space-x-6">
           <h2 className="text-white text-center text-3xl font-semibold">
             Pollution Analysis & AQI Calculation
           </h2>
@@ -136,7 +137,48 @@ function PollutionAnalysis() {
               className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
             />
           </div>
-          <div className="flex flex-col md:flex-row justify-center items-center p-4 mb-8 space-y-4 md:space-y-0 md:space-x-6">
+          <div className="flex justify-between items-center">
+            <label className="text-lg text-white font-semibold">Wind Speed:</label>
+            <input   
+              type='number'         
+              min="0"
+              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
+            />
+          </div>
+          <div className="flex justify-between items-center">
+            <label className="text-lg text-white font-semibold">Wind Direction:</label>
+            <select
+              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
+            >
+              <option value="all">All Directions</option>
+              <option value="east-west">East to West</option>
+              <option value="west-east">West to East</option>
+              <option value="north-west">North to West</option>
+              <option value="custom">Custom (Enter below)</option>
+            </select>
+          </div>
+
+          {/* Optional: Allow user to specify a custom direction */}
+          {trafficZones === "custom" && (
+            <div className="mt-4">
+              <label className="text-lg text-white font-semibold">Enter Custom Direction:</label>
+              <input
+                type="text"
+                placeholder="e.g., Northeast to Southwest"
+                value={customDirection}
+                onChange={(e) => setCustomDirection(e.target.value)}
+                className="px-4 py-2 border border-gray-300 rounded-md w-full focus:ring-2 focus:ring-blue-600 mt-2"
+              />
+            </div>
+          )}
+
+
+        </form>
+      </div>
+       <div className='bg-gray-800'>
+
+       
+         <div className="flex flex-col md:flex-row justify-center items-center p-4 mb-8 space-y-4 md:space-y-0 md:space-x-6">
             <h2 className="text-white text-center text-3xl font-semibold">
               This is your Nearest Station AQI Value
             </h2>
@@ -163,17 +205,13 @@ function PollutionAnalysis() {
 
           <button
             onClick={handleSubmit}
-            className="bg-gradient-to-r from-blue-600 to-indigo-600 ml-48 text-white py-3 px-8 rounded-lg text-lg font-semibold shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 w-72 mx-auto mt-6"
+            className="bg-gradient-to-r from-blue-600 to-indigo-600 ml-48 mb-14 text-white py-3 px-8 rounded-lg text-lg font-semibold shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 w-72 mx-auto mt-6"
           >
             Analyze Pollution Impact
           </button>
-
-        </form>
-
-        {/* Display the result */}
         {/* Display the result */}
         {finalAqi !== null && (
-          <div className="mt-12 text-center bg-gradient-to-r from-blue-600 to-indigo-900 p-8 rounded-lg shadow-xl">
+          <div className=" text-center bg-gradient-to-r from-blue-600 to-indigo-900 p-8 rounded-lg shadow-xl">
             <h2 className="text-4xl font-bold text-white mb-6 animate__animated animate__fadeIn">Final AQI Calculation</h2>
 
             <div className="text-4xl font-extrabold text-blue-400 mb-6">
@@ -196,9 +234,8 @@ function PollutionAnalysis() {
             </div>
           </div>
         )}
-
-      </div>
-
+        </div>
+      {/* <Meter /> */}
       {/* Toast Notifications */}
       <ToastContainer position="top-right" autoClose={5000} />
     </div>

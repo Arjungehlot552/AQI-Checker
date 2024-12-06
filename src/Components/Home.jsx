@@ -84,30 +84,33 @@ const Home = () => {
       <Main />
       
       <Swiper />
-      <EditorsPick />
+      
       <AQIScale />
       <MapComponent />
       <MoreWeather />
       <InputData />
-      <SearchAqi />
-      <ForeCast />
-      <Cigarette />
-      <MyDoctor />
+      {/* <SearchAqi /> */}
+      {/* <ForeCast /> */}
+      {/* <Cigarette /> */}
+      {/* <MyDoctor /> */}
 
       
       
-      <NGOs />
+      {/* <NGOs /> */}
       
-      <MyVideo />
+      
       {/* <HealthAdvice /> */}
       {/* <AQIRoom /> */}
      
       {/* <AQIMeter /> */}
       {/* <WeatherApp /> */}
       <Know />
+      <MyVideo />
       <Blog />
-      <MediaCoverage />
-      <AllCountry />
+      <EditorsPick />
+     
+      {/* <MediaCoverage /> */}
+      {/* <AllCountry /> */}
       <AQIAppPage />
       </div>
       </div>

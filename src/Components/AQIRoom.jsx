@@ -34,7 +34,7 @@ function AQIRoom() {
 const fetchAqiData = async (lat, lon) => {
     try {
       const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
-      console.log('API Key:', process.env.REACT_APP_WEATHER_API_KEY);
+      // console.log('API Key:', process.env.REACT_APP_WEATHER_API_KEY);
       // Check if the API key is present
       if (!apiKey) {
         setError('API key is missing. Please check your .env file.');

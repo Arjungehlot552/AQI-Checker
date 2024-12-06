@@ -36,7 +36,7 @@ const CustomMapPath = () => {
           }
         );
         newResponses.push(response.data); // Add each response to the list
-        console.log(`Response for ${formattedDate}:`, response.data);
+        // console.log(`Response for ${formattedDate}:`, response.data);
       } catch (error) {
         console.error(`Error for ${formattedDate}:`, error);
         newResponses.push({ error: error.message }); // Add error details

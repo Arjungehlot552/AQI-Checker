@@ -92,7 +92,7 @@ const CalendarPage = () => {
       <div className="bg-gray-800/90 shadow-lg rounded-xl p-6 w-full max-w-4xl">
         {/* Calendar Title */}
         <h2 className="text-xl font-semibold text-center text-gray-300 mb-6">
-          {selectedMonth} {selectedYear} - Bhopal - {selectedPollutant}
+          {selectedMonth} {selectedYear} - Delhi - {selectedPollutant}
         </h2>
 
         {/* Header Section */}
