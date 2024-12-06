@@ -5,9 +5,9 @@ import { Autoplay, Pagination } from "swiper/modules";
 
 const AQISwiper = () => {
   const images = [
-    { src: "https://t3.ftcdn.net/jpg/09/55/00/30/360_F_955003054_kx1nKIVpY00NyqVS3Yos2mqe3gYT3aaU.jpg", title: "", subtitle: "" },
+    { src: "https://i.ytimg.com/vi/wLWJ6sRDWUs/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAdpNIzXTWkTzUh0TABmm-bypgyQQ", title: "", subtitle: "" },
     { src: "https://www.pmindia.gov.in/wp-content/uploads/2023/06/PM-addresses-meet-on-World-Environment-Day-via-video-message-16.jpg", title: "", subtitle: "" },
-    { src: "https://upload.wikimedia.org/wikipedia/commons/e/e2/Anil_Madhav_Dave_and_senior_officers_of_the_Ministry_for_Environment%2C_Forest_and_Climate_Change_with_the_officers_of_2015_batch_of_the_Indian_Forest_Service%2C_in_New_Delhi.jpg", title: "", subtitle: "" },
+    { src: "https://img.jagranjosh.com/images/2022/August/2682022/SIH-2022-Grand-Finale.jpg", title: "", subtitle: "" },
     { src: "https://delhigreens.org/wp-content/uploads/2020/01/delhi-greens-carbon-neutral-economy.jpg", title: "", subtitle: "" },
     { src: "https://akm-img-a-in.tosshub.com/businesstoday/images/story/202411/673d5c6fb24dc-delhi-air-pollution-govt-offices-move-to-wfh-mode-as-aqi-remains-in-severe-category-205000452-16x9.jpg?size=1200:675", title: "", subtitle: "" },
     { src: "https://i.ytimg.com/vi/JW1jSINTzaw/maxresdefault.jpg", title: "", subtitle: "" },

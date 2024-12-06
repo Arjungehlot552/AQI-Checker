@@ -27,7 +27,7 @@ export default function Main() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-gray-900 text-white flex items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen w-full  text-white flex items-center justify-center relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute bg-blue-500 opacity-10 blur-3xl rounded-full h-[400px] w-[400px] top-[-200px] left-[-200px] animate-pulse"></div>
       <div className="absolute bg-pink-500 opacity-10 blur-3xl rounded-full h-[400px] w-[400px] bottom-[-200px] right-[-200px] animate-pulse"></div>

@@ -16,6 +16,8 @@ import Blog from './Components/Blog';
 import AboutUs from './Components/AboutUs';
 import DailyForecast from './Forecast/DailyForecast';
 import Condition from "../src/Terms&Codition/Condition"
+import Doctor from './Components/MyDoctor';
+import NGOs from './Components/NGOs';
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
         <Route path="/about" element={<AboutUs />}/>
         <Route path="/terms" element={<Condition />}/>
         <Route path="/CustomMapPath/:searchQuery" element={<DailyForecast />}/>
+        <Route path="/Doctor" element={<Doctor />} />
+        <Route path="/NGOs" element={<NGOs />} />
         
       </Routes>
       <Footer />

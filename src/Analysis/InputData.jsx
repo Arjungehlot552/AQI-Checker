@@ -63,7 +63,7 @@ function PollutionAnalysis() {
     <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="min-h-screen flex items-center justify-center p-8  to-blue-700">
       <div className="bg-gray-800 p-10 rounded-lg shadow-xl w-full max-w-3xl">
 
-        <div className="flex flex-col md:flex-row mb-5 justify-center items-center lg:pb-16 lg:pt-10  p-4 rounded-lg  space-y-4 md:space-y-0 md:space-x-6">
+        <div className="flex flex-col md:flex-row justify-center items-center mb-4 rounded-lg  space-y-4 md:space-y-0 md:space-x-6">
           <h2 className="text-white text-center text-3xl font-semibold">
             Pollution Analysis & AQI Calculation
           </h2>
@@ -174,11 +174,9 @@ function PollutionAnalysis() {
 
 
         </form>
-      </div>
-       <div className='bg-gray-800'>
-
+        
        
-         <div className="flex flex-col md:flex-row justify-center items-center p-4 mb-8 space-y-4 md:space-y-0 md:space-x-6">
+        <div className="flex flex-col md:flex-row justify-center items-center p-4 mb-5 mt-5  space-y-4 md:space-y-0 md:space-x-6">
             <h2 className="text-white text-center text-3xl font-semibold">
               This is your Nearest Station AQI Value
             </h2>
@@ -215,7 +213,7 @@ function PollutionAnalysis() {
             <h2 className="text-4xl font-bold text-white mb-6 animate__animated animate__fadeIn">Final AQI Calculation</h2>
 
             <div className="text-4xl font-extrabold text-blue-400 mb-6">
-              <p><span className="text-xl text-white font-medium">Station value:</span> <span className="text-3xl">{finalAqi}</span></p>
+              <p><span className="text-xl text-white font-medium">Station value:</span> <span className="text-3xl">{myaqivalue}</span></p>
               <p><span className="text-xl text-white font-medium">Fluctuated Value:</span> <span className="text-3xl">{fluctuatedAqi}</span></p>
               <hr className="my-4 border-t-2 border-blue-600"></hr>
               <p><span className="text-xl text-white font-medium">Actual value:</span> <span className="text-3xl text-green-500 ">{Math.abs(remainingAqi)}</span></p>
@@ -234,7 +232,10 @@ function PollutionAnalysis() {
             </div>
           </div>
         )}
-        </div>
+      </div>
+       
+
+       
       {/* <Meter /> */}
       {/* Toast Notifications */}
       <ToastContainer position="top-right" autoClose={5000} />

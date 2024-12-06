@@ -12,6 +12,11 @@ const Navbar = () => {
   const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
   const navigate = useNavigate();
   const location = useLocation();
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const handleDropdownToggle = () => {
+    setShowDropdown(!showDropdown);
+  };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -75,7 +80,7 @@ const Navbar = () => {
               alt="India Flag"
               className="hidden lg:block h-5 w-5"
             />
-            <div className="hidden lg:flex items-center space-x-6">
+            <div className="hidden lg:flex text-md items-center space-x-6">
               <Link to="/" className={getLinkClasses("/")}>
                 Home
               </Link>
@@ -85,9 +90,32 @@ const Navbar = () => {
               <Link to="/Monitor" className={getLinkClasses("/Monitor")}>
                 Monitors
               </Link>
-              <Link to="/Resources" className={getLinkClasses("/Resources")}>
-                Resources
-              </Link>
+              <div className="relative">
+        <button 
+          className={`${getLinkClasses("/Resources")} relative`} 
+          onClick={handleDropdownToggle}
+        >
+          More
+        </button>
+        {showDropdown && (
+          <div className="absolute bg-white border text-gray-700 text-md border-gray-200 shadow-md w-40 rounded-md mt-2">
+           
+            <Link to="/resources"  className="block hover:bg-gray-200 px-2 py-1 ">
+              Resources
+            </Link>
+            <Link to="/Doctor" className="block hover:bg-gray-200 px-2 py-1 ">
+              Doctor
+            </Link>
+            <Link to="/ngos" className="block hover:bg-gray-200 px-2 py-1 ">
+              NGOs
+            </Link>
+            <Link to="/aqi-info" className="block hover:bg-gray-200 px-2 py-1 ">
+              AQI Info
+            </Link>
+            {/* Add more options as needed */}
+          </div>
+        )}
+      </div>
             </div>
             {isAuthenticated ? (
               <div className="relative">

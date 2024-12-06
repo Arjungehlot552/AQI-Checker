@@ -45,11 +45,15 @@ const AQIScale = () => {
       <h1 className="text-4xl text-[#289BD1]  font-bold mb-10">Air Quality Index (AQI) Scale</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-5xl">
         {AQIData.map((item, index) => (
-          <div key={index} className={`rounded-lg shadow-lg p-6 text-white ${item.color}`}>
-            <h2 className="text-xl font-semibold">{item.label}</h2>
-            <p className="text-lg">{item.range}</p>
-            <p className="mt-2">{item.description}</p>
-          </div>
+        <div
+        key={index}
+        className={`rounded-lg shadow-lg p-6 cursor-pointer text-white ${item.color} transform transition-transform duration-300 ease-in-out hover:scale-105`}
+      >
+        <h2 className="text-xl font-semibold">{item.label}</h2>
+        <p className="text-lg">{item.range}</p>
+        <p className="mt-2">{item.description}</p>
+      </div>
+      
         ))}
       </div>
     </div>

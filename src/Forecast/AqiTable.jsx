@@ -1,4 +1,5 @@
 import React from "react";
+import Forecast from '../Components/ForeCast'
 
 const AQITable = () => {
   const data = [
@@ -67,6 +68,7 @@ const AQITable = () => {
         <p>Data provided by the local pollution monitoring system.</p>
         <p className="text-sm mt-1">Last Updated: Just Now</p>
       </div>
+      <Forecast />
     </div>
   );
 };
