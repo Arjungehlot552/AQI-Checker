@@ -2,7 +2,7 @@ import React from 'react';
 // import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import AQIScale from './AQIScale';
 import Know from './Know';
-import Blog from './Blog';
+import Blog from '../Blog/Blog';
 // import MediaCoverage from './MediaCoverage';
 // import AllCountry from './AllCountry';
 import AQIAppPage from './AQIAppPage';

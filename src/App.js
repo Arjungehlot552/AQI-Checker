@@ -12,7 +12,7 @@ import ProblemArise from './Components/ProblemArise';
 import MyScore from './Components/MyScore';
 import MyRedeem from './Components/MyRedeem';
 import { Route, Routes } from 'react-router-dom'; // Remove BrowserRouter import
-import Blog from './Components/Blog';
+import Blog from './Blog/Blog';
 import AboutUs from './Components/AboutUs';
 import DailyForecast from './Forecast/DailyForecast';
 import Condition from "../src/Terms&Codition/Condition"
@@ -20,6 +20,7 @@ import Doctor from './Components/MyDoctor';
 import NGOs from './Components/NGOs';
 import InputData from './Analysis/InputData';
 import Contact from './Components/Contact';
+import BlogPage from './Blog/BlogPage';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
         <Route path="/NGOs" element={<NGOs />} />
         <Route path='/aqi-info' element={<InputData />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/blog/blog-page" element={<BlogPage />} />
         
       </Routes>
       <Footer />
