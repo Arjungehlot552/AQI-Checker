@@ -1,6 +1,6 @@
 import React from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import LOGO from "../Images/LOGO.png";
+import Modi from "../Images/Modi.png"
 
 const Footer = () => {
 
@@ -29,8 +29,8 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between">
           {/* Logo Section */}
           <div className="mb-6 md:mb-0">
-            <img src={LOGO} alt="AQI India Logo" className="h-[5rem]" />
-            <p className="mt-2 text-gray-400">Real-time Air Quality Monitoring</p>
+            <img src={Modi} alt="AQI India Logo" className="h-[10rem] w-[10rem] lg:ml-6 border-b" />
+            <p className="mt-8 text-gray-400">Real-time Air Quality Monitoring</p>
           </div>
 
           {/* Resources Section */}

@@ -14,6 +14,7 @@ import {
   Legend,
   Filler,
 } from "chart.js";
+import AllCities from "../Components/AllCountry";
 
 // Register Chart.js components
 ChartJS.register(
@@ -143,6 +144,7 @@ const MyGraph = () => {
           </div>
         </div>
       </div>
+     
     </div>
   );
 };

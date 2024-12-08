@@ -18,6 +18,8 @@ import DailyForecast from './Forecast/DailyForecast';
 import Condition from "../src/Terms&Codition/Condition"
 import Doctor from './Components/MyDoctor';
 import NGOs from './Components/NGOs';
+import InputData from './Analysis/InputData';
+import Contact from './Components/Contact';
 
 function App() {
   return (
@@ -41,6 +43,8 @@ function App() {
         <Route path="/CustomMapPath/:searchQuery" element={<DailyForecast />}/>
         <Route path="/Doctor" element={<Doctor />} />
         <Route path="/NGOs" element={<NGOs />} />
+        <Route path='/aqi-info' element={<InputData />} />
+        <Route path="/contact" element={<Contact />} />
         
       </Routes>
       <Footer />

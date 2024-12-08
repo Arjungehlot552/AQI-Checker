@@ -35,7 +35,7 @@ const AQIAppPage = () => {
             <a href="/" className="hover:opacity-80">
               <img src={googlePlay} alt="Download on Google Play" className="w-48 mt-3 bg-white text-white" />
             </a>
-            <a href="/" className="hover:opacity-80">
+            <a href="/" className="hover:opacity-80 w-full ">
               <img src={appStore} alt="Download on App Store" className="w-32  bg-white" />
             </a>
           </div>

@@ -3,8 +3,8 @@ import React from 'react';
 import AQIScale from './AQIScale';
 import Know from './Know';
 import Blog from './Blog';
-import MediaCoverage from './MediaCoverage';
-import AllCountry from './AllCountry';
+// import MediaCoverage from './MediaCoverage';
+// import AllCountry from './AllCountry';
 import AQIAppPage from './AQIAppPage';
 // import AQIRoom from './AQIRoom';
 // import AQIMeter from './AQIMeter';
@@ -12,21 +12,23 @@ import AQIAppPage from './AQIAppPage';
 // import HealthAdvice from './HealthAdvice';
 import MapComponent from './MapComponent';
 // import Activity from './Activity';
-import MyDoctor from './MyDoctor';
+// import MyDoctor from './MyDoctor';
 import Swiper from './Swiper';
-import SearchAqi from './SearchAqi'
-import NGOs from './NGOs';
+// import SearchAqi from './SearchAqi'
+// import NGOs from './NGOs';
 // import MoreWeather from './MoreWeather';
 import MyVideo from './MyVideo';
 import MoreWeather from './MoreWeather';
-import ForeCast from './ForeCast';
-import Cigarette from './Cigarette';
-import MonitorMap from './MonitorMap';
-import CustomMapPath from './CustomMapPath';
-import DailyForecast from '../Forecast/DailyForecast'
-import InputData from '../Analysis/InputData';
+// import ForeCast from './ForeCast';
+// import Cigarette from './Cigarette';
+// import MonitorMap from './MonitorMap';
+// import CustomMapPath from './CustomMapPath';
+// import DailyForecast from '../Forecast/DailyForecast'
+// import InputData from '../Analysis/InputData';
 import EditorsPick from '../Media/Editor';
 import Main from '../Home/Main';
+import Contact from './Contact';
+// import Thing from '../Thing_Speak/Thing';
 
 // import AuthPage from './AuthPage';
 
@@ -82,13 +84,15 @@ const Home = () => {
       {/* <DailyForecast /> */}
 
       <Main />
+      {/* <Thing /> */}
+      
       
       <Swiper />
       
       <AQIScale />
       <MapComponent />
       <MoreWeather />
-      <InputData />
+      {/* <InputData /> */}
       {/* <SearchAqi /> */}
       {/* <ForeCast /> */}
       {/* <Cigarette /> */}
@@ -108,6 +112,7 @@ const Home = () => {
       <MyVideo />
       <Blog />
       <EditorsPick />
+      
      
       {/* <MediaCoverage /> */}
       {/* <AllCountry /> */}

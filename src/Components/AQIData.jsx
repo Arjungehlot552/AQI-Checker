@@ -1,6 +1,7 @@
 import React from "react";
 import "animate.css";
 import { FaArrowDown } from "react-icons/fa"; // Optional: For adding a scroll down icon
+import AllCities from "./AllCountry";
 
 const AqiData = () => {
   return (
@@ -149,6 +150,7 @@ const AqiData = () => {
           </div>
         </div>
       </div>
+      <AllCities />
     </div>
   );
 };

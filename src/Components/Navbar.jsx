@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import LOGO from "../Images/LOGO.png";
 import search from "../Images/search.png";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import Moon from "../Images/Moon.png"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +14,21 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [showDropdown, setShowDropdown] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Effect to apply dark mode based on the state
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark'); // Enable dark mode
+    } else {
+      document.documentElement.classList.remove('dark'); // Disable dark mode
+    }
+  }, [darkMode]);
+
+  // Function to toggle dark mode
+  const toggleDarkMode = () => {
+    setDarkMode((prevMode) => !prevMode);
+  };
 
   const handleDropdownToggle = () => {
     setShowDropdown(!showDropdown);
@@ -73,6 +89,30 @@ const Navbar = () => {
             </div>
           </div>
 
+          <button
+            onClick={toggleDarkMode}
+            className="relative flex items-center justify-center p-3 rounded-full text-white  transition-all transform hover:scale-105 hover:shadow-2xl"
+          >
+            <span className="absolute left-0 p-2 transition-all duration-300 ease-in-out">
+              {darkMode ? (
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/10480/10480648.png" // Replace with your sun icon
+                  alt="Light Mode"
+                  className="h-6 w-6"
+                />
+              ) : (
+                <img
+                  src={Moon} // Replace with your moon icon
+                  alt="Dark Mode"
+                  className="h-6 w-6"
+                />
+              )}
+            </span>
+            <span className="ml-10 text-sm font-semibold transition-all duration-300 ease-in-out">
+              {darkMode ? 'Light Mode' : 'Dark Mode'}
+            </span>
+          </button>
+
           <div className="flex items-center text-white space-x-5">
             <span className="hidden lg:block text-white">IND</span>
             <img
@@ -91,31 +131,31 @@ const Navbar = () => {
                 Monitors
               </Link>
               <div className="relative">
-        <button 
-          className={`${getLinkClasses("/Resources")} relative`} 
-          onClick={handleDropdownToggle}
-        >
-          More
-        </button>
-        {showDropdown && (
-          <div className="absolute bg-white border text-gray-700 text-md border-gray-200 shadow-md w-40 rounded-md mt-2">
-           
-            <Link to="/resources"  className="block hover:bg-gray-200 px-2 py-1 ">
-              Resources
-            </Link>
-            <Link to="/Doctor" className="block hover:bg-gray-200 px-2 py-1 ">
-              Doctor
-            </Link>
-            <Link to="/ngos" className="block hover:bg-gray-200 px-2 py-1 ">
-              NGOs
-            </Link>
-            <Link to="/aqi-info" className="block hover:bg-gray-200 px-2 py-1 ">
-              AQI Info
-            </Link>
-            {/* Add more options as needed */}
-          </div>
-        )}
-      </div>
+                <button
+                  className={`${getLinkClasses("/Resources")} relative`}
+                  onClick={handleDropdownToggle}
+                >
+                  More
+                </button>
+                {showDropdown && (
+                  <div className="absolute bg-white border text-gray-700 text-md border-gray-200 shadow-md w-40 rounded-md mt-2">
+
+                    <Link to="/resources" className="block hover:bg-gray-200 px-2 py-1 ">
+                      Resources
+                    </Link>
+                    <Link to="/Doctor" className="block hover:bg-gray-200 px-2 py-1 ">
+                      Doctor
+                    </Link>
+                    <Link to="/ngos" className="block hover:bg-gray-200 px-2 py-1 ">
+                      NGOs
+                    </Link>
+                    <Link to="/aqi-info" className="block hover:bg-gray-200 px-2 py-1 ">
+                      AQI Calculation
+                    </Link>
+                    {/* Add more options as needed */}
+                  </div>
+                )}
+              </div>
             </div>
             {isAuthenticated ? (
               <div className="relative">

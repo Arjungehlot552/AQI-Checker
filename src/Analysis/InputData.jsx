@@ -16,6 +16,40 @@ function PollutionAnalysis() {
   const [fluctuatedAqi, setFluctuatedAqi] = useState(null);
   const [myaqivalue, setmyaqivalue] = useState(0);
   const [customDirection, setCustomDirection] = useState("");
+  const [latitude, setLatitude] = useState(null); // State for latitude
+  const [longitude, setLongitude] = useState(null); // State for longitude
+  // Declare state for error handling
+  const [locationError, setLocationError] = useState('');
+
+  // Function to handle location permission request
+  const handleLocationPermission = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          // Successfully got the location, you can use position.coords.latitude and position.coords.longitude
+          console.log("Latitude:", position.coords.latitude);
+          console.log("Longitude:", position.coords.longitude);
+
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+
+          setLatitude(lat);
+          setLongitude(lon);
+        
+        },
+        (error) => {
+          // Handle errors (e.g., user denies location access)
+          if (error.code === error.PERMISSION_DENIED) {
+            setLocationError('You denied the location permission.');
+          } else {
+            setLocationError('An error occurred while retrieving location.');
+          }
+        }
+      );
+    } else {
+      setLocationError('Geolocation is not supported by your browser.');
+    }
+  };
 
   // Fetch AQI value from localStorage on component mount
   useEffect(() => {
@@ -48,8 +82,8 @@ function PollutionAnalysis() {
     const trafficImpact = trafficZones * 12; // Traffic zones impact
 
     // Final AQI Calculation after considering the impacts
-    const finalAqiValue = aqi;
-    const remainingAqiValue = aqi - industryImpact - schoolImpact - collegeImpact - constructionImpact - eventImpact - trafficImpact;
+    const finalAqiValue = myaqivalue;
+    const remainingAqiValue = myaqivalue - industryImpact - schoolImpact - collegeImpact - constructionImpact - eventImpact - trafficImpact;
     const fluctuatedAqi = finalAqiValue - remainingAqiValue;
     // Display success message and update final AQI state
     setFinalAqi(finalAqiValue);
@@ -60,16 +94,33 @@ function PollutionAnalysis() {
   };
 
   return (
-    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="min-h-screen flex items-center justify-center p-8  to-blue-700">
+    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="min-h-screen mt-20 flex items-center justify-center p-8  to-blue-700">
       <div className="bg-gray-800 p-10 rounded-lg shadow-xl w-full max-w-3xl">
 
         <div className="flex flex-col md:flex-row justify-center items-center mb-4 rounded-lg  space-y-4 md:space-y-0 md:space-x-6">
           <h2 className="text-white text-center text-3xl font-semibold">
             Pollution Analysis & AQI Calculation
           </h2>
-          <button className="bg-blue text-white border py-3 px-2 rounded-lg text-lg font-bold shadow-md transform transition hover:bg-green-600 hover:text-white hover:scale-105 ">
-            Auto Fill
-          </button>
+          <div>
+      {/* Button to request location access */}
+      <button
+        onClick={handleLocationPermission}
+        className="bg-blue-500 text-white border py-3 px-6 rounded-lg text-lg font-bold shadow-md transform transition hover:bg-green-600 hover:text-white hover:scale-105"
+      >
+        Auto Fill
+      </button>
+ {/* Show latitude and longitude if available */}
+ {latitude && longitude && (
+        <h3 className="mt-4 text-lg font-semibold text-green-500">
+          Lat: {latitude} <br></br> Long: {longitude}
+        </h3>
+      )}
+      {/* Error message if location access is denied */}
+      {locationError && (
+        <p className="mt-4 text-red-500 text-lg">{locationError}</p>
+      )}
+    </div>
+
         </div>
         <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
           <div className="flex justify-between items-center">
@@ -203,7 +254,7 @@ function PollutionAnalysis() {
 
           <button
             onClick={handleSubmit}
-            className="bg-gradient-to-r from-blue-600 to-indigo-600 ml-48 mb-14 text-white py-3 px-8 rounded-lg text-lg font-semibold shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 w-72 mx-auto mt-6"
+            className="bg-gradient-to-r from-blue-600 to-indigo-600 lg:ml-48 mb-14  text-white py-3 px-8 rounded-lg text-lg font-semibold shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 w-72 mx-auto mt-6"
           >
             Analyze Pollution Impact
           </button>

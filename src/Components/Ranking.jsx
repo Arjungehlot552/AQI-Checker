@@ -7,7 +7,7 @@ const App = () => {
   const [rankingType, setRankingType] = useState("AQI Ranking");
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const citiesPerPage = 15;
+  const citiesPerPage = 10;
 
   const aqiData = [
     { rank: 1, city: "Amritsar", aqi: 612, status: "Hazardous" },
@@ -231,7 +231,7 @@ const App = () => {
     { rank: 68, city: "Moradabad", avgAqi: 80 },
     { rank: 69, city: "Aligarh", avgAqi: 75 },
     { rank: 70, city: "Mathura", avgAqi: 70 }
-];
+  ];
 
 
   // Select data based on ranking type
@@ -296,7 +296,7 @@ const App = () => {
     <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className=" mt-20 text-white min-h-screen p-6">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-center mb-6">
-        Top 70 Polluted Cities Analysis
+          Top 70 Polluted Cities Analysis
         </h1>
 
         {/* Location and Ranking Selector */}
@@ -304,7 +304,7 @@ const App = () => {
           <select
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="bg-gray-700 p-2 rounded-lg text-white"
+            className="bg-gray-800 p-2 rounded-lg text-white"
           >
             <option value="India">India</option>
             <option value="Foreign">Foreign</option>
@@ -313,7 +313,7 @@ const App = () => {
           <select
             value={rankingType}
             onChange={(e) => setRankingType(e.target.value)}
-            className="bg-gray-700 p-2 rounded-lg text-white"
+            className="bg-gray-800 p-2 rounded-lg text-white"
           >
             <option value="AQI Ranking">AQI Ranking</option>
             <option value="Weather Ranking">Weather Ranking</option>
@@ -331,50 +331,107 @@ const App = () => {
             className="p-3 rounded-lg bg-gray-700 text-white w-1/2"
           />
         </div>
+        <div className="flex flex-col lg:flex-row justify-center  p-6 mb-6 gap-6">
+          {/* Chart Display */}
+          <div
+            className="bg-gray-800 p-6 rounded-lg shadow-lg"
+            style={{ maxWidth: "800px", width: "100%", height: "500px", margin: "auto" }}
+          >
+            <h2 className="text-2xl font-semibold text-white text-center mb-4">
+              {rankingType} Chart
+            </h2>
+            <Bar
+              className="pb-14"
+              data={chartData}
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                  legend: {
+                    display: true,
+                    labels: {
+                      color: "#ffffff", // Label color
+                      font: {
+                        size: 14, // Font size
+                      },
+                    },
+                  },
+                  title: {
+                    display: true,
+                    text: `${rankingType} Overview`,
+                    color: "#ffffff", // Title color
+                    font: {
+                      size: 18, // Font size
+                      weight: "bold",
+                    },
+                  },
+                },
+                scales: {
+                  x: {
+                    ticks: {
+                      color: "#ffffff", // X-axis label color
+                    },
+                    grid: {
+                      display: false, // Hide X-axis gridlines
+                    },
+                  },
+                  y: {
+                    ticks: {
+                      color: "#ffffff", // Y-axis label color
+                    },
+                    grid: {
+                      color: "#4a5568", // Y-axis gridline color
+                    },
+                  },
+                },
+              }}
+            />
+          </div>
 
-        {/* Chart Display */}
-        <div style={{ maxWidth: "800px", margin: "auto" }}>
-          <div className="bg-gray-700 p-4 rounded-lg">
-            <Bar data={chartData} />
+          {/* City List */}
+          <div className="mt-8 lg:mt-0 flex flex-col lg:w-80">
+            <ul className="bg-gray-700 p-4 rounded-lg">
+              <h2 className="text-2xl font-semibold text-center mb-4">
+                {rankingType} List
+              </h2>
+              {currentCities.map((data) => (
+                <li key={data.city} className="p-2 border-b border-gray-600">
+                  <strong>
+                    {data.rank}. {data.city}
+                  </strong>{" "}
+                  -{" "}
+                  {rankingType === "AQI Ranking"
+                    ? `AQI: ${data.aqi} (${data.status})`
+                    : rankingType === "Weather Ranking"
+                      ? `Temp: ${data.temp}°C, Humidity: ${data.humidity}%`
+                      : `Avg AQI: ${data.avgAqi}`}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        {/* City List */}
-        <div className="mt-8">
-          <h2 className="text-2xl font-semibold text-center mb-4">
-            {rankingType} List
-          </h2>
-          <ul className="bg-gray-700 p-4 rounded-lg">
-            {currentCities.map((data) => (
-              <li key={data.city} className="p-2 border-b border-gray-600">
-                <strong>{data.rank}. {data.city}</strong> -{" "}
-                {rankingType === "AQI Ranking"
-                  ? `AQI: ${data.aqi} (${data.status})`
-                  : rankingType === "Weather Ranking"
-                    ? `Temp: ${data.temp}°C, Humidity: ${data.humidity}%`
-                    : `Avg AQI: ${data.avgAqi}`}
-              </li>
-            ))}
-          </ul>
-        </div>
-
         {/* Pagination Controls */}
-        <div className="text-center mt-6">
+        <div className="mt-6 lg:mt-0 flex flex-row justify-center gap-4">
           <button
             onClick={handlePreviousPage}
-            className="p-3 rounded-lg bg-gray-700 hover:bg-gray-600 mx-2"
+            className="p-3 w-20 rounded-lg bg-gray-700 hover:bg-gray-600"
             disabled={currentPage === 1}
           >
             Previous
           </button>
           <button
             onClick={handleNextPage}
-            className="p-3 rounded-lg bg-gray-700 hover:bg-gray-600 mx-2"
+            className="p-3  w-20 rounded-lg bg-gray-700 hover:bg-gray-600"
             disabled={currentPage * citiesPerPage >= filteredCities.length}
           >
             Next
           </button>
         </div>
+
+
+
+
       </div>
     </div>
   );

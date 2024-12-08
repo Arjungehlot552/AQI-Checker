@@ -1,7 +1,9 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { AiOutlinePlus, AiFillLike } from 'react-icons/ai';
 import { ToastContainer, toast } from 'react-toastify'; // Importing ToastContainer and toast
 import 'react-toastify/dist/ReactToastify.css'; // Importing styles for react-toastify
+
 
 // Dummy data for problems
 const dummyProblems = [
@@ -78,12 +80,25 @@ function ProblemPage() {
         const formData = new FormData();
         formData.append('description', newProblem.description);
         formData.append('image', newProblem.image);
+        axios.post("/api/problems", formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        }).then((data) => {
+            console.log(data);
+            toast.success('Problem submitted successfully!');
+        }).catch(err => {
+            console.error(err)
+            toast.error('Error submitting problem!');
+        })
+
 
         // Logic to submit the new problem
         setProblems([...problems, { ...newProblem, _id: String(problems.length + 1), likes: 0, liked: false }]);
         setShowForm(false);
         setNewProblem({ description: '', image: null });
-        toast.success('Problem submitted successfully!');
+
+
     };
 
     return (
@@ -113,9 +128,8 @@ function ProblemPage() {
                         <div className="flex justify-between items-center mt-3">
                             <button
                                 onClick={() => handleLikeDislike(problem._id)}
-                                className={`flex items-center transition-colors duration-200 ${
-                                    problem.liked ? 'text-red-600' : 'text-gray-50'
-                                }`}
+                                className={`flex items-center transition-colors duration-200 ${problem.liked ? 'text-red-600' : 'text-gray-50'
+                                    }`}
                             >
                                 <AiFillLike className="mr-1" /> {problem.likes}
                             </button>

@@ -4,6 +4,7 @@ import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import MoreWeather from './MoreWeather';
 import HealthAdvice from './HealthAdvice';
+import Cigarette from './Cigarette';
 // import MonitorMap from './MonitorMap';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -273,6 +274,7 @@ const MyAQIMap = () => {
                         </Link>
                     </div>
                     <MoreWeather />
+                    <Cigarette />
                     <HealthAdvice />
                 </div>
 
