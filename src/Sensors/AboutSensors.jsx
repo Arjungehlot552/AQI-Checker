@@ -6,6 +6,7 @@ import sensor2 from '../Images/Sensor2.jpg';
 import sensor3 from '../Images/Sensor3.jpg';
 import sensor4 from '../Images/Sensor4.jpg';
 
+
 const AboutSensor = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
