@@ -29,9 +29,10 @@ const VideoPage = () => {
           className="rounded-2xl shadow-xl" // Corrected shadow class
           width="100%"
           height="auto"
-          muted
-          loop
+          muted={true}
+          loop={true}
           controls={false}
+          autoPlay={true}
         >
           <source
             src='pollution-effect.mp4'
