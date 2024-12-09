@@ -31,7 +31,7 @@ const VideoPage = () => {
           height="auto"
           muted
           loop
-          controls
+          controls={true}
         >
           <source
             src='pollution-effect.mp4'
