@@ -34,7 +34,7 @@ const dummyProblems = [
     {
         _id: '5',
         description: 'Lack of proper street signage on main highways.',
-        image: 'https://www.shutterstock.com/image-photo/winding-road-sign-woods-mountains-260nw-506001679.jpg',
+        image: 'https://media.istockphoto.com/id/1368944077/photo/s-curve-asphalt-road-bend.jpg?s=612x612&w=0&k=20&c=lkG-1C3OG1DtGQzejL4xmb77Q6C51POZRulGcb6y_bI=',
         likes: 15,
     },
 ];

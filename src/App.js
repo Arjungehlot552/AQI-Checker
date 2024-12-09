@@ -21,6 +21,7 @@ import NGOs from './Components/NGOs';
 import InputData from './Analysis/InputData';
 import Contact from './Components/Contact';
 import BlogPage from './Blog/BlogPage';
+import AboutSensors from './Sensors/AboutSensors';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
         <Route path='/aqi-info' element={<InputData />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog/blog-page" element={<BlogPage />} />
+        <Route path="/air-quality" element={<AboutSensors />} />
         
       </Routes>
       <Footer />

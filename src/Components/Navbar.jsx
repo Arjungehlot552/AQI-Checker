@@ -1,4 +1,4 @@
-import React, { useState ,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import LOGO from "../Images/LOGO.png";
 import search from "../Images/search.png";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
@@ -89,29 +89,6 @@ const Navbar = () => {
             </div>
           </div>
 
-          <button
-            onClick={toggleDarkMode}
-            className="relative flex items-center justify-center p-3 rounded-full text-white  transition-all transform hover:scale-105 hover:shadow-2xl"
-          >
-            <span className="absolute left-0 p-2 transition-all duration-300 ease-in-out">
-              {darkMode ? (
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/10480/10480648.png" // Replace with your sun icon
-                  alt="Light Mode"
-                  className="h-6 w-6"
-                />
-              ) : (
-                <img
-                  src={Moon} // Replace with your moon icon
-                  alt="Dark Mode"
-                  className="h-6 w-6"
-                />
-              )}
-            </span>
-            <span className="ml-10 text-sm font-semibold transition-all duration-300 ease-in-out">
-              {darkMode ? 'Light Mode' : 'Dark Mode'}
-            </span>
-          </button>
 
           <div className="flex items-center text-white space-x-5">
             <span className="hidden lg:block text-white">IND</span>
@@ -157,6 +134,28 @@ const Navbar = () => {
                 )}
               </div>
             </div>
+
+            <button
+              onClick={toggleDarkMode}
+              className="flex items-center rounded-full text-white  transition-all transform hover:scale-105 hover:shadow-2xl"
+            >
+              <span className="transition-all duration-300 ease-in-out">
+                {darkMode ? (
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/10480/10480648.png" // Replace with your sun icon
+                    alt="Light Mode"
+                    className="h-6 w-6"
+                  />
+                ) : (
+                  <img
+                    src={Moon} // Replace with your moon icon
+                    alt="Dark Mode"
+                    className="h-6 w-6"
+                  />
+                )}
+              </span>
+
+            </button>
             {isAuthenticated ? (
               <div className="relative">
                 {/* Profile Button */}
