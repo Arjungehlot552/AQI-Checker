@@ -27,7 +27,7 @@ import MoreWeather from './MoreWeather';
 // import InputData from '../Analysis/InputData';
 import EditorsPick from '../Media/Editor';
 import Main from '../Home/Main';
-import Contact from './Contact';
+// import Contact from './Contact';
 // import Thing from '../Thing_Speak/Thing';
 
 // import AuthPage from './AuthPage';

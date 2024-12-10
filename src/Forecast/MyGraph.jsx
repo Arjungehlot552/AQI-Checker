@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Line, Bar, Doughnut, PolarArea } from "react-chartjs-2";
+import { Line, Bar, PolarArea } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -14,7 +14,6 @@ import {
   Legend,
   Filler,
 } from "chart.js";
-import AllCities from "../Components/AllCountry";
 
 // Register Chart.js components
 ChartJS.register(

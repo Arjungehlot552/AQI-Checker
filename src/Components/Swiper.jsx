@@ -21,7 +21,7 @@ const AQISwiper = () => {
         slidesPerView={1}
         autoplay={{ delay: 3000 }}
         pagination={{ clickable: true }}
-        className="h-full"
+        className="h-full rounded-lg"
       >
         {images.map((item, index) => (
           <SwiperSlide key={index}>

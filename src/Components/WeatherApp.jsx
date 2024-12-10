@@ -6,7 +6,7 @@ const api = {
   base: "https://api.openweathermap.org/data/2.5/",
 };
 
-const WeatherApp = ({}) => {
+const WeatherApp = () => {
   const [aqi, setAqi] = useState(null);
   const [pinCode, setPinCode] = useState('');
   const [weather, setWeather] = useState(null);

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import LOGO from "../Images/LOGO.png";
-import search from "../Images/search.png";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import Moon from "../Images/Moon.png"
+import { CiSearch } from "react-icons/ci";
+import { BiSolidDownArrow, BiSolidUpArrow } from "react-icons/bi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,10 +29,6 @@ const Navbar = () => {
   // Function to toggle dark mode
   const toggleDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
-  };
-
-  const handleDropdownToggle = () => {
-    setShowDropdown(!showDropdown);
   };
 
   const toggleMenu = () => {
@@ -62,7 +59,7 @@ const Navbar = () => {
       : "hover:text-blue-600 transition";
 
   return (
-    <div>
+    <div onMouseLeave={setShowDropdown.bind(this, false)}>
       <nav className="bg-gray-900 shadow-md fixed top-0 w-full z-50 py-3">
         <div className="container flex items-center justify-between px-6 lg:px-12 mx-auto">
           {/* Logo and Search */}
@@ -72,32 +69,30 @@ const Navbar = () => {
               alt="AQI Logo"
               className="h-16 w-20 mb-4 mt-[-1rem]"
             />
-            <div className="relative hidden lg:block">
+            <div className="relative hidden lg:flex lg:flex-row lg:items-center w-[30rem] px-4 space-x-2 border border-white rounded-full">
+              <CiSearch color="white"/>
               <input
                 type="text"
                 placeholder="Search Location City or Area"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyDown={handleKeyPress}
-                className="pl-10 pr-4 py-2 w-[30rem] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition duration-300"
-              />
-              <img
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5"
-                src={search}
-                alt="Search icon"
+                className="bg-[#111827] flex-1 text-white py-2 px-2 rounded-full outline-none border-none transition duration-300"
               />
             </div>
           </div>
 
 
-          <div className="flex items-center text-white space-x-5">
-            <span className="hidden lg:block text-white">IND</span>
-            <img
-              src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg"
-              alt="India Flag"
-              className="hidden lg:block h-5 w-5"
-            />
-            <div className="hidden lg:flex text-md items-center space-x-6">
+          <div className="flex items-center text-white space-x-8">
+            <div className="hidden lg:flex text-md items-center space-x-5">
+              <div className="flex flex-row items-center space-x-2">
+                <span className="hidden lg:block text-white">IND</span>
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg"
+                  alt="India Flag"
+                  className="hidden lg:block h-5 w-5"
+                />
+              </div>
               <Link to="/" className={getLinkClasses("/")}>
                 Home
               </Link>
@@ -109,24 +104,26 @@ const Navbar = () => {
               </Link>
               <div className="relative">
                 <button
-                  className={`${getLinkClasses("/Resources")} relative`}
-                  onClick={handleDropdownToggle}
+                  className={`${getLinkClasses("/Resources")} flex items-center`}
+                  onMouseEnter={setShowDropdown.bind(this, true)}
                 >
                   More
+                  <span className="ml-1 mt-1">
+                    {showDropdown ? <BiSolidUpArrow className="text-[0.6rem]"/> : <BiSolidDownArrow className="text-[0.6rem]"/>}
+                  </span>
                 </button>
                 {showDropdown && (
-                  <div className="absolute bg-white border text-gray-700 text-md border-gray-200 shadow-md w-40 rounded-md mt-2">
-
-                    <Link to="/resources" className="block hover:bg-gray-200 px-2 py-1 ">
+                  <div onMouseLeave={setShowDropdown.bind(this, false)} className="absolute p-3 bg-white border text-gray-700 text-md border-gray-200 shadow-md w-44 rounded-md mt-2">
+                    <Link to="/resources" className="flex items-center hover:bg-gray-200 border-b h-12 px-4 py-1 rounded-md">
                       Resources
                     </Link>
-                    <Link to="/Doctor" className="block hover:bg-gray-200 px-2 py-1 ">
+                    <Link to="/Doctor" className="flex items-center hover:bg-gray-200 border-b h-12 px-4 py-1 rounded-md">
                       Doctor
                     </Link>
-                    <Link to="/ngos" className="block hover:bg-gray-200 px-2 py-1 ">
+                    <Link to="/ngos" className="flex items-center hover:bg-gray-200 border-b h-12 px-4 py-1 rounded-md">
                       NGOs
                     </Link>
-                    <Link to="/aqi-info" className="block hover:bg-gray-200 px-2 py-1 ">
+                    <Link to="/aqi-info" className="flex items-center hover:bg-gray-200 border-b h-12 px-4 py-1 rounded-md">
                       AQI Calculation
                     </Link>
                     {/* Add more options as needed */}
@@ -137,7 +134,7 @@ const Navbar = () => {
 
             <button
               onClick={toggleDarkMode}
-              className="flex items-center rounded-full text-white  transition-all transform hover:scale-105 hover:shadow-2xl"
+              className="flex items-center rounded-full text-white transition-all transform hover:scale-105 hover:shadow-2xl"
             >
               <span className="transition-all duration-300 ease-in-out">
                 {darkMode ? (
@@ -248,7 +245,7 @@ const Navbar = () => {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="lg:hidden bg-gray-800 mt-20 text-white py-1 px-6">
+        <div className="lg:hidden bg-gray-800 mt-20 text-white py-1 rounded-md px-6">
           <Link
             to="/"
             className="block py-2 hover:text-blue-400"

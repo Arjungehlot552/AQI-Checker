@@ -87,7 +87,7 @@ const MyProfile = () => {
                 <div className="flex flex-col items-center mb-4 sm:mb-0 sm:mr-6">
                     <img
                         src={userData.profilePhoto || 'https://via.placeholder.com/100'}
-                        alt="Photo"
+                        alt="profile-picture"
                         className="w-24 h-24 rounded-full bg-white object-cover border mb-2"
                     />
                     <input

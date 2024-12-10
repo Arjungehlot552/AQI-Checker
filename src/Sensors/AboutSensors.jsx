@@ -1,6 +1,5 @@
 // AboutSensor.js
 import React, { useEffect } from 'react';
-import { Fade } from 'react-reveal';
 import sensor1 from '../Images/Sensor1.jpg';
 import sensor2 from '../Images/Sensor2.jpg';
 import sensor3 from '../Images/Sensor3.jpg';
@@ -27,7 +26,7 @@ const AboutSensor = () => {
       <section className="w-full max-w-6xl mb-16">
         <div className="flex flex-wrap justify-between items-center mb-12">
          
-          <Fade right>
+          <div>
             <div className="w-full md:w-6/12 lg:w-6/12 text-white">
               <h2 className="text-3xl font-semibold mb-4">Temperature & Humidity Monitoring</h2>
               <p className="mb-4">
@@ -38,8 +37,8 @@ const AboutSensor = () => {
                 Current Humidity: <span className="font-bold">45%</span>
               </p>
             </div>
-          </Fade>
-          <Fade left>
+          </div>
+          <div>
             <div className="w-full md:w-5/12 lg:w-5/12 mb-8 md:mb-0">
               <img
                 className="w-full h-auto rounded-lg shadow-lg"
@@ -47,14 +46,14 @@ const AboutSensor = () => {
                 alt="Air Quality Sensor 1"
               />
             </div>
-          </Fade>
+          </div>
         </div>
       </section>
 
       {/* Second Sensor Section with Right Image and Left Description */}
       <section className="w-full max-w-6xl mb-16">
         <div className="flex flex-wrap justify-between items-center mb-12">
-          <Fade left>
+          <div>
             <div className="w-full md:w-5/12 lg:w-5/12 mb-8 md:mb-0">
               <img
                 className="w-[20rem] h-[20rem] rounded-lg shadow-lg"
@@ -62,8 +61,8 @@ const AboutSensor = () => {
                 alt="Air Quality Sensor 2"
               />
             </div>
-          </Fade>
-          <Fade right>
+          </div>
+          <div>
             <div className="w-full md:w-6/12 lg:w-6/12 text-white">
               <h2 className="text-3xl font-semibold mb-4">Gas Detection (CO, CO2)</h2>
               <p className="mb-4">
@@ -74,7 +73,7 @@ const AboutSensor = () => {
                 Current CO2 Level: <span className="font-bold">73.4 ppm</span>
               </p>
             </div>
-          </Fade>
+          </div>
         </div>
       </section>
 
@@ -82,7 +81,7 @@ const AboutSensor = () => {
       <section className="w-full max-w-6xl mb-16">
         <div className="flex flex-wrap justify-between items-center mb-12">
           
-          <Fade right>
+          <div>
             <div className="w-full md:w-6/12 lg:w-6/12 text-white">
               <h2 className="text-3xl font-semibold mb-4">AQI Monitoring & Alerts</h2>
               <p className="mb-4">
@@ -93,8 +92,8 @@ const AboutSensor = () => {
                 Location: <span className="font-bold">23.2601516, 77.4133993</span>
               </p>
             </div>
-          </Fade>
-          <Fade left>
+          </div>
+          <div>
             <div className="w-full md:w-5/12 lg:w-5/12 mb-8 md:mb-0">
               <img
                 className="w-[20rem] h-[20rem] rounded-lg shadow-lg"
@@ -102,13 +101,13 @@ const AboutSensor = () => {
                 alt="Air Quality Sensor 3"
               />
             </div>
-          </Fade>
+          </div>
         </div>
       </section>
       {/* Third Sensor Section with Left Image and Right Description */}
       <section className="w-full max-w-6xl mb-16">
         <div className="flex flex-wrap justify-between items-center mb-12">
-          <Fade left>
+          <div>
             <div className="w-full md:w-5/12 lg:w-5/12 mb-8 md:mb-0">
               <img
                 className="w-[20rem] h-[20rem] rounded-lg shadow-lg"
@@ -116,8 +115,8 @@ const AboutSensor = () => {
                 alt="Air Quality Sensor 3"
               />
             </div>
-          </Fade>
-          <Fade right>
+          </div>
+          <div>
             <div className="w-full md:w-6/12 lg:w-6/12 text-white">
               <h2 className="text-3xl font-semibold mb-4">AQI Monitoring & Alerts</h2>
               <p className="mb-4">
@@ -128,7 +127,7 @@ const AboutSensor = () => {
                 Location: <span className="font-bold">23.2601516, 77.4133993</span>
               </p>
             </div>
-          </Fade>
+          </div>
         </div>
       </section>
 

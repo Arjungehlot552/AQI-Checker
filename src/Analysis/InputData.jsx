@@ -10,7 +10,7 @@ function PollutionAnalysis() {
   const [construction, setConstruction] = useState(0);
   const [events, setEvents] = useState(0);
   const [trafficZones, setTrafficZones] = useState(0);
-  const [aqi, setAqi] = useState(0);
+  const [aqi] = useState(0);
   const [finalAqi, setFinalAqi] = useState(null);
   const [remainingAqi, setRemainingAqi] = useState(null);
   const [fluctuatedAqi, setFluctuatedAqi] = useState(null);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BellIcon, LocationMarkerIcon, SearchIcon } from '@heroicons/react/outline';
+import { LocationMarkerIcon, SearchIcon } from '@heroicons/react/outline';
 
 const EnhancedActivityPage = () => {
     const [search, setSearch] = useState('');

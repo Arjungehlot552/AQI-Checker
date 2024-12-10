@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaPhoneAlt, FaMapMarkerAlt, FaLeaf } from 'react-icons/fa';
+import { FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa';
 
 
 const NGOs = () => {
@@ -59,7 +59,7 @@ const NGOs = () => {
       <div className='flex  flex-wrap justify-center cursor-pointer gap-20'>
         {ngoList.map((ngo, index) => (
           <div key={index} className='flex flex-col  w-full md:w-1/4 p-6 rounded-lg border border-green-200 shadow-md'>
-            <img className='h-44 w-full object-cover rounded-md mb-4' src={ngo.image} alt={`${ngo.name} image`} />
+            <img className='h-44 w-full object-cover rounded-md mb-4' src={ngo.image} alt={`${ngo.name}`} />
             <h2 className='text-2xl font-bold text-green-700 mb-2'>{ngo.name}</h2>
             <p className='text-white mb-4'>{ngo.description}</p>
             <div className='flex items-center text-green-600 mb-2'>

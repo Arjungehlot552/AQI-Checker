@@ -33,7 +33,8 @@ const Know = () => {
             <img className='h-[11rem] w-full' src="https://circuitdigest.com/sites/default/files/inlineimages/u5/Air-Quality-Index-Monitoring-System-Top.jpg" alt="" />
           <h2 className="text-xl mt-5 font-semibold text-gray-50">Air Quality Sensor</h2>
           <p className="mt-2 text-gray-50">Advanced sensors for accurate air quality measurements.</p>
-          <a onClick={() => navigation('/air-quality')} className="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">Know More</a>
+          {/* Replace href */}
+          <a href='/' onClick={() => navigation('/air-quality')} className="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">Know More</a>
         </div>
 
         <div className="bg-gray-800 rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105">
