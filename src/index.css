@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-color: #eeeeee;
+  --text-color: #4a4a4a;
+}
+
+.dark {
+  --bg-color: #111111;
+  --text-color: #eeeeee;
+}
+
 /* src/styles.css */
 @keyframes blink {
     0% {
