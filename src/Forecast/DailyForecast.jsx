@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MyGraph from "./MyGraph";
 import Calender from "./Calender";
 import { useLocation } from 'react-router-dom';
@@ -8,9 +8,19 @@ import ForeCast from "../Components/ForeCast";
 
 const DailyForecast = () => {
     // Random AQI between 250 to 480
-    const aqi = Math.floor(Math.random() * (480 - 250 + 1)) + 250;
+    const [aqi, setAqi] = useState(0);
 
     const location = useLocation().pathname.split('/').at(-1);
+
+    const fetchAQI = async () => {
+        const response = await fetch(`https://api.waqi.info/feed/${location}/?token=2957d73d72e0f99e73a757c6c091c83fd6415f7c`);
+        const data = await response.json();
+        setAqi(data.data.aqi);
+    }
+    
+    useEffect(()=>{
+        fetchAQI();
+    }, []);
 
     // Determine Air Quality Category
     let airQuality = "";
@@ -37,6 +47,7 @@ const DailyForecast = () => {
             return "from-purple-700 to-purple-300"; // Hazardous AQI
         }
     };
+    
 
     return (
         <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className=" mx-auto lg:pr-20 lg:pl-20 px-4 py-12 pt-32 w-full  text-white">
