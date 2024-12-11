@@ -1,5 +1,5 @@
 import React from "react";
-import Forecast from '../Components/ForeCast'
+import { useLocation } from "react-router-dom";
 
 const AQITable = () => {
   const data = [
@@ -10,11 +10,13 @@ const AQITable = () => {
     { location: "TT Nagar", status: "Poor", AQI: 125, pm25: 63, pm10: 137, temp: 20, humidity: 43 },
   ];
 
+  const location = useLocation().pathname.split('/').at(-1);
+  
   return (
     <div className="min-h-screen w-full  text-white flex flex-col items-center p-6">
       {/* Header Section */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-extrabold tracking-wide text-blue-400">Delhi's Air Quality</h1>
+        <h1 className="text-4xl font-extrabold tracking-wide text-blue-400">{location}'s Air Quality</h1>
         <p className="text-lg text-gray-300 mt-2">Real-time Air Pollution Levels by Location</p>
       </div>
 
@@ -68,7 +70,6 @@ const AQITable = () => {
         <p>Data provided by the local pollution monitoring system.</p>
         <p className="text-sm mt-1">Last Updated: Just Now</p>
       </div>
-      <Forecast />
     </div>
   );
 };
