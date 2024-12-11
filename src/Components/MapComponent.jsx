@@ -156,7 +156,7 @@ const AQIPage = () => {
           <div className="flex-1 p-6 rounded shadow-lg bg-gray-800 text-white max-w-md">
             <h2 className="text-2xl font-semibold">Air Quality Information</h2>
             {/* <p>City: {Data.city}</p> */}
-            <p>City: {locationData.city}</p>
+            <p className="font-bold text-xl">City: {locationData.city}</p>
             <p>State: {locationData.state}</p>
             <p>Country: {locationData.country}</p>
             <div className="mt-4">
@@ -195,14 +195,8 @@ const AQIPage = () => {
 
           {/* AQI Trend Chart with dynamic background */}
           {historicalAQIData.length > 0 && (
-            <div
-              className={`w-full max-w-2xl flex-1 text-white rounded-lg shadow-lg p-6 ${getGradientBackground(
-                locationData.current.pollution.aqius
-              )}`}
-            >
-              <h3 className="text-2xl font-semibold text-center text-white">
-                AQI Trend for Last 10 Days
-              </h3>
+            <div className={`w-full max-w-2xl flex-1 text-white rounded-lg shadow-lg p-6 ${getGradientBackground(locationData.current.pollution.aqius)}`}>
+              <h3 className="text-2xl font-semibold text-center text-white">AQI Trend for Last 10 Days</h3>
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={historicalAQIData}>
                   <CartesianGrid strokeDasharray="3 3" />

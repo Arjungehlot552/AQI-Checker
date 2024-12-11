@@ -30,7 +30,7 @@ import Main from '../Home/Main';
 // import Contact from './Contact';
 // import Thing from '../Thing_Speak/Thing';
 
-// import AuthPage from './AuthPage';
+import AuthPage from './AuthPage';
 
 
 // const mapContainerStyle = {
@@ -78,7 +78,7 @@ const Home = () => {
         </div> */}
       {/* </div> */} 
       {/* <Activity /> */}
-      {/* <AuthPage /> */}
+    
       {/* <CustomMapPath /> */}
       {/* <MonitorMap /> */}
       {/* <DailyForecast /> */}
@@ -86,6 +86,7 @@ const Home = () => {
       <Main />
       {/* <Thing /> */}
       
+        <AuthPage />
       
       <Swiper />
       

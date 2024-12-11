@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import LOGO from "../Images/LOGO.png";
+// import LOGO from "../Images/LOGO.png";
+// import Modi_ji from "../Images/Modi-Ji.png"
+import SIH from "../Images/SIH_logo_2024.png"
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -65,9 +67,9 @@ const Navbar = () => {
           {/* Logo and Search */}
           <div className="flex items-center space-x-6">
             <img
-              src={LOGO}
+              src={SIH}
               alt="AQI Logo"
-              className="h-16 w-20 mb-4 mt-[-1rem]"
+              className="w-32 "
             />
             <div className="relative hidden lg:flex lg:flex-row lg:items-center w-[30rem] px-4 space-x-2 border border-white rounded-full">
               <CiSearch color="white"/>
