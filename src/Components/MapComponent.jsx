@@ -188,8 +188,8 @@ const AQIPage = () => {
               </h3>
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={historicalAQIData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis  dataKey="date" />
+                  <CartesianGrid strokeDasharray="5 5" />
+                  <XAxis dataKey="date" />
                   <YAxis />
                   <Tooltip
                     labelStyle={{ color: "#fff" }}
@@ -201,11 +201,10 @@ const AQIPage = () => {
                     }}
                   />
                   <Line
-                    type="monotone"
+                    type="linear"
                     dataKey="predicted_aqi"
                     stroke="#8884d8"
                     activeDot={{ r: 8 }}
-                    
                   />
                 </LineChart>
               </ResponsiveContainer>

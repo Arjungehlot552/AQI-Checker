@@ -37,6 +37,7 @@ export const fetchingData = async (city, pollutant, count) => {
           },
         }
       );
+      
       if (response) {
         responses.push(response.data); // Add the data if there's no error
       }
