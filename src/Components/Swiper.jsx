@@ -14,14 +14,14 @@ const AQISwiper = () => {
   ];
 
   return (
-    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="relative  lg:mt-20 lg:pt-10 lg:ml-28 ml-12 h-[80vh] w-[80%] overflow-hidden">
+    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="flex lg:mt-20 lg:pt-10 items-center justify-center h-[80vh] overflow-hidden">
       <Swiper
         modules={[Autoplay, Pagination]}
         spaceBetween={30}
         slidesPerView={1}
         autoplay={{ delay: 3000 }}
         pagination={{ clickable: true }}
-        className="h-full rounded-lg"
+        className="h-full rounded-lg w-[80%]"
       >
         {images.map((item, index) => (
           <SwiperSlide key={index}>
