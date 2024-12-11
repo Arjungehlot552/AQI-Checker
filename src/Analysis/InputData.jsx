@@ -130,7 +130,7 @@ function PollutionAnalysis() {
               min="0"
               value={industries}
               onChange={(e) => setIndustries(Number(e.target.value))}
-              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
+              className="px-4 py-2 border border-gray-300 bg-transparent text-white rounded-md w-1/2 "
             />
           </div>
 
@@ -141,7 +141,7 @@ function PollutionAnalysis() {
               min="0"
               value={schools}
               onChange={(e) => setSchools(Number(e.target.value))}
-              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
+              className="px-4 py-2 border border-gray-300 rounded-md bg-transparent text-white w-1/2 "
             />
           </div>
 
@@ -152,7 +152,7 @@ function PollutionAnalysis() {
               min="0"
               value={colleges}
               onChange={(e) => setColleges(Number(e.target.value))}
-              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
+              className="px-4 py-2 border border-gray-300 rounded-md bg-transparent text-white w-1/2 "
             />
           </div>
 
@@ -163,7 +163,7 @@ function PollutionAnalysis() {
               min="0"
               value={construction}
               onChange={(e) => setConstruction(Number(e.target.value))}
-              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
+              className="px-4 py-2 border border-gray-300 rounded-md bg-transparent text-white w-1/2 "
             />
           </div>
 
@@ -174,7 +174,7 @@ function PollutionAnalysis() {
               min="0"
               value={events}
               onChange={(e) => setEvents(Number(e.target.value))}
-              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
+              className="px-4 py-2 border border-gray-300 rounded-md bg-transparent text-white w-1/2 "
             />
           </div>
 
@@ -185,27 +185,32 @@ function PollutionAnalysis() {
               min="0"
               value={trafficZones}
               onChange={(e) => setTrafficZones(Number(e.target.value))}
-              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
+              className="px-4 py-2 border border-gray-300 rounded-md bg-transparent text-white w-1/2 "
             />
           </div>
           <div className="flex justify-between items-center">
-            <label className="text-lg text-white font-semibold">Wind Speed:</label>
+            <label className="text-lg text-white font-semibold">Wind Speed &#40; in km/h &#41;:</label>
             <input   
               type='number'         
               min="0"
-              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
+              placeholder='In km/h'
+              className="px-4 py-2 border border-gray-300 bg-transparent text-white rounded-md w-1/2 "
             />
           </div>
           <div className="flex justify-between items-center">
-            <label className="text-lg text-white font-semibold">Wind Direction:</label>
+            <label  className="text-lg text-white font-semibold">Wind Direction:</label>
             <select
-              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
+              className="px-4 py-2 border border-gray-300 bg-transparent text-white rounded-md w-1/2 "
             >
-              <option value="all">All Directions</option>
-              <option value="east-west">East to West</option>
-              <option value="west-east">West to East</option>
-              <option value="north-west">North to West</option>
-              <option value="custom">Custom (Enter below)</option>
+              <option className='text-black '  value="all">Directions</option>
+              <option className='text-black '  value="east-west">North</option>
+              <option className='text-black '  value="east-west">North-East</option>
+              <option className='text-black '  value="east-west">East</option>
+              <option className='text-black '  value="west-east">South-East</option>
+              <option className='text-black '  value="north-west">South</option>
+              <option className='text-black '  value="south-east">South-West</option>
+              <option className='text-black '  value="south-east">West</option>
+              <option className='text-black '  value="south-east">North-West</option>
             </select>
           </div>
 
@@ -234,21 +239,21 @@ function PollutionAnalysis() {
             <button
               onClick={handleGetAQI}
               type="button"
-              className="border text-white py-3 px-6 rounded-lg text-lg font-bold transform transition hover:bg-green-600 hover:text-white hover:scale-105"
+              className="border text-white py-3 px-6 rounded-lg text-lg font-bold bg-blue-500 transform transition hover:bg-green-600 hover:text-white hover:scale-105"
             >
               Get AQI
             </button>
           </div>
 
           <div className="flex justify-between items-center">
-            <label className="text-lg text-white font-semibold">
+            <label className="text-lg  text-white font-semibold">
               Current AQI:
             </label>
             <input
               type="number"
               value={myaqivalue} // Set the input value from state
               onChange={(e) => setmyaqivalue(Number(e.target.value))} // Allow user edits
-              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 focus:ring-2 focus:ring-blue-600"
+              className="px-4 py-2 border border-gray-300 rounded-md w-1/2 text-white bg-transparent"
             />
           </div>
 
