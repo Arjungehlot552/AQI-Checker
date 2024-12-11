@@ -10,7 +10,7 @@ const password = "password123";
 export const fetchingData = async (city, pollutant, count) => {
   const responses = []; // Array to store the responses
   city = city.toLowerCase().replace(/^\w/, (char) => char.toUpperCase()); // Capitalize the first letter of the city
-  const baseDate = new Date(2024, 10, 29); // Start date: 29/11/2024 (Month is 0-indexed in JS)
+  const baseDate = new Date(); // Start date: 29/11/2024 (Month is 0-indexed in JS)
 
   for (let i = 0; i < count; i++) {
     const currentDate = new Date(baseDate);
@@ -37,15 +37,16 @@ export const fetchingData = async (city, pollutant, count) => {
           },
         }
       );
-      responses.push(response.data); // Add each response to the list
+      if (response) {
+        responses.push(response.data); // Add the data if there's no error
+      }
     } catch (error) {
       console.error(`Error for ${formattedDate}:`, error);
       responses.push({ error: error.message }); // Add error details if there's an issue
     }
   }
-  console.log(responses)
 
-  return responses; // Return the array of responses
+  console.log("Fetched Responses:", responses);
+
+  return responses; // Return the array of responses after the loop finishes
 };
-
-

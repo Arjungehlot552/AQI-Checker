@@ -41,17 +41,10 @@ const AQIPage = () => {
       const response = await fetch(url);
       const result = await response.json();
 
-      console.log("THis is my mapcomponent", result);
-
       if (result.status === "success") {
         setLocationData(result.data);
-
         localStorage.setItem("aqiValue", result.data.current.pollution.aqius);
-        fetchHistoricalData(
-          result.data.city,
-          result.data.state,
-          result.data.country
-        );
+        fetchHistoricalData(result.data.city);
         setError("");
       } else {
         setError("Failed to fetch AQI data.");
@@ -64,12 +57,16 @@ const AQIPage = () => {
     }
   };
 
-  const fetchHistoricalData = (city, state, country) => {
-    const data = fetchingData(city, "PM10", 10);
-    console.log(data);
-    setHistoricalAQIData(data);
-  };
+  const fetchHistoricalData = async (city) => {
+    try {
+      const data = await fetchingData(city, "PM10", 10);
 
+      // Convert date string to a Date object
+      setHistoricalAQIData(data); // Update state with formatted data
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
   const getAqiLevel = (aqius) => {
     let level = "";
     let message = "";
@@ -126,7 +123,7 @@ const AQIPage = () => {
   return (
     <div
       style={{ backgroundColor: "rgb(5, 8, 22)" }}
-      className="py-16 min-h-[70vh] border-2 rounded-3xl border-emerald-200 flex flex-col items-center justify-center  text-white p-6"
+      className="py-16 min-h-[70vh] border-2 rounded-3xl border-emerald-200 flex flex-col items-center justify-center text-white p-6"
     >
       <h1 className="text-4xl font-bold mb-6 animate-pulse text-center">
         Real-Time AQI Checker
@@ -155,7 +152,6 @@ const AQIPage = () => {
           {/* AQI Information */}
           <div className="flex-1 p-6 rounded shadow-lg bg-gray-800 text-white max-w-md">
             <h2 className="text-2xl font-semibold">Air Quality Information</h2>
-            {/* <p>City: {Data.city}</p> */}
             <p className="font-bold text-xl">City: {locationData.city}</p>
             <p>State: {locationData.state}</p>
             <p>Country: {locationData.country}</p>
@@ -163,9 +159,9 @@ const AQIPage = () => {
               <p className="text-lg font-bold">
                 Current AQI Level:
                 <span
-                  className={`${
+                  className={`text-lg ${
                     getAqiLevel(locationData.current.pollution.aqius).color
-                  } text-lg`}
+                  }`}
                 >
                   {getAqiLevel(locationData.current.pollution.aqius).level}
                 </span>
@@ -174,33 +170,26 @@ const AQIPage = () => {
               <p className="text-2xl font-bold">
                 AQI:
                 <span
-                  className={`${
+                  className={`text-2xl ${
                     getAqiLevel(locationData.current.pollution.aqius).color
-                  } text-2xl font-bold`}
+                  }`}
                 >
                   {locationData.current.pollution.aqius}
                 </span>
               </p>
-              <p>Primary Pollutant: {locationData.current.pollution.mainus}</p>
-            </div>
-            <div className="mt-4">
-              <h3 className="text-lg font-semibold">Weather Information</h3>
-              <p>Temperature: {locationData.current.weather.tp}°C</p>
-              <p>Humidity: {locationData.current.weather.hu}%</p>
-              <p>Pressure: {locationData.current.weather.pr} hPa</p>
-              <p>Wind Direction: {locationData.current.weather.wd}°</p>
-              <p>Wind Speed: {locationData.current.weather.ws} m/s</p>
             </div>
           </div>
 
-          {/* AQI Trend Chart with dynamic background */}
+          {/* AQI Trend Chart */}
           {historicalAQIData.length > 0 && (
-            <div className={`w-full max-w-2xl flex-1 text-white rounded-lg shadow-lg p-6 ${getGradientBackground(locationData.current.pollution.aqius)}`}>
-              <h3 className="text-2xl font-semibold text-center text-white">AQI Trend for Last 10 Days</h3>
+            <div className="w-full max-w-2xl flex-1 text-white rounded-lg shadow-lg p-6">
+              <h3 className="text-2xl font-semibold text-center text-white">
+                AQI Trend for Last 10 Days
+              </h3>
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={historicalAQIData}>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="date" />
+                  <XAxis  dataKey="date" />
                   <YAxis />
                   <Tooltip
                     labelStyle={{ color: "#fff" }}
@@ -213,22 +202,10 @@ const AQIPage = () => {
                   />
                   <Line
                     type="monotone"
-                    dataKey="aqi"
-                    stroke={
-                      historicalAQIData[historicalAQIData.length - 1].aqi <= 50
-                        ? "#4caf50"
-                        : historicalAQIData[historicalAQIData.length - 1].aqi <=
-                          100
-                        ? "#ffeb3b"
-                        : historicalAQIData[historicalAQIData.length - 1].aqi <=
-                          150
-                        ? "#ff9800"
-                        : historicalAQIData[historicalAQIData.length - 1].aqi <=
-                          200
-                        ? "#f44336"
-                        : "#9c27b0"
-                    }
+                    dataKey="predicted_aqi"
+                    stroke="#8884d8"
                     activeDot={{ r: 8 }}
+                    
                   />
                 </LineChart>
               </ResponsiveContainer>
