@@ -35,8 +35,8 @@ export default function Main() {
       {/* Content */}
       <div className="container mx-auto px-6 lg:px-20 flex flex-col lg:flex-row items-center z-10">
         {/* Left Section */}
-        <div className="lg:w-1/2 space-y-6 mb-10 lg:mb-0">
-          <h1 className="text-4xl lg:text-5xl font-bold">
+        <div className="lg:w-1/2 space-y-6  mb-10 lg:mb-0">
+          <h1 className="text-4xl lg:text-5xl  font-bold">
             {currentText}
             <span className="inline-block w-1 bg-white animate-blink ml-1"></span>
           </h1>
