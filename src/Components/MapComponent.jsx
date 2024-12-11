@@ -7,8 +7,6 @@ const AQIPage = () => {
   const [loading, setLoading] = useState(false);
   const [historicalAQIData, setHistoricalAQIData] = useState([]);
   const apiKey = "b63160ff-205c-40cc-a6c6-aea3ab7d6aa1"; // Replace with your API key
-
-  
   
   const fetchLocation = () => {
     if (navigator.geolocation) {
@@ -112,7 +110,7 @@ const AQIPage = () => {
 
 
   return (
-    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="pt-0 min-h-screen border-2 rounded-3xl border-emerald-200 flex flex-col items-center justify-center  text-white p-6">
+    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="py-16 min-h-[70vh] border-2 rounded-3xl border-emerald-200 flex flex-col items-center justify-center  text-white p-6">
       <h1 className="text-4xl font-bold mb-6 animate-pulse text-center">Real-Time AQI Checker</h1>
       <button
         onClick={fetchLocation}
@@ -121,16 +119,16 @@ const AQIPage = () => {
         Check AQI in Your Location
       </button>
 
-      {loading && <p className="mt-6 text-lg text-blue-200 animate-bounce text-center">Fetching AQI data...</p>}
+      {loading && <p className="mt-8 text-lg text-blue-200 animate-bounce text-center">Fetching AQI data...</p>}
 
       {error && (
-        <div className="mt-4 p-4 bg-red-600 text-white rounded shadow-lg w-full max-w-md mx-auto">
+        <div className="mt-8 p-4 bg-red-600 text-white rounded shadow-lg w-full max-w-md mx-auto">
           <p>{error}</p>
         </div>
       )}
 
       {locationData && (
-        <div className="mt-6 flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-6 w-full">
+        <div className="mt-16 flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-6 w-full">
           {/* AQI Information */}
           <div className="flex-1 p-6 rounded shadow-lg bg-gray-800 text-white max-w-md">
             <h2 className="text-2xl font-semibold">Air Quality Information</h2>
@@ -166,9 +164,9 @@ const AQIPage = () => {
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={historicalAQIData}>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="date" />
+                  <XAxis dataKey="date"/>
                   <YAxis />
-                  <Tooltip />
+                  <Tooltip labelStyle={{color:'#fff'}} contentStyle={{backgroundColor:'rgb(0, 0, 0, 0.8)', border:'none', width:'5rem', borderRadius:'0.5rem'}}/>
                   <Line
                     type="monotone"
                     dataKey="aqi"
