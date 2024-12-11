@@ -32,7 +32,7 @@ const AQIPage = () => {
       const response = await fetch(url);
       const result = await response.json();
 
-      // console.log("THis is my mapcomponent" , result)
+      console.log("THis is my mapcomponent" , result)
 
       if (result.status === "success") {
         setLocationData(result.data);
@@ -149,7 +149,7 @@ const AQIPage = () => {
               <p>{getAqiLevel(locationData.current.pollution.aqius).message}</p>
               <p className="text-2xl font-bold">AQI:
                 <span className={`${getAqiLevel(locationData.current.pollution.aqius).color} text-2xl font-bold`}>
-                  {locationData.current.pollution.aqicn}
+                  {locationData.current.pollution.aqius}
                 </span>
               </p>
               <p>Primary Pollutant: {locationData.current.pollution.mainus}</p>
