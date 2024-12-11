@@ -194,7 +194,7 @@ const MyAQIMap = () => {
                         <input
                             type="text"
                             onKeyDown={handleKeyPress}
-                            className="w-full sm:w-1/2 p-3 text-xl rounded-md text-black border-none focus:outline-none focus:ring-2 focus:ring-green-500"
+                            className="w-full sm:w-1/2 p-3 text-xl rounded-md bg-transparent border text-white "
                             placeholder="Enter a city or area"
                             value={location}
                             onChange={(e) => setLocation(e.target.value)}
