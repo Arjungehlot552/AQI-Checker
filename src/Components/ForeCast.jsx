@@ -1,5 +1,5 @@
-
 import React from "react";
+import { useLocation } from "react-router";
 
 const ForeCast = () => {
     // Sample data for the forecast
@@ -58,25 +58,27 @@ const ForeCast = () => {
         no2: "75 µg/m³",
     };
 
+    const location = useLocation().pathname.split('/').at(-1);
+
     return (
         <div className="p-6  min-h-screen w-full text-gray-200">
 
             {/* Hourly Forecast */}
             <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="rounded-lg shadow p-4 mb-6">
                 <h2 className="text-2xl font-bold mb-4 text-center text-white">Hourly Forecast</h2>
-                <p className="text-gray-400 mb-4 text-center">Bhopal air quality index (AQI<sup>*</sup>) forecast</p>
-                <div className="flex  space-x-4 overflow-x-auto">
+                <p className="text-gray-400 mb-4 text-center">{location}'s air quality index (AQI<sup>*</sup>) forecast</p>
+                <div className="flex space-x-4 overflow-x-auto h-56">
                     {hourlyForecast.map((data, index) => (
                         <div
                             key={index}
-                            className={`text-center p-3  rounded-lg shadow hover:scale-105 transition-all ${data.color} text-white`}
+                            className={`text-center py-6 min-w-52 max-h-48 rounded-lg shadow hover:scale-105 transition-all ${data.color} text-white`}
                         >
                             <p>{data.time}</p>
                             <p className="text-3xl font-bold">{data.aqi}</p>
                             <p>{data.temp}°</p>
                             <div className="flex justify-center items-center space-x-2">
                                 {/* <i className="fas fa-wind text-white"></i> */}
-                                <p>{data.wind} <br></br>  km/h</p>
+                                <p>{data.wind} km/h</p>
                             </div>
                             <div className="flex justify-center items-center mb-8 space-x-2">
                                 <i className="fas fa-tint text-white"></i>
@@ -90,7 +92,7 @@ const ForeCast = () => {
             {/* Daily Forecast */}
             <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className=" rounded-lg shadow p-4 mb-6">
                 <h2 className="text-2xl font-bold mb-4 text-center text-white">Daily Forecast</h2>
-                <p className="text-gray-400 mb-4 text-center">Bhopal air quality index (AQI<sup>*</sup>) forecast</p>
+                <p className="text-gray-400 mb-4 text-center">{location}'s air quality index (AQI<sup>*</sup>) forecast</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
                     {dailyForecast.map((data, index) => (
                         <div
@@ -119,7 +121,7 @@ const ForeCast = () => {
             {/* Air Pollutants */}
             <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className=" rounded-lg shadow p-4">
                 <h2 className="text-2xl font-bold mb-4 text-center text-white">Air Pollutants</h2>
-                <p className="text-gray-400 mb-4 text-center">What is the current air quality in Bhopal?</p>
+                <p className="text-gray-400 mb-4 text-center">What is the current air quality in {location}?</p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div className="bg-gray-800 p-6 rounded-lg shadow hover:bg-gray-700 transition-all">
                         <p className="text-gray-400">PM2.5</p>

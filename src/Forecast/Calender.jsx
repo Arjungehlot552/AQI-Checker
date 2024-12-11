@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router";
 
 // Mock Data: Replace with your actual API or dataset
 const months = [
@@ -83,6 +84,9 @@ const CalendarPage = () => {
     return day > 0 && day <= daysInMonth ? day : null;
   });
 
+  const location = useLocation().pathname.split('/').at(-1);
+
+
   return (
     <div
       style={{ backgroundColor: "rgb(5, 8, 22)" }}
@@ -92,7 +96,7 @@ const CalendarPage = () => {
       <div className="bg-gray-800/90 shadow-lg rounded-xl p-6 w-full max-w-4xl">
         {/* Calendar Title */}
         <h2 className="text-xl font-semibold text-center text-gray-300 mb-6">
-          {selectedMonth} {selectedYear} - Delhi - {selectedPollutant}
+          {selectedMonth} {selectedYear} - {location} - {selectedPollutant}
         </h2>
 
         {/* Header Section */}
