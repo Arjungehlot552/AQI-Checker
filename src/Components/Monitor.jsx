@@ -103,7 +103,7 @@ const MyAQIMap = () => {
 
     useEffect(() => {
         const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js`;
+        script.src = `<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization`;
         script.async = true;
         script.onload = () => initMap();
         document.head.appendChild(script);

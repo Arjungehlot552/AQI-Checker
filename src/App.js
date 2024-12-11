@@ -22,6 +22,8 @@ import InputData from './Analysis/InputData';
 import Contact from './Components/Contact';
 import BlogPage from './Blog/BlogPage';
 import AboutSensors from './Sensors/AboutSensors';
+// import Thing from './ThinkSpeak/Thing';
+import HeatMap from './Components/HeatMap';
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path='/thing' element={<HeatMap />} />
         <Route path="/monitor" element={<Monitor />} />
         <Route path="/aqi-data" element={<AqiData />} />
         <Route path="/ranking" element={<Ranking />} />

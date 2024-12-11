@@ -14,36 +14,54 @@
 
 /* src/styles.css */
 @keyframes blink {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
+  0% {
+    opacity: 1;
   }
-  
-  .animate-blink {
-    animation: blink 1s infinite;
+  50% {
+    opacity: 0;
   }
+  100% {
+    opacity: 1;
+  }
+}
 
-  @keyframes move-smoke {
-    0% {
-      top: 0;
-      opacity: 1;
-    }
-    50% {
-      top: -30px;
-      opacity: 0.6;
-    }
-    100% {
-      top: 0;
-      opacity: 1;
-    }
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes move-smoke {
+  0% {
+    top: 0;
+    opacity: 1;
   }
-  
-  .animate-smoke .animate-move-smoke {
-    animation: move-smoke 2s linear infinite;
+  50% {
+    top: -30px;
+    opacity: 0.6;
   }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.animate-smoke .animate-move-smoke {
+  animation: move-smoke 2s linear infinite;
+}
+
+/* 
+ * Always set the map height explicitly to define the size of the div element
+ * that contains the map. 
+ */
+#map {
+  height: 100%;
+}
+
+/* 
+ * Optional: Makes the sample page fill the window. 
+ */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
