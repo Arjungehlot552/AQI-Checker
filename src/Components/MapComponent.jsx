@@ -30,6 +30,8 @@ const AQIPage = () => {
       const response = await fetch(url);
       const result = await response.json();
 
+      console.log("THis is my mapcomponent" , result)
+
       if (result.status === "success") {
         setLocationData(result.data);
       
@@ -132,6 +134,8 @@ const AQIPage = () => {
           {/* AQI Information */}
           <div className="flex-1 p-6 rounded shadow-lg bg-gray-800 text-white max-w-md">
             <h2 className="text-2xl font-semibold">Air Quality Information</h2>
+            {/* <p>City: {Data.city}</p> */}
+            <p>City: {locationData.city}</p>
             <p>State: {locationData.state}</p>
             <p>Country: {locationData.country}</p>
             <div className="mt-4">
@@ -153,6 +157,7 @@ const AQIPage = () => {
               <p>Temperature: {locationData.current.weather.tp}°C</p>
               <p>Humidity: {locationData.current.weather.hu}%</p>
               <p>Pressure: {locationData.current.weather.pr} hPa</p>
+              <p>Wind Direction: {locationData.current.weather.wd}°</p>
               <p>Wind Speed: {locationData.current.weather.ws} m/s</p>
             </div>
           </div>
