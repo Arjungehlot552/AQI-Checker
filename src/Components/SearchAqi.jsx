@@ -134,7 +134,7 @@ const AQIPage = () => {
   const overallAQI = getOverallAQI();
 
   return (
-    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="min-h-screen border-2 rounded-3xl border-emerald-200 flex flex-col items-center justify-center  text-white p-6">
+    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="mt-8 min-h-screen border-2 rounded-3xl border-emerald-200 flex flex-col items-center justify-center  text-white p-6">
       <h1 className="text-4xl font-bold mb-6 text-white animate-pulse text-center">Real-Time AQI Gases Checker of any city</h1>
 
       {/* Search Input */}

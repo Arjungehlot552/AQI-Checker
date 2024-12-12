@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { fetchingData } from "../Components/CustomMapPath";
+import Slider from "rc-slider";
 
 // Mock Data: Replace with your actual API or dataset
 const months = [
@@ -205,8 +206,33 @@ const CalendarPage = () => {
 
         {/* Calendar */}
         <div className="overflow-hidden rounded-lg">
-          <div className="p-4">
-            <button className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600" onClick={DownloadButton}>Download as Csv</button>
+          <div className="p-4 flex flex-col">
+            <button className="bg-blue-500 text-white p-2 rounded-lg w-36 space-y-4 hover:bg-blue-600" onClick={ DownloadButton }>Download as Csv</button>
+            <div className="flex justify-between text-sm mb-2">
+                <span>Good</span>
+                <span>Poor</span>
+                <span>Very Poor</span>
+                <span>Hazardous</span>
+            </div>
+            <Slider
+              min={0}
+              max={500}
+              value={0}
+              handleStyle={{ display:'none' }}
+              trackStyle={{ background: "transparent" }}
+              railStyle={{ background: "linear-gradient(to right, #4caf50, #ffeb3b, #f44336 )", height: 14 }}
+              className="flex items-center justify-center bg-transparent"
+              disabled
+            />
+            <div className="flex mt-2 justify-between text-sm text-white">
+              <span>0</span>
+              <span>50</span>
+              <span>100</span>
+              <span>200</span>
+              <span>300</span>
+              <span>400</span>
+              <span>500+</span>
+          </div>
           </div>
           <table className="w-full p-2">
             <thead>

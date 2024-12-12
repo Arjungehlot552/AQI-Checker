@@ -129,7 +129,7 @@ const HeatMap = () => {
   };
 
   return (
-    <main className="mt-32 flex flex-col items-center mb-8">
+    <main className="bg-[#050816] pt-32 min-h-screen flex flex-col items-center pb-8">
       <div
         id="floating-panel"
         className="flex space-x-2 items-center justify-center mb-4"
@@ -153,7 +153,7 @@ const HeatMap = () => {
           Change Radius
         </button>
       </div>
-      <div id="map" className="w-[80%] h-[750px] rounded-lg"></div>
+      <div id="map" className="w-[80%] h-[600px] rounded-lg"></div>
     </main>
   );
 };

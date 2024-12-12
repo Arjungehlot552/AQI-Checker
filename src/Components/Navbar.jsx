@@ -128,7 +128,7 @@ const Navbar = () => {
                   </span>
                 </button>
                 {showDropdown && (
-                  <div onMouseLeave={setShowDropdown.bind(this, false)} className="absolute p-3 bg-white border text-gray-700 text-md border-gray-200 shadow-md w-44 rounded-md mt-2">
+                  <div onMouseLeave={setShowDropdown.bind(this, false)} className="absolute p-3 bg-white border text-gray-700 text-md border-gray-200 shadow-md w-56 rounded-md mt-2">
                     <Link to="/resources" className="flex items-center hover:bg-gray-200 border-b h-12 px-4 py-1 rounded-md">
                       Resources
                     </Link>
@@ -208,24 +208,12 @@ const Navbar = () => {
                     >
                       Dashboard
                     </div>
-                    <div
-                      className="text-gray-800 px-4 py-2 hover:bg-gray-200 cursor-pointer"
-                      onClick={() => handleNavigation("/Activity")}
-                    >
-                      Activity
-                    </div>
-                    <div
-                      className="text-gray-800 px-4 py-2 hover:bg-gray-200 cursor-pointer"
-                      onClick={() => handleNavigation("/ProblemArise")}
-                    >
-                      Problem Arise
-                    </div>
-                    <div
+                    {/* <div
                       className="text-gray-800 px-4 py-2 hover:bg-gray-200 cursor-pointer"
                       onClick={() => handleNavigation("/MyScore")}
                     >
                       MyScore
-                    </div>
+                    </div> */}
                     <div
                       onClick={handleLogout}
                       className="text-gray-800 px-4 py-2 hover:bg-gray-200 cursor-pointer"
