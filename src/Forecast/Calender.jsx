@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { fetchingData } from "../Components/CustomMapPath";
+import { fetchData } from "../Components/ComparisonData";
 
 // Mock Data: Replace with your actual API or dataset
 const months = [
@@ -55,6 +56,7 @@ const mockAQIData = {
     },
   },
 };
+
 
 const getColor = (value) => {
   if (value === null) return "bg-gray-300 text-gray-500"; // No data
@@ -233,11 +235,10 @@ const CalendarPage = () => {
                       return (
                         <td
                           key={dayIndex}
-                          className={`p-3 text-center text-sm font-semibold ${
-                            day
+                          className={`p-3 text-center text-sm font-semibold ${day
                               ? getColor(data?.[1])
                               : "bg-gray-600 text-gray-400"
-                          }`}
+                            }`}
                         >
                           {day}
                           <div>{data?.[1] || ""}</div>
