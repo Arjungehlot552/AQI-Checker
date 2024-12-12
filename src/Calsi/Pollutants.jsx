@@ -60,8 +60,8 @@ function Pollutants() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 mt-20 flex flex-col items-center p-8">
-      <div className="bg-white p-8 rounded-lg shadow-2xl w-full max-w-4xl">
+    <div className="min-h-screen bg-[#050816] pt-36 flex flex-col items-center p-8">
+      <div className="border p-8 rounded-lg shadow-2xl w-full max-w-4xl">
         <h2 className="text-4xl font-extrabold text-blue-700 mb-6 text-center tracking-tight">
           Carbon Footprint & Pollutant Analysis
         </h2>
@@ -75,7 +75,7 @@ function Pollutants() {
           className="space-y-6"
         >
           <div>
-            <label className="block text-base font-medium text-gray-700 mb-1">
+            <label className="block text-base font-medium text-white mb-1">
               Location
             </label>
             <input
@@ -83,14 +83,14 @@ function Pollutants() {
               name="location"
               value={data.location}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-700"
+              className="w-full px-4 py-2 border border-white rounded-lg shadow-sm bg-transparent text-white"
               placeholder="Enter your city or region"
               required
             />
           </div>
 
           <div>
-            <label className="block text-base font-medium text-gray-700 mb-1">
+            <label className="block text-base font-medium text-white mb-1">
               Transportation (km/week)
             </label>
             <input
@@ -98,13 +98,13 @@ function Pollutants() {
               name="transportation"
               value={data.transportation}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-700"
+              className="w-full px-4 py-2 border border-white rounded-lg shadow-sm bg-transparent text-white"
               required
             />
           </div>
 
           <div>
-            <label className="block text-base font-medium text-gray-700 mb-1">
+            <label className="block text-base font-medium text-white mb-1">
               Electricity Usage (kWh/month)
             </label>
             <input
@@ -112,13 +112,13 @@ function Pollutants() {
               name="electricity"
               value={data.electricity}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-700"
+              className="w-full px-4 py-2 border border-white rounded-lg shadow-sm bg-transparent text-white"
               required
             />
           </div>
 
           <div>
-            <label className="block text-base font-medium text-gray-700 mb-1">
+            <label className="block text-base font-medium text-white mb-1">
               Waste Produced (kg/week)
             </label>
             <input
@@ -126,13 +126,13 @@ function Pollutants() {
               name="waste"
               value={data.waste}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-700"
+              className="w-full px-4 py-2 border border-white rounded-lg shadow-sm bg-transparent text-white"
               required
             />
           </div>
 
           <div>
-            <label className="block text-base font-medium text-gray-700 mb-1">
+            <label className="block text-base font-medium text-white mb-1">
               Select Pollutants
             </label>
             <div className="flex flex-wrap gap-4 mt-2">
@@ -144,7 +144,7 @@ function Pollutants() {
                     onChange={() => togglePollutant(pollutant)}
                     className="form-checkbox h-5 w-5 text-blue-600"
                   />
-                  <span className="text-gray-700 font-medium">{pollutant}</span>
+                  <span className="text-white font-medium">{pollutant}</span>
                 </label>
               ))}
             </div>
