@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MyGraph from "./MyGraph";
 import Calender from "./Calender";
 import { useLocation } from 'react-router-dom';
@@ -8,9 +8,33 @@ import ForeCast from "../Components/ForeCast";
 
 const DailyForecast = () => {
     // Random AQI between 250 to 480
-    const aqi = Math.floor(Math.random() * (480 - 250 + 1)) + 250;
+    const [data, setData] = useState({});
+    const [aqi, setAqi] = useState(0);
+    const [weather, setWeather] = useState({});
+    const apiKey = "b63160ff-205c-40cc-a6c6-aea3ab7d6aa1"; // Replace with your API key
+
 
     const location = useLocation().pathname.split('/').at(-1);
+
+    const fetchAQI = async () => {
+        try{
+            const response = await fetch(`https://api.waqi.info/feed/${location}/?token=2957d73d72e0f99e73a757c6c091c83fd6415f7c`);
+            const res = await response.json();
+            if(res.status == 'ok'){
+                setData(res.data);
+                setAqi(res.data.aqi);
+            }
+            else{
+                console.log("Error fetching data");
+            }
+        }catch(e){
+            console.log(e)
+        }
+    }
+    
+    useEffect(()=>{
+        fetchAQI();
+    }, [location]);
 
     // Determine Air Quality Category
     let airQuality = "";
@@ -37,6 +61,7 @@ const DailyForecast = () => {
             return "from-purple-700 to-purple-300"; // Hazardous AQI
         }
     };
+    
 
     return (
         <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className=" mx-auto lg:pr-20 lg:pl-20 px-4 py-12 pt-32 w-full  text-white">
@@ -66,8 +91,8 @@ const DailyForecast = () => {
 
                     <div className="flex justify-between mb-4">
                         <div>
-                            <p className="text-lg text-white mb-2">PM10: {Math.floor(Math.random() * 200) + 50} µg/m³</p>
-                            <p className="text-lg text-white">PM2.5: {Math.floor(Math.random() * 150) + 30} µg/m³</p>
+                            <p className="text-lg text-white mb-2">PM10: {data?.iaqi?.pm10?.v} µg/m³</p>
+                            <p className="text-lg text-white">PM2.5: {data?.iaqi?.pm25?.v} µg/m³</p>
                         </div>
 
                         <div className="bg-transparent p-4 w-56 -mt-28 rounded-lg ">

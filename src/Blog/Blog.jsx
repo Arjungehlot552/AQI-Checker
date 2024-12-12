@@ -1,9 +1,14 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate from React Router
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
 const Blog = () => {
+
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  },[])
+  
   const carouselRef = useRef(null); // Create a ref for the carousel
   const navigate = useNavigate(); // Initialize the navigate function
 

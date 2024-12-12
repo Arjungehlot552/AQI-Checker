@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
+import { fetchingData } from "../Components/CustomMapPath";
 
 // Mock Data: Replace with your actual API or dataset
 const months = [
@@ -18,7 +19,7 @@ const months = [
 
 const mockAQIData = {
   2024: {
-    November: {
+    December: {
       AQI: [
         [1, 50],
         [2, 138],
@@ -69,30 +70,60 @@ const getColor = (value) => {
 
 const CalendarPage = () => {
   const [selectedYear, setSelectedYear] = useState(2024);
-  const [selectedMonth, setSelectedMonth] = useState("November");
+  const [selectedMonth, setSelectedMonth] = useState("December");
   const [selectedPollutant, setSelectedPollutant] = useState("AQI");
 
   const monthData =
     mockAQIData[selectedYear]?.[selectedMonth]?.[selectedPollutant] || [];
 
   // Generate calendar grid
-  const firstDayOfMonth = new Date(selectedYear, months.indexOf(selectedMonth), 1).getDay();
-  const daysInMonth = new Date(selectedYear, months.indexOf(selectedMonth) + 1, 0).getDate();
+  const firstDayOfMonth = new Date(
+    selectedYear,
+    months.indexOf(selectedMonth),
+    1
+  ).getDay();
+  const daysInMonth = new Date(
+    selectedYear,
+    months.indexOf(selectedMonth) + 1,
+    0
+  ).getDate();
 
   const calendarGrid = Array.from({ length: 42 }, (_, index) => {
     const day = index - firstDayOfMonth + 1;
     return day > 0 && day <= daysInMonth ? day : null;
   });
+  const convertToCSV = (jsonData) => {
+    const headers = Object.keys(jsonData[0]);
+    const rows = jsonData.map((item) =>
+      headers.map((header) => item[header]).join(",")
+    );
+    return [headers.join(","), ...rows].join("\n");
+  };
+  const DownloadButton = async () => {
+    const aqiData = await fetchingData(location, "PM10", daysInMonth);
+    const handleDownload = () => {
+      const csv = convertToCSV(aqiData);
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `data.csv`;
+      link.click();
+    };
+    if (aqiData) {
+      handleDownload();
+    }
+  };
 
-  const location = useLocation().pathname.split('/').at(-1);
-
+  const location = useLocation().pathname.split("/").at(-1);
 
   return (
     <div
       style={{ backgroundColor: "rgb(5, 8, 22)" }}
       className="min-h-screen flex flex-col justify-center items-center py-5 px-4 text-gray-300"
     >
-      <h1 className="text-4xl font-extrabold mb-10 text-white">Air Quality Calendar</h1>
+      <h1 className="text-4xl font-extrabold mb-10 text-white">
+        Air Quality Calendar
+      </h1>
       <div className="bg-gray-800/90 shadow-lg rounded-xl p-6 w-full max-w-4xl">
         {/* Calendar Title */}
         <h2 className="text-xl font-semibold text-center text-gray-300 mb-6">
@@ -104,7 +135,10 @@ const CalendarPage = () => {
           <div className="flex flex-wrap gap-4 items-center">
             {/* Year Selector */}
             <div className="flex flex-col">
-              <label htmlFor="year" className="block text-sm mb-2 text-gray-50 font-medium">
+              <label
+                htmlFor="year"
+                className="block text-sm mb-2 text-gray-50 font-medium"
+              >
                 Year
               </label>
               <select
@@ -113,16 +147,21 @@ const CalendarPage = () => {
                 onChange={(e) => setSelectedYear(parseInt(e.target.value))}
                 className="bg-gray-700 text-white rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
               >
-                {Array.from({ length: 10 }, (_, index) => 2015 + index).map((year) => (
-                  <option key={year} value={year}>
-                    {year}
-                  </option>
-                ))}
+                {Array.from({ length: 10 }, (_, index) => 2015 + index).map(
+                  (year) => (
+                    <option key={year} value={year}>
+                      {year}
+                    </option>
+                  )
+                )}
               </select>
             </div>
             {/* Month Selector */}
             <div className="flex flex-col">
-              <label htmlFor="month" className="block text-sm mb-2 text-gray-50 font-medium">
+              <label
+                htmlFor="month"
+                className="block text-sm mb-2 text-gray-50 font-medium"
+              >
                 Month
               </label>
               <select
@@ -140,7 +179,10 @@ const CalendarPage = () => {
             </div>
             {/* Pollutant Selector */}
             <div className="flex flex-col">
-              <label htmlFor="pollutant" className="block text-sm mb-2 text-gray-50 font-medium">
+              <label
+                htmlFor="pollutant"
+                className="block text-sm mb-2 text-gray-50 font-medium"
+              >
                 Pollutant
               </label>
               <select
@@ -163,32 +205,45 @@ const CalendarPage = () => {
 
         {/* Calendar */}
         <div className="overflow-hidden rounded-lg">
+          <div className="p-4">
+            <button className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600" onClick={DownloadButton}>Download as Csv</button>
+          </div>
           <table className="w-full p-2">
-            
             <thead>
               <tr className="bg-gray-800">
-                {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-                  <th key={day} className="p-3 text-sm text-gray-200 font-medium">
-                    {day}
-                  </th>
-                ))}
+                {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(
+                  (day) => (
+                    <th
+                      key={day}
+                      className="p-3 text-sm text-gray-200 font-medium"
+                    >
+                      {day}
+                    </th>
+                  )
+                )}
               </tr>
             </thead>
             <tbody>
               {Array.from({ length: 6 }).map((_, weekIndex) => (
                 <tr key={weekIndex}>
-                  {calendarGrid.slice(weekIndex * 7, (weekIndex + 1) * 7).map((day, dayIndex) => {
-                    const data = monthData.find((entry) => entry[0] === day);
-                    return (
-                      <td
-                        key={dayIndex}
-                        className={`p-3 text-center text-sm font-semibold ${day ? getColor(data?.[1]) : "bg-gray-600 text-gray-400"}`}
-                      >
-                        {day}
-                        <div>{data?.[1] || ""}</div>
-                      </td>
-                    );
-                  })}
+                  {calendarGrid
+                    .slice(weekIndex * 7, (weekIndex + 1) * 7)
+                    .map((day, dayIndex) => {
+                      const data = monthData.find((entry) => entry[0] === day);
+                      return (
+                        <td
+                          key={dayIndex}
+                          className={`p-3 text-center text-sm font-semibold ${
+                            day
+                              ? getColor(data?.[1])
+                              : "bg-gray-600 text-gray-400"
+                          }`}
+                        >
+                          {day}
+                          <div>{data?.[1] || ""}</div>
+                        </td>
+                      );
+                    })}
                 </tr>
               ))}
             </tbody>

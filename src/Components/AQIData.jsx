@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "animate.css";
 import { FaArrowDown } from "react-icons/fa"; // Optional: For adding a scroll down icon
 import AllCities from "./AllCountry";
 
 const AqiData = () => {
+
+  useEffect(()=>{
+    window.scrollTo(0, 0)
+  },[])
+
   return (
     <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="min-h-screen mt-6 text-white p-10">
       {/* Header Section with Animation */}
