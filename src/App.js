@@ -27,6 +27,7 @@ import Pollutants from "./Calsi/Pollutants";
 import AdminLetter from "./Admin/Letter";
 import AuthPage from "./Components/AuthPage";
 import Comparison from "./Components/Comparison"
+import Thing from "./ThinkSpeak/Thing";
 
 function App() {
   localStorage.setItem("role1", "user");
@@ -37,7 +38,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/heatmap" element={<HeatMap />} />
-        <Route path="/thing" element={<HeatMap />} />
+        <Route path="/thing" element={<Thing />} />
         <Route path="/monitor" element={<Monitor />} />
         <Route path="/aqi-data" element={<AqiData />} />
         <Route path="/ranking" element={<Ranking />} />

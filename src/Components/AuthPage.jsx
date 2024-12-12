@@ -170,7 +170,7 @@ const AuthPage = () => {
                 <option value="" disabled>
                   Select a role
                 </option>
-                <option value="employee">Employee</option>
+                <option value="employee">User</option>
                 <option value="admin">Admin</option>
               </select>
             </div>

@@ -150,7 +150,8 @@ const MyAQIMap = () => {
 
       const waqiMapOverlay = new window.google.maps.ImageMapType({
         getTileUrl: (coord, zoom) =>
-          `https://tiles.aqicn.org/tiles/usepa-aqi/${zoom}/${coord.x}/${coord.y}.png?token=2957d73d72e0f99e73a757c6c091c83fd6415f7c`,
+        
+        `https://tiles.waqi.info/tiles/asean-pm10/${zoom}/${coord.x}/${coord.y}.png?token=2e351080-ab3b-4d58-965a-c469e4f1e94e`,
         name: "Air Quality",
       });
 
