@@ -181,7 +181,7 @@ const App = () => {
 
   // Filter cities based on search term
   const filteredCities = selectedData.filter((data) =>
-    data.city.toLowerCase().includes(searchTerm.toLowerCase())
+    data?.city?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Pagination logic
