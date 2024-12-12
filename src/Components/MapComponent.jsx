@@ -59,7 +59,7 @@ const AQIPage = () => {
 
   const fetchHistoricalData = async (city) => {
     try {
-      const data = await fetchingData(city, "PM10", 10);
+      const data = await fetchingData(city);
 
       // Convert date string to a Date object
       setHistoricalAQIData(data); // Update state with formatted data
@@ -72,23 +72,23 @@ const AQIPage = () => {
     let message = "";
     let color = "";
 
-    if (aqius <= 50) {
+    if (aqius <= 100) {
       level = "Good";
       message = "Air quality is satisfactory.";
       color = "text-green-500";
-    } else if (aqius <= 100) {
+    } else if (aqius <= 200) {
       level = "Moderate";
       message = "Air quality is acceptable.";
       color = "text-yellow-500";
-    } else if (aqius <= 150) {
+    } else if (aqius <= 300) {
       level = "Unhealthy for Sensitive Groups";
       message = "People with respiratory issues should limit outdoor exertion.";
       color = "text-orange-500";
-    } else if (aqius <= 200) {
+    } else if (aqius <= 400) {
       level = "Unhealthy";
       message = "Everyone may experience health effects.";
       color = "text-red-500";
-    } else if (aqius <= 300) {
+    } else if (aqius <= 500) {
       level = "Very Unhealthy";
       message =
         "Health alert: everyone may experience more serious health effects.";
@@ -103,17 +103,17 @@ const AQIPage = () => {
   };
 
   const getGradientBackground = (aqius) => {
-    if (aqius <= 50) {
+    if (aqius <= 100) {
       return "bg-gradient-to-r from-green-400 to-green-600"; // Good
-    } else if (aqius <= 100) {
-      return "bg-gradient-to-r from-yellow-400 to-yellow-600"; // Moderate
-    } else if (aqius <= 150) {
-      return "bg-gradient-to-r from-orange-400 to-orange-600"; // Unhealthy for Sensitive Groups
     } else if (aqius <= 200) {
-      return "bg-gradient-to-r from-red-300 to-red-600"; // Unhealthy
+      return "bg-gradient-to-r from-yellow-400 to-yellow-600"; // Moderate
     } else if (aqius <= 300) {
-      return "bg-gradient-to-r from-purple-400 to-purple-600"; // Very Unhealthy
+      return "bg-gradient-to-r from-orange-400 to-orange-600"; // Unhealthy for Sensitive Groups
     } else if (aqius <= 400) {
+      return "bg-gradient-to-r from-red-300 to-red-600"; // Unhealthy
+    } else if (aqius <= 500) {
+      return "bg-gradient-to-r from-purple-400 to-purple-600"; // Very Unhealthy
+    } else if (aqius <= 600) {
       return "bg-gradient-to-r from-pink-600 to-pink-800"; // Hazardous
     } else {
       return "bg-gradient-to-r from-[#7e0023] to-red-900"; // Extremely Hazardous
@@ -182,8 +182,8 @@ const AQIPage = () => {
 
           {/* AQI Trend Chart */}
           {historicalAQIData.length > 0 && (
-            <div className="w-full max-w-2xl flex-1 text-white rounded-lg shadow-lg p-6">
-              <h3 className="text-2xl font-semibold text-center text-white">
+            <div className={`w-full max-w-2xl flex-1 text-white rounded-lg shadow-lg px-8 py-6 ${getGradientBackground(locationData.current.pollution.aqius)}`}>
+              <h3 className="text-2xl font-semibold mb-4 text-center text-white">
                 AQI Trend for Last 10 Days
               </h3>
               <ResponsiveContainer width="100%" height={300}>
@@ -196,13 +196,13 @@ const AQIPage = () => {
                     contentStyle={{
                       backgroundColor: "rgb(0, 0, 0, 0.8)",
                       border: "none",
-                      width: "5rem",
+                      width: "7rem",
                       borderRadius: "0.5rem",
                     }}
                   />
                   <Line
-                    type="linear"
-                    dataKey="predicted_aqi"
+                    type="monotone"
+                    dataKey="aqi"
                     stroke="#8884d8"
                     activeDot={{ r: 8 }}
                   />

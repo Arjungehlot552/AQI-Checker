@@ -314,7 +314,7 @@ const MyAQIMap = () => {
             </Link>
           </div>
           <MoreWeather />
-          <Cigarette />
+          {/* <Cigarette /> */}
           <HealthAdvice />
         </div>
 
@@ -326,12 +326,12 @@ const MyAQIMap = () => {
                 View AQI Data
               </button>
             </Link>
-            <button className="bg-blue-500 mb-12 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300 transform hover:scale-105">
+            <Link to={'/monitor'} className="bg-blue-500 mb-12 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300 transform hover:scale-105">
               View Weather Data
-            </button>
-            <button className="bg-blue-500 mb-12 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300 transform hover:scale-105">
+            </Link>
+            <Link to={'/blog'} className="bg-blue-500 mb-12 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300 transform hover:scale-105">
               Blogs
-            </button>
+            </Link>
           </div>
         </section>
       </div>
