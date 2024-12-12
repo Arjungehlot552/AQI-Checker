@@ -26,7 +26,7 @@ import HeatMap from "./Components/HeatMap";
 import Pollutants from "./Calsi/Pollutants";
 import AdminLetter from "./Admin/Letter";
 import AuthPage from "./Components/AuthPage";
-import Comparison from './Components/Comparison';
+import Comparison from "./Components/Comparison"
 
 function App() {
   localStorage.setItem("role1", "user");

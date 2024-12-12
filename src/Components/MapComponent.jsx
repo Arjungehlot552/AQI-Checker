@@ -184,7 +184,7 @@ const AQIPage = () => {
           {historicalAQIData.length > 0 && (
             <div className={`w-full max-w-2xl flex-1 text-white rounded-lg shadow-lg px-8 py-6 ${getGradientBackground(locationData.current.pollution.aqius)}`}>
               <h3 className="text-2xl font-semibold mb-4 text-center text-white">
-                AQI Trend for Last 10 Days
+                AQI Forecast
               </h3>
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={historicalAQIData}>
