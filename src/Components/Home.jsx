@@ -31,6 +31,7 @@ import Main from '../Home/Main';
 // import Thing from '../Thing_Speak/Thing';
 
 import AuthPage from './AuthPage';
+import { useAuth0 } from '@auth0/auth0-react';
 // import AdminLetter from '../Admin/Letter';
 
 // import Pollutants from '../Calsi/Pollutants';
@@ -57,15 +58,16 @@ import AuthPage from './AuthPage';
 // };
 
 const Home = () => {
+
   return (
     <>
-    <div  style={{ backgroundColor: "rgb(5, 8, 22)" }}>
+      <div style={{ backgroundColor: "rgb(5, 8, 22)" }}>
 
-    
-    <div  className='lg:pl-20 lg:pr-20 '>
 
-   
-      {/* <div className="relative mt-[5.2rem] h-[98vh] w-[98vw] ">
+        <div className='lg:pl-20 lg:pr-20 '>
+
+
+          {/* <div className="relative mt-[5.2rem] h-[98vh] w-[98vw] ">
         <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
@@ -75,55 +77,55 @@ const Home = () => {
           >
             {/* Additional components like markers can be added here */}
           {/* </GoogleMap> */}
-        {/* </LoadScript>
+          {/* </LoadScript>
         <div className="absolute top-0 left-0 z-10 p-4 text-white">
           <h1 className="text-3xl font-bold">AQI Project</h1>
           <p className="text-lg">Air Quality Index Monitoring</p>
         </div> */}
-      {/* </div> */} 
-      {/* <Activity /> */}
-    
-      {/* <CustomMapPath /> */}
-      {/* <MonitorMap /> */}
-      {/* <DailyForecast /> */}
+          {/* </div> */}
+          {/* <Activity /> */}
 
-      <Main />
-      {/* <Thing /> */}
-      {/* <Pollutants /> */}
-      
-      <AuthPage />
-      {/* <AdminLetter /> */}
-      <Swiper />
-      
-      <AQIScale />
-      <MapComponent />
-      <MoreWeather />
-      {/* <InputData /> */}
-      {/* <SearchAqi /> */}
-      {/* <ForeCast /> */}
-      {/* <Cigarette /> */}
-      {/* <MyDoctor /> */}
+          {/* <CustomMapPath /> */}
+          {/* <MonitorMap /> */}
+          {/* <DailyForecast /> */}
 
-      
-      
-      {/* <NGOs /> */}
-      
-      
-      {/* <HealthAdvice /> */}
-      {/* <AQIRoom /> */}
-     
-      {/* <AQIMeter /> */}
-      {/* <WeatherApp /> */}
-      <Know />
-      <MyVideo />
-      <Blog />
-      <EditorsPick />
-      
-     
-      {/* <MediaCoverage /> */}
-      {/* <AllCountry /> */}
-      <AQIAppPage />
-      </div>
+          <Main />
+          {/* <Thing /> */}
+          {/* <Pollutants /> */}
+
+          {/* <AuthPage /> */}
+          {/* <AdminLetter /> */}
+          <Swiper />
+
+          <AQIScale />
+          <MapComponent />
+          <MoreWeather />
+          {/* <InputData /> */}
+          {/* <SearchAqi /> */}
+          {/* <ForeCast /> */}
+          {/* <Cigarette /> */}
+          {/* <MyDoctor /> */}
+
+
+
+          {/* <NGOs /> */}
+
+
+          {/* <HealthAdvice /> */}
+          {/* <AQIRoom /> */}
+
+          {/* <AQIMeter /> */}
+          {/* <WeatherApp /> */}
+          <Know />
+          <MyVideo />
+          <Blog />
+          <EditorsPick />
+
+
+          {/* <MediaCoverage /> */}
+          {/* <AllCountry /> */}
+          <AQIAppPage />
+        </div>
       </div>
     </>
   );

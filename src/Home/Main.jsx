@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
-
-
+// import LineChart from "./LineChart";
 
 export default function Main() {
   const phrase = "Welcome to DPCC Web";
@@ -77,6 +76,8 @@ export default function Main() {
           />
         </div>
       </div>
+
+      {/* <LineChart /> */}
       
     </div>
   );

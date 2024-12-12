@@ -1,131 +1,219 @@
-import React, { useState, useEffect } from 'react';
-import LOGO from '../Images/LOGO.png';
-import Google from '../Images/Google1.png';
+import { useState, useContext } from "react";
+
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 const AuthPage = () => {
-  const [isLogin, setIsLogin] = useState(true);
-  const [backgroundIndex, setBackgroundIndex] = useState(0);
-  const [userRole, setUserRole] = useState('user');
+  const [toggle, setToggle] = useState(false); // Toggle between login/register
+  const [forget, setForget] = useState(false); // Forget password toggle
+  const { userDetails, setUserDetails, loginUser, registerUser, updateUser } =
+    useContext(UserContext); // Context methods
+  const navigate = useNavigate();
+  const [error, setError] = useState(""); // Error state
 
-  const backgroundImages = [
-    'https://png.pngtree.com/thumb_back/fh260/background/20230415/pngtree-ai-robot-innovation-high-tech-ppt-robot-template-background-image-image_2207016.jpg',
-    'https://www.shutterstock.com/image-vector/ai-sustainable-development-goals-futuristic-600nw-2476521095.jpg',
-    'https://worldpermacultureassociation.com/wp-content/uploads/vibrant_permaculture_field_with_various_types_of_AI_systems-893x510.png',
-    'https://bsmedia.business-standard.com/_media/bs/img/article/2024-10/24/full/1729766964-8261.jpg?im=FeatureCrop,size=(826,465)',
-    'https://akm-img-a-in.tosshub.com/businesstoday/images/story/202411/67414010563e6-delhi-air-pollution-23380341-16x9.jpg?size=948:533',
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setBackgroundIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const toggleAuthMode = () => {
-    setIsLogin((prevMode) => !prevMode);
-  };
-
-  const handleSubmit = (e) => {
+  // Form Submit Handler
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ userRole, isLogin });
+    setError(""); // Clear previous error
+
+    if (forget) {
+      // Handle Forget Password Logic
+      if (!userDetails.email || !userDetails.password) {
+        setError("Email and new password are required!");
+        return;
+      }
+      // Call resetPassword API (implementation needed)
+      // resetPassword(userDetails.email, userDetails.password);
+      setForget(false); // Exit forget password mode
+      updateUser(userDetails.email);
+      alert("Password updated successfully! Please log in.");
+      return;
+    }
+
+    if (toggle) {
+      // Login Logic
+      if (!userDetails.email || !userDetails.password) {
+        setError("Email and password are required!");
+        return;
+      }
+      try {
+        const response = await loginUser(); // Call login function from context
+        if (response) {
+          localStorage.setItem("email", userDetails.email);
+          navigate("/");
+        } else {
+          setError("Invalid credentials! Please try again.");
+        }
+      } catch (err) {
+        console.error("Login failed:", err);
+        setError("Something went wrong during login. Please try again.");
+      }
+    } else {
+      // Registration Logic
+      if (
+        !userDetails.name ||
+        !userDetails.email ||
+        !userDetails.password ||
+        !userDetails.role
+      ) {
+        setError("All fields are required for registration!");
+        return;
+      }
+      try {
+        const response = await registerUser(); // Call register function from context
+        if (response) {
+          localStorage.setItem("email", userDetails.email);
+          navigate("/");
+        } else {
+          setError("Registration failed. Please try again.");
+        }
+      } catch (err) {
+        console.error("Registration failed:", err);
+        setError("Something went wrong during registration. Please try again.");
+      }
+    }
   };
 
   return (
-    <div
-      className="flex items-center justify-center py-10 px-4"
-      style={{
-        backgroundImage: `url(${backgroundImages[backgroundIndex]})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        transition: 'background-image 3s ease-in-out',
-        
-      }}
-    >
-      <div className="bg-gray-900 bg-opacity-75 rounded-2xl shadow-xl p-8 max-w-md w-full ">
-        <div className="text-center mb-8">
-          <img src={LOGO} alt="Logo" className="w-24 mx-auto mb-6 drop-shadow-lg" />
-          <h2 className="text-4xl mb-4 font-extrabold text-gray-300 tracking-wide">
-            {isLogin ? 'Login' : 'Signup'}
-          </h2>
-          <p className="text-gray-400 mt-2 text-sm">
-            {isLogin
-              ? 'Welcome back! Please login to your account.'
-              : 'Create your account to get started.'}
-          </p>
-        </div>
-        <form className="space-y-6" onSubmit={handleSubmit}>
-          {!isLogin && (
+    <main className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8 hover:shadow-lg transition-shadow">
+        <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
+          {forget ? "Reset Password" : toggle ? "Welcome Back" : "Join Us"}
+        </h1>
+        {error && (
+          <p className="text-red-500 text-sm text-center mb-4">{error}</p>
+        )}
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Name Input (only for registration) */}
+          {!toggle && !forget && (
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                value={userDetails.name || ""}
+                onChange={(e) =>
+                  setUserDetails({ ...userDetails, name: e.target.value })
+                }
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-500"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+          )}
+
+          {/* Email Input */}
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Email
+            </label>
             <input
-              type="text"
-              placeholder="Username"
-              className="w-full p-3 border text-white bg-transparent border-gray-300 rounded-lg transition duration-200"
+              type="email"
+              id="email"
+              value={userDetails.email || ""}
+              onChange={(e) =>
+                setUserDetails({ ...userDetails, email: e.target.value })
+              }
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-500"
+              placeholder="Enter your email"
               required
             />
-          )}
-          <input
-            type="email"
-            placeholder="Email"
-            className="w-full p-3 border text-white bg-transparent border-gray-300 rounded-lg transition duration-200"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="w-full p-3 border text-white bg-transparent border-gray-300 rounded-lg transition duration-200"
-            required
-          />
-          <div className="mt-4">
-            <label className="text-gray-400">Login as:</label>
-            <div className="flex justify-start items-center space-x-4 mt-2">
-              <label className="flex items-center space-x-2">
-                <input
-                  type="radio"
-                  value="user"
-                  checked={userRole === 'user'}
-                  onChange={() => setUserRole('user')}
-                  className="focus:ring-2 focus:ring-blue-500"
-                />
-                <span className="text-gray-200">User</span>
+          </div>
+
+          {/* Password Input */}
+          <div>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
+              {forget ? "New Password" : "Password"}
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={userDetails.password || ""}
+              onChange={(e) =>
+                setUserDetails({ ...userDetails, password: e.target.value })
+              }
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-500"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+
+          {/* Role Dropdown (only for registration) */}
+          {!toggle && !forget && (
+            <div>
+              <label
+                htmlFor="role"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Role
               </label>
-              <label className="flex items-center space-x-2">
-                <input
-                  type="radio"
-                  value="admin"
-                  checked={userRole === 'admin'}
-                  onChange={() => setUserRole('admin')}
-                  className="focus:ring-2 focus:ring-blue-500"
-                />
-                <span className="text-gray-200">Admin</span>
-              </label>
+              <select
+                id="role"
+                value={userDetails.role || ""}
+                onChange={(e) =>
+                  setUserDetails({ ...userDetails, role: e.target.value })
+                }
+                className="mt-1 block w-full cursor-pointer p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-500"
+                required
+              >
+                <option value="" disabled>
+                  Select a role
+                </option>
+                <option value="employee">Employee</option>
+                <option value="admin">Admin</option>
+              </select>
             </div>
-          </div>
-          <div className="flex justify-around items-center mt-6">
-            <button className="hover:scale-110 transition-transform">
-              <img src={Google} alt="Google" className="h-10 rounded-full shadow-lg" />
-            </button>
-            {/* Other buttons */}
-          </div>
+          )}
+
+          {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-400 transition duration-200"
+            className="w-full bg-gray-800 text-white py-2 px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
           >
-            {isLogin ? 'Login' : 'Signup'}
+            {forget ? "Reset Password" : toggle ? "Sign In" : "Sign Up"}
           </button>
-        </form>
-        <div className="mt-6 text-center">
-          <p className="text-gray-500">
-            {isLogin ? "Don't have an account?" : "Already have an account?"}
-            <button
-              onClick={toggleAuthMode}
-              className="text-blue-500 font-semibold ml-1 hover:underline"
+
+          {/* Forget Password Option */}
+          {toggle && (
+            <p
+              className="text-blue-600 text-sm text-center cursor-pointer"
+              onClick={() => setForget(!forget)}
             >
-              {isLogin ? 'Signup' : 'Login'}
-            </button>
+              Forget Password?
+            </p>
+          )}
+
+          {/* Toggle Between Login and Registration */}
+          <p className="text-sm text-center">
+            {forget
+              ? "Remembered your password?"
+              : toggle
+                ? "New here?"
+                : "Already have an account?"}{" "}
+            <span
+              className="text-blue-600 cursor-pointer"
+              onClick={() => {
+                setToggle(!toggle);
+                setForget(false); // Reset forget state
+              }}
+            >
+              {forget ? "Login" : toggle ? "Sign Up" : "Sign In"}
+            </span>
           </p>
-        </div>
+        </form>
       </div>
-    </div>
+    </main>
   );
 };
 

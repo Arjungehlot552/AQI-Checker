@@ -138,7 +138,7 @@ const AqiData = () => {
           </h3>
           <div className="grid grid-cols-1 cursor-pointer md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-gray-800 p-6 rounded-lg border animate__animated animate__fadeInUp">
-              <img src="https://cloudfront-us-east-2.images.arcpublishing.com/reuters/Y6OH3DONHFLVFHUM4WEAANAMFY.jpg" alt="Area 1" className="w-full h-64 object-cover rounded-lg mb-4" />
+              <img src="https://images.pexels.com/photos/247763/pexels-photo-247763.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Area 1" className="w-full h-64 object-cover rounded-lg mb-4" />
               <h3 className="text-xl font-semibold">Industrial Area (Okhla)</h3>
               <p className="text-sm">This area is heavily affected by emissions from nearby factories and vehicles.</p>
             </div>

@@ -72,7 +72,7 @@ const Navbar = () => {
               className="w-32 "
             />
             <div className="relative hidden lg:flex lg:flex-row lg:items-center w-[30rem] px-4 space-x-2 border border-white rounded-full">
-              <CiSearch color="white"/>
+              <CiSearch color="white" />
               <input
                 type="text"
                 placeholder="Search Location City or Area"
@@ -111,7 +111,7 @@ const Navbar = () => {
                 >
                   More
                   <span className="ml-1 mt-1">
-                    {showDropdown ? <BiSolidUpArrow className="text-[0.6rem]"/> : <BiSolidDownArrow className="text-[0.6rem]"/>}
+                    {showDropdown ? <BiSolidUpArrow className="text-[0.6rem]" /> : <BiSolidDownArrow className="text-[0.6rem]" />}
                   </span>
                 </button>
                 {showDropdown && (
@@ -137,7 +137,7 @@ const Navbar = () => {
                     <Link to="/aqi-info" className="flex items-center hover:bg-gray-200 border-b h-12 px-4 py-1 rounded-md">
                       AQI Calculation
                     </Link>
-                    
+
                   </div>
                 )}
               </div>
@@ -213,11 +213,6 @@ const Navbar = () => {
                     </div>
                     <div
                       className="text-gray-800 px-4 py-2 hover:bg-gray-200 cursor-pointer"
-                      onClick={() =>
-                        logout({
-                          logoutParams: { returnTo: window.location.origin },
-                        })
-                      }
                     >
                       Log Out
                     </div>
@@ -225,12 +220,11 @@ const Navbar = () => {
                 )}
               </div>
             ) : (
-              <button
-                onClick={() => loginWithRedirect()}
+              <Link to={'/auth'}
                 className="text-blue-500"
               >
                 Log In
-              </button>
+              </Link>
             )}
 
 
