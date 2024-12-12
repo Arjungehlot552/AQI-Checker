@@ -23,6 +23,8 @@ import Contact from './Components/Contact';
 import BlogPage from './Blog/BlogPage';
 import AboutSensors from './Sensors/AboutSensors';
 import HeatMap from './Components/HeatMap';
+import Pollutants from './Calsi/Pollutants';
+import AdminLetter from './Admin/Letter';
 
 function App() {
   return (
@@ -30,7 +32,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path='/thing' element={<HeatMap />} />
+        <Route path='/heatmap' element={<HeatMap />} />
         <Route path="/monitor" element={<Monitor />} />
         <Route path="/aqi-data" element={<AqiData />} />
         <Route path="/ranking" element={<Ranking />} />
@@ -51,6 +53,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog/blog-page" element={<BlogPage />} />
         <Route path="/air-quality" element={<AboutSensors />} />
+        <Route path='/pollutants' element={<Pollutants />} />
+        <Route path='/letter' element={<AdminLetter />} />
         
       </Routes>
       <Footer />

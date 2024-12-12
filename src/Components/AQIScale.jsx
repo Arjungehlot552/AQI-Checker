@@ -4,37 +4,37 @@ const AQIData = [
   {
     color: 'bg-green-500',
     label: 'Good',
-    range: '0 - 50',
+    range: '0 - 100',
     description: 'Air quality is satisfactory, and air pollution poses little or no risk.',
   },
   {
     color: 'bg-yellow-500',
     label: 'Moderate',
-    range: '51 - 100',
+    range: '100 - 200',
     description: 'Air quality is acceptable; however, there may be a risk for some people.',
   },
   {
     color: 'bg-orange-500',
     label: 'Unhealthy for Sensitive Groups',
-    range: '101 - 150',
+    range: '200 - 300',
     description: 'Members of sensitive groups may experience health effects.',
   },
   {
     color: 'bg-red-500',
     label: 'Unhealthy',
-    range: '151 - 200',
+    range: '300 - 400',
     description: 'Some members of the general public may experience health effects.',
   },
   {
     color: 'bg-purple-500',
     label: 'Very Unhealthy',
-    range: '201 - 300',
+    range: '400 - 500',
     description: 'Health alert: The risk of health effects is increased for everyone.',
   },
   {
     color: 'bg-gray-800',
     label: 'Hazardous',
-    range: '301 and higher',
+    range: '501 and higher',
     description: 'Health warning of emergency conditions; everyone is more likely to be affected.',
   },
 ];

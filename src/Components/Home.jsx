@@ -31,6 +31,10 @@ import Main from '../Home/Main';
 // import Thing from '../Thing_Speak/Thing';
 
 import AuthPage from './AuthPage';
+// import AdminLetter from '../Admin/Letter';
+
+// import Pollutants from '../Calsi/Pollutants';
+
 
 
 // const mapContainerStyle = {
@@ -85,9 +89,10 @@ const Home = () => {
 
       <Main />
       {/* <Thing /> */}
+      {/* <Pollutants /> */}
       
-        <AuthPage />
-      
+      <AuthPage />
+      {/* <AdminLetter /> */}
       <Swiper />
       
       <AQIScale />

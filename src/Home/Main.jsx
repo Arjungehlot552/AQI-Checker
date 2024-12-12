@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 
+
 export default function Main() {
   const phrase = "Welcome to DPCC Web";
   const [currentText, setCurrentText] = useState("");
@@ -76,6 +77,7 @@ export default function Main() {
           />
         </div>
       </div>
+      
     </div>
   );
 }
