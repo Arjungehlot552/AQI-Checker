@@ -1,17 +1,22 @@
 import { CartesianGrid, LineChart, XAxis, YAxis, Legend, Tooltip, Line } from 'recharts';
 import { fetchMonthlyData } from './ComparisonData';
 import { useEffect, useState } from 'react';
+import { Box, CircularProgress } from '@mui/material';
 
 const Comparison = () => {
     const [data, setData] = useState([]);
     const [prev, setPrev] = useState([]);
     const [city, setCity] = useState('');
 
+    const [loading, setLoading] = useState(false);
+
     const fetch = async (city) => {
+        setLoading(true);
         const res1 = await fetchMonthlyData(city, 12, 2024, 'pm10');
         setData(res1);
         const res2 = await fetchMonthlyData(city, 12, 2023, 'pm10');
         setPrev(res2);
+        setLoading(false);
     }
 
   return (
@@ -27,6 +32,9 @@ const Comparison = () => {
                 Submit
             </button>
         </div>
+        {loading && <Box style={{ backgroundColor: "rgb(5, 8, 22)" }} className="my-8 flex items-center justify-center">
+            <CircularProgress />
+        </Box>}
         <div className='flex items-center justify-center'>
             <LineChart 
                 width={800} 
@@ -34,8 +42,10 @@ const Comparison = () => {
                 data={data}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
             >
+
+
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="date" angle={90} interval={1} textAnchor='middle' dx={5} height={100} dy={45}/>
+                <XAxis dataKey="date" angle={-90} interval={1} textAnchor='middle' dx={5} height={100} dy={45}/>
                 <YAxis />
                 <Tooltip />
                 <Line type="monotone" dataKey="aqi" stroke="#82ca9d" fill='blue' />
@@ -47,7 +57,7 @@ const Comparison = () => {
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="date" angle={90} interval={1} textAnchor='middle' dx={5} height={100} dy={45}/>
+                <XAxis dataKey="date" angle={-90} interval={1} textAnchor='middle' dx={5} height={100} dy={45}/>
                 <YAxis />
                 <Tooltip />
                 <Line type="monotone" dataKey="aqi" stroke="#82ca9d" fill='blue' />
