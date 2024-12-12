@@ -131,9 +131,6 @@ const Navbar = () => {
                     <Link to="/pollutants" className="flex items-center hover:bg-gray-200 border-b h-12 px-4 py-1 rounded-md">
                       Pollutants Calculator
                     </Link>
-                    <Link to="/aqi-info" className="flex items-center hover:bg-gray-200 border-b h-12 px-4 py-1 rounded-md">
-                      AQI Calculation
-                    </Link>
                     <Link to="/compare" className="flex items-center hover:bg-gray-200 border-b h-12 px-4 py-1 rounded-md">
                       Comparisons
                     </Link>
