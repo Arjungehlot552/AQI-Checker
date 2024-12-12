@@ -61,7 +61,7 @@ function App() {
         <Route path="/air-quality" element={<AboutSensors />} />
         <Route path="/pollutants" element={<Pollutants />} />
         <Route path="/letter" element={<AdminLetter />} />
-        <Route path="/auth" element={<AuthPage></AuthPage>}></Route>
+        <Route path="/auth" element={<AuthPage/>}></Route>
         <Route path='/pollutants' element={<Pollutants />} />
         <Route path='/letter' element={<AdminLetter />} />
         <Route path='/compare' element={<Comparison />} />

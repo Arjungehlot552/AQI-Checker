@@ -4,10 +4,10 @@ import { FaArrowDown } from "react-icons/fa"; // Optional: For adding a scroll d
 import AllCities from "./AllCountry";
 
 const AqiData = () => {
-
-  useEffect(()=>{
-    window.scrollTo(0, 0)
-  },[])
+  const role = localStorage.getItem('role');
+  if (role !== 'admin') {
+      return <div className='text-white text-center text-3xl font-bold'>You are not authorized to access this page</div>
+  }
 
   return (
     <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="min-h-screen mt-6 text-white p-10">

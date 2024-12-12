@@ -3,21 +3,27 @@ import React, { useState, useEffect } from "react";
 // import Modi_ji from "../Images/Modi-Ji.png"
 import SIH from "../Images/SIH_logo_2024.png"
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, redirect, Router, useLocation, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import Moon from "../Images/Moon.png"
 import { CiSearch } from "react-icons/ci";
 import { BiSolidDownArrow, BiSolidUpArrow } from "react-icons/bi";
+import axios from "axios";
+
+const BACKEND_URI = "http://localhost:3001/api/users"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [showProfileMenu, setShowProfileMenu] = useState(false);
-  const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
-  const navigate = useNavigate();
   const location = useLocation();
   const [showDropdown, setShowDropdown] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+
+  const email = localStorage.getItem("email");
+  const role = localStorage.getItem("role");
+
+  const navigate = useNavigate();
 
   // Effect to apply dark mode based on the state
   useEffect(() => {
@@ -26,7 +32,7 @@ const Navbar = () => {
     } else {
       document.documentElement.classList.remove('dark'); // Disable dark mode
     }
-  }, [darkMode]);
+  }, []);
 
   // Function to toggle dark mode
   const toggleDarkMode = () => {
@@ -50,10 +56,17 @@ const Navbar = () => {
     }
   }
 
+
+
   const handleNavigation = (path) => {
     navigate(path);
     setShowProfileMenu(false); // Close the menu after navigation
   };
+  const handleLogout = async () => {
+    localStorage.removeItem("email");
+    localStorage.removeItem("role");
+    window.location.reload();
+  }
 
   const getLinkClasses = (path) =>
     location.pathname === path
@@ -131,10 +144,15 @@ const Navbar = () => {
                     <Link to="/pollutants" className="flex items-center hover:bg-gray-200 border-b h-12 px-4 py-1 rounded-md">
                       Pollutants Calculator
                     </Link>
-                    <Link to="/compare" className="flex items-center hover:bg-gray-200 border-b h-12 px-4 py-1 rounded-md">
+                    {role !== 'admin' ? (<></>) : (<Link to="/compare" className="flex items-center hover:bg-gray-200 border-b h-12 px-4 py-1 rounded-md">
                       Comparisons
-                    </Link>
-
+                    </Link>)}
+                    {role !== 'admin' ? (<></>) : (<Link to="/heatmap" className="flex items-center hover:bg-gray-200 border-b h-12 px-4 py-1 rounded-md">
+                      Heat Map
+                    </Link>)}
+                    {role !== 'admin' ? (<></>) : (<Link to="/thing" className="flex items-center hover:bg-gray-200 border-b h-12 px-4 py-1 rounded-md">
+                      SmartAQI
+                    </Link>)}
                   </div>
                 )}
               </div>
@@ -161,14 +179,14 @@ const Navbar = () => {
               </span>
 
             </button>
-            {isAuthenticated ? (
+            {email ? (
               <div className="relative">
                 {/* Profile Button */}
                 <div
                   className="flex items-center lg:mr-10 justify-center w-10 h-10 rounded-full bg-blue-500 text-white font-semibold cursor-pointer sm:ml-20"
                   onClick={() => setShowProfileMenu((prev) => !prev)} // Toggle the visibility of the menu on click
                 >
-                  {user?.name?.slice(0, 2).toUpperCase()}
+                  {localStorage.getItem("email") ? localStorage.getItem("email")[0].toUpperCase() : ""}
                 </div>
 
                 {/* Options Menu */}
@@ -209,6 +227,7 @@ const Navbar = () => {
                       MyScore
                     </div>
                     <div
+                      onClick={handleLogout}
                       className="text-gray-800 px-4 py-2 hover:bg-gray-200 cursor-pointer"
                     >
                       Log Out

@@ -7,6 +7,7 @@ import 'rc-slider/assets/index.css';
 import ForeCast from "../Components/ForeCast";
 
 const DailyForecast = () => {
+
     // Random AQI between 250 to 480
     const [data, setData] = useState({});
     const [aqi, setAqi] = useState(0);
@@ -17,22 +18,22 @@ const DailyForecast = () => {
     const location = useLocation().pathname.split('/').at(-1);
 
     const fetchAQI = async () => {
-        try{
+        try {
             const response = await fetch(`https://api.waqi.info/feed/${location}/?token=2957d73d72e0f99e73a757c6c091c83fd6415f7c`);
             const res = await response.json();
-            if(res.status == 'ok'){
+            if (res.status == 'ok') {
                 setData(res.data);
                 setAqi(res.data.aqi);
             }
-            else{
+            else {
                 console.log("Error fetching data");
             }
-        }catch(e){
+        } catch (e) {
             console.log(e)
         }
     }
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         fetchAQI();
     }, [location]);
 
@@ -61,7 +62,7 @@ const DailyForecast = () => {
             return "from-purple-700 to-purple-300"; // Hazardous AQI
         }
     };
-    
+
 
     return (
         <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className=" mx-auto lg:pr-20 lg:pl-20 px-4 py-12 pt-32 w-full  text-white">
@@ -104,25 +105,25 @@ const DailyForecast = () => {
                     </div>
 
 
-                    
+
                     <div className="flex flex-col items-center justify-center">
                         <div className="w-[50%]">
-                        <div className="flex justify-between text-sm mb-2">
-                            <span>Good</span>
-                            <span>Poor</span>
-                            <span>Very Poor</span>
-                            <span>Hazardous</span>
-                        </div>
-                        <Slider 
-                            min={0} 
-                            max={500} 
-                            value={aqi}
-                            handleStyle={{border: "2px solid black"}}
-                            trackStyle={{background: "transparent"}}
-                            railStyle={{background: "linear-gradient(to right, #4caf50, #ffeb3b, #f44336 )", height: 14}}
-                            className="flex items-center justify-center bg-transparent"
-                            disabled
-                        />
+                            <div className="flex justify-between text-sm mb-2">
+                                <span>Good</span>
+                                <span>Poor</span>
+                                <span>Very Poor</span>
+                                <span>Hazardous</span>
+                            </div>
+                            <Slider
+                                min={0}
+                                max={500}
+                                value={aqi}
+                                handleStyle={{ border: "2px solid black" }}
+                                trackStyle={{ background: "transparent" }}
+                                railStyle={{ background: "linear-gradient(to right, #4caf50, #ffeb3b, #f44336 )", height: 14 }}
+                                className="flex items-center justify-center bg-transparent"
+                                disabled
+                            />
                             <div className="flex mt-2 justify-between text-sm text-white">
                                 <span>0</span>
                                 <span>50</span>
@@ -143,7 +144,7 @@ const DailyForecast = () => {
                         src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.721268543415!2d139.6917!3d35.6895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188e3f0b7f85e5%3A0x82c4261b0e80ab26!2s${location}!5e1!3m2!1sen!2sjp!4v1638899183151`}
                         width="100%"
                         height="100%"
-                        style={{ border: 0 , rounded: "10px" }}
+                        style={{ border: 0, rounded: "10px" }}
                         allowFullScreen=""
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"

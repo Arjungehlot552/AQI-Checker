@@ -31,7 +31,8 @@ import Main from '../Home/Main';
 // import Thing from '../Thing_Speak/Thing';
 
 import AuthPage from './AuthPage';
-import { useAuth0 } from '@auth0/auth0-react';
+import AQIPage from './SearchAqi';
+import { useNavigate } from 'react-router';
 // import AdminLetter from '../Admin/Letter';
 
 // import Pollutants from '../Calsi/Pollutants';
@@ -58,6 +59,12 @@ import { useAuth0 } from '@auth0/auth0-react';
 // };
 
 const Home = () => {
+  const navigate = useNavigate()
+  const email = localStorage.getItem('email');
+  const role = localStorage.getItem('role');
+  if(!email || !role){
+    navigate("/auth")
+  }
 
   return (
     <>
@@ -96,6 +103,7 @@ const Home = () => {
           {/* <AuthPage /> */}
           {/* <AdminLetter /> */}
           <Swiper />
+          <AQIPage />
 
           <AQIScale />
           <MapComponent />

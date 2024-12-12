@@ -8,7 +8,18 @@ const BACKEND_API =
   process.env.BACKEND_API || "https://smartaqi.onrender.com/api/create";
 
 const Thing = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({
+    "created_at": "2024-12-12T05:04:34Z",
+    "entry_id": 1378,
+    "field1": "25.80000",
+    "field2": "40.50000",
+    "field3": "0.10000",
+    "field4": "2.37900",
+    "field5": "1.13636",
+    "field6": "83.98474",
+    "field7": "23.10381",
+    "field8": "76.03629"
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -17,7 +28,7 @@ const Thing = () => {
       try {
         const response = await axios.get(THING_SPEAK_API);
         setData({
-          created_at: response?.data?.created_at,
+          created_at: new Date(response?.data?.created_at).toLocaleString(),
           entry_id: response?.data?.entry_id,
           temperature: response?.data?.field1,
           humidity: response?.data?.field2,
@@ -26,6 +37,7 @@ const Thing = () => {
           latitude: parseFloat(response?.data?.field7.replace(/"/g, "")),
           longitude: parseFloat(response?.data?.field8.replace(/"/g, "")),
         });
+        console.log(response)
         setLoading(false);
         setError("");
 
@@ -40,9 +52,7 @@ const Thing = () => {
 
     getAQI();
 
-    const interval = setInterval(getAQI, 30 * 1000); // Fetch data every 30 seconds
-    return () => clearInterval(interval);
-  }, [data]);
+  }, []);
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-gray-50 py-10 px-4">
@@ -57,7 +67,25 @@ const Thing = () => {
             <p className="ml-4 text-gray-600">Fetching data...</p>
           </div>
         ) : error ? (
-          <p className="text-red-600 text-center">{error}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <DataCard title="Created At" value={data?.created_at} />
+            <DataCard title="Entry ID" value={data?.entry_id} />
+            <DataCard title="Temperature" value={`${data?.temperature} °C`} />
+            <DataCard title="Humidity" value={`${data?.humidity} %`} />
+            <DataCard title="CO" value={`${data?.CO}`} />
+            <DataCard title="AQI" value={data?.aqi} />
+            <DataCard
+              title="Location"
+              value={
+                <>
+                  <span>Lat: {data?.latitude}</span>
+                  <br />
+                  <span>Long: {data?.longitude}</span>
+                </>
+              }
+            />
+
+          </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <DataCard title="Created At" value={data?.created_at} />

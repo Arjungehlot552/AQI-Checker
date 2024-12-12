@@ -1,14 +1,19 @@
 import { CartesianGrid, LineChart, XAxis, YAxis, Legend, Tooltip, Line } from 'recharts';
 import { fetchMonthlyData } from './ComparisonData';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Box, CircularProgress } from '@mui/material';
 
 const Comparison = () => {
+
     const [data, setData] = useState([]);
     const [prev, setPrev] = useState([]);
     const [city, setCity] = useState('');
 
     const [loading, setLoading] = useState(false);
+    const role = localStorage.getItem('role');
+    if(role !== 'admin'){
+        return <div className='text-white text-center text-3xl font-bold'>You are not authorized to access this page</div>
+    }
 
     const fetch = async (city) => {
         setLoading(true);

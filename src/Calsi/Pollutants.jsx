@@ -11,7 +11,10 @@ function Pollutants() {
 
   const [carbonResult, setCarbonResult] = useState(null);
   const [pollutantAnalysis, setPollutantAnalysis] = useState(null);
-
+  const role = localStorage.getItem('role');
+  if (role !== 'admin') {
+      return <div className='text-white text-center text-3xl font-bold'>You are not authorized to access this page</div>
+  }
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };

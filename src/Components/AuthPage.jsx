@@ -1,10 +1,16 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
 const AuthPage = () => {
-  const [toggle, setToggle] = useState(false); // Toggle between login/register
+  useEffect(() => {
+    if (localStorage.getItem("email")) {
+      redirect('/')
+    }
+  })
+
+  const [toggle, setToggle] = useState(true); // Toggle between login/register
   const [forget, setForget] = useState(false); // Forget password toggle
   const { userDetails, setUserDetails, loginUser, registerUser, updateUser } =
     useContext(UserContext); // Context methods
@@ -38,11 +44,15 @@ const AuthPage = () => {
       }
       try {
         const response = await loginUser(); // Call login function from context
-        if (response) {
+        if (response.status === 400) {
+          setError("Invalid Password!.");
+        } else if (response.status === 500) {
+          setError("Invalid credentials! Please try again.");
+        }
+        else {
+          console.log(response.status);
           localStorage.setItem("email", userDetails.email);
           navigate("/");
-        } else {
-          setError("Invalid credentials! Please try again.");
         }
       } catch (err) {
         console.error("Login failed:", err);
@@ -53,19 +63,20 @@ const AuthPage = () => {
       if (
         !userDetails.name ||
         !userDetails.email ||
-        !userDetails.password ||
-        !userDetails.role
+        !userDetails.password
       ) {
         setError("All fields are required for registration!");
         return;
       }
       try {
         const response = await registerUser(); // Call register function from context
-        if (response) {
+        if (response.status === 400) {
+          setError("Email already exists! Please try another email.");
+        } else if (response.status === 500) {
+          setError("Registration failed. Please try again.");
+        } else {
           localStorage.setItem("email", userDetails.email);
           navigate("/");
-        } else {
-          setError("Registration failed. Please try again.");
         }
       } catch (err) {
         console.error("Registration failed:", err);
@@ -148,33 +159,6 @@ const AuthPage = () => {
               required
             />
           </div>
-
-          {/* Role Dropdown (only for registration) */}
-          {!toggle && !forget && (
-            <div>
-              <label
-                htmlFor="role"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Role
-              </label>
-              <select
-                id="role"
-                value={userDetails.role || ""}
-                onChange={(e) =>
-                  setUserDetails({ ...userDetails, role: e.target.value })
-                }
-                className="mt-1 block w-full cursor-pointer p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-500"
-                required
-              >
-                <option value="" disabled>
-                  Select a role
-                </option>
-                <option value="employee">User</option>
-                <option value="admin">Admin</option>
-              </select>
-            </div>
-          )}
 
           {/* Submit Button */}
           <button
