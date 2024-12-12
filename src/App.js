@@ -30,8 +30,6 @@ import Comparison from "./Components/Comparison"
 import Thing from "./ThinkSpeak/Thing";
 
 function App() {
-  localStorage.setItem("role1", "user");
-  localStorage.setItem("role2", "admin");
   return (
     <>
       <Navbar />

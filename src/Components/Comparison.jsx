@@ -2,11 +2,14 @@ import { CartesianGrid, LineChart, XAxis, YAxis, Legend, Tooltip, Line } from 'r
 import { fetchMonthlyData } from './ComparisonData';
 import { useState } from 'react';
 import { Box, CircularProgress } from '@mui/material';
+import { redirect } from 'react-router';
 
-const Comparison = ({role}) => {
-    if(role !== 'admin'){
-        return <h1 className='text-3xl font-bold text-white text-center mt-32'>Please login to view this page</h1>
+const Comparison = () => {
+
+    if (localStorage.getItem('role') !== 'admin') {
+        redirect('/');
     }
+    
     const [data, setData] = useState([]);
     const [prev, setPrev] = useState([]);
     const [city, setCity] = useState('');

@@ -37,7 +37,7 @@ const AuthPage = () => {
     }
 
     if (toggle) {
-      // Login Logic
+      // Login Logic  
       if (!userDetails.email || !userDetails.password) {
         setError("Email and password are required!");
         return;
@@ -46,11 +46,17 @@ const AuthPage = () => {
         const response = await loginUser(); // Call login function from context
         if (response.status === 400) {
           setError("Invalid Password!.");
+          return
         } else if (response.status === 500) {
           setError("Invalid credentials! Please try again.");
+          return
+        }
+        else if(response.code === 'ERR_NETWORK'){
+          setError("Network Error! Please try again.");
+          return
         }
         else {
-          console.log(response.status);
+          console.log(response);
           localStorage.setItem("email", userDetails.email);
           navigate("/");
         }
