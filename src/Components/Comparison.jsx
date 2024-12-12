@@ -3,7 +3,10 @@ import { fetchMonthlyData } from './ComparisonData';
 import { useEffect, useState } from 'react';
 import { Box, CircularProgress } from '@mui/material';
 
-const Comparison = () => {
+const Comparison = ({role}) => {
+    if(role !== 'admin'){
+        return <h1 className='text-3xl font-bold text-white text-center mt-32'>Please login to view this page</h1>
+    }
     const [data, setData] = useState([]);
     const [prev, setPrev] = useState([]);
     const [city, setCity] = useState('');
