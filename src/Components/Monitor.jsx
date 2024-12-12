@@ -79,7 +79,7 @@ const MyAQIMap = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://api.waqi.info/feed/${locationQuery}/?token=2957d73d72e0f99e73a757c6c091c83fd6415f7c`
+        `https://api.waqi.info/feed/${locationQuery}/?token=d2f68773-3e35-4212-b2f9-05610209d21e`
       );
       const data = await response.json();
       if (data && data.status === "ok") {
@@ -95,15 +95,15 @@ const MyAQIMap = () => {
             data?.aqi <= 50
               ? "Good"
               : data?.aqi <= 100
-              ? "Moderate"
-              : "Unhealthy",
+                ? "Moderate"
+                : "Unhealthy",
           pm25: data?.iaqi?.pm25?.v || 0,
           pm10: data?.iaqi?.pm10?.v || 0,
           lastUpdated: data?.time?.s || new Date(),
         });
 
         const aqiValues = fetchingData(aqiData.city, "PM10")
-      
+
         setChartData({
           labels: getNextThirtyDays(),
           datasets: [
@@ -142,7 +142,7 @@ const MyAQIMap = () => {
       const googleMap = new window.google.maps.Map(
         document.getElementById("map"),
         {
-          center: { lat: 51.505, lng: -0.09 },
+          center: { lat: 21.2369408, lng: 81.3400064 },
           zoom: 11,
           mapTypeId: window.google.maps.MapTypeId.ROADMAP,
         }
@@ -150,8 +150,8 @@ const MyAQIMap = () => {
 
       const waqiMapOverlay = new window.google.maps.ImageMapType({
         getTileUrl: (coord, zoom) =>
-        
-        `https://tiles.waqi.info/tiles/asean-pm10/${zoom}/${coord.x}/${coord.y}.png?token=2e351080-ab3b-4d58-965a-c469e4f1e94e`,
+
+          `https://tiles.waqi.info/tiles/asean-pm10/${zoom}/${coord.x}/${coord.y}.png?token=d2f68773-3e35-4212-b2f9-05610209d21e`,
         name: "Air Quality",
       });
 
@@ -221,7 +221,7 @@ const MyAQIMap = () => {
           style={{ backgroundColor: "rgb(5, 8, 22)" }}
           className=" text-white min-h-screen"
         >
-          <div className="text-center mb-8">
+          <div className="text-center">
             <p className="text-4xl p-10 mt-20 font-serif font-bold text-gradient">
               Live AQI Stations Around the World
             </p>
@@ -231,7 +231,7 @@ const MyAQIMap = () => {
           {/* <MonitorMap /> */}
 
           <div className="flex justify-center items-center space-x-4 mb-8">
-            <input
+            {/* <input
               type="text"
               onKeyDown={handleKeyPress}
               className="w-full sm:w-1/2 p-3 text-xl rounded-md bg-transparent border text-white "
@@ -244,7 +244,7 @@ const MyAQIMap = () => {
               className="p-3 bg-green-500 text-white rounded-md hover:bg-green-600 transition-all"
             >
               Search
-            </button>
+            </button> */}
           </div>
 
           <div
@@ -253,11 +253,11 @@ const MyAQIMap = () => {
             className="w-full bg-white shadow-lg rounded-3xl mb-8"
           ></div>
 
-          <div
+          {/* <div
             className="min-h-screen rounded-3xl flex flex-col items-center"
             style={{ backgroundColor: "rgb(5, 8, 22)" }}
-          >
-            {/* Header Section */}
+          > */}
+            {/* Header Section
             <header className="text-center mt-10 px-5">
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate__animated animate__fadeIn">
                 Real-time Weather and AQI Information
@@ -272,9 +272,9 @@ const MyAQIMap = () => {
                   {aqiData?.currentAQI || "N/A"}
                 </span>
               </p>
-            </header>
+            </header> */}
 
-            {/* AQI Details Section */}
+            {/* AQI Details Section
             <div className="flex items-center ml-96 -mr-40 mt-10 justify-center">
               <section className="grid grid-cols-1 items-center sm:grid-cols-2 lg:grid-cols-3 gap-8 px-5 w-full max-w-6xl">
                 <div className="bg-gray-800 bg-opacity-70 p-5 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
@@ -294,26 +294,26 @@ const MyAQIMap = () => {
                   )}
                 </div>
               </section>
-            </div>
+            </div> */}
 
             {/* Graph Section */}
-            <div
+            {/* <div
               className="mt-10 w-full max-w-4xl p-5 rounded-lg shadow-lg bg-gray-900"
               style={{
                 background: `linear-gradient(to right, ${aqiColor}, #000)`,
               }}
             >
               <Line data={chartData} options={chartOptions} />
-            </div>
+            </div> */}
 
             {/* Learn More Link */}
-            <Link
+            {/* <Link
               to="/more-weather"
               className="mt-10 mb-10  text-lg font-bold text-white underline hover:text-gray-300 transition-colors"
             >
               Learn More
             </Link>
-          </div>
+          </div> */}
           <MoreWeather />
           {/* <Cigarette /> */}
           <HealthAdvice />

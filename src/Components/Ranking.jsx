@@ -20,7 +20,7 @@ const App = () => {
   const aqiData = cities.map(async (city)=>{
     return await fetchData(city, formatDate(new Date()), "pm10").then((data) => {}).catch(err=>console.error(err))
   })
-  
+  console.log(aqiData)
   
   const weatherData = [
     { rank: 1, city: "Mumbai", temp: 32, humidity: 80 },
