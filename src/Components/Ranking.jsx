@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
-import { fetchData } from "./ComparisonData";
 
 const App = () => {
   const [location, setLocation] = useState("India");
@@ -10,18 +9,59 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const citiesPerPage = 10;
 
-  const cities = ["Mumbai","Delhi","Bangalore","Hyderabad","Ahmedabad","Chennai","Kolkata","Pune","Jaipur","Lucknow","Kanpur","Nagpur","Indore","Thane","Bhopal","Visakhapatnam","Patna","Vadodara","Ghaziabad","Ludhiana","Agra","Nashik","Faridabad","Meerut","Rajkot","Kalyan-Dombivli","Vasai-Virar","Varanasi","Srinagar","Aurangabad","Dhanbad","Amritsar","Navi Mumbai","Allahabad","Ranchi","Howrah","Coimbatore","Jabalpur","Gwalior","Vijayawada","Jodhpur","Madurai","Raipur","Kota","Guwahati","Chandigarh","Solapur","Hubballi-Dharwad","Bareilly","Moradabad","Mysore","Gurgaon","Aligarh","Jalandhar","Tiruchirappalli","Bhubaneswar","Salem","Mira-Bhayandar","Warangal","Guntur","Bikaner","Noida","Jamshedpur","Bhilai","Cuttack","Firozabad","Kochi"]
-  const formatDate = (date) => {
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // months are 0-indexed
-    const year = String(date.getFullYear()).slice(-2); // get last two digits of the year
-    return `${day}${month}${year}`;
-  };
-  const aqiData = cities.map(async (city)=>{
-    return await fetchData(city, formatDate(new Date()), "pm10").then((data) => {}).catch(err=>console.error(err))
-  })
-  console.log(aqiData)
-  
+
+  const aqiData = [
+    { rank: 1, city: "Ghaziabad", aqi: 489, status: "Hazardous" },
+    { rank: 2, city: "Rohtak", aqi: 451, status: "Hazardous" },
+    { rank: 3, city: "Jodhpur", aqi: 450, status: "Hazardous" },
+    { rank: 4, city: "Sonipat", aqi: 449, status: "Hazardous" },
+    { rank: 5, city: "New Delhi", aqi: 430, status: "Hazardous" },
+    { rank: 6, city: "Amritsar", aqi: 312, status: "Hazardous" },
+    { rank: 7, city: "Pali", aqi: 400, status: "Severe" },
+    { rank: 8, city: "Ahmedabad", aqi: 394, status: "Severe" },
+    { rank: 9, city: "Khem Karan", aqi: 383, status: "Severe" },
+    { rank: 10, city: "Bali", aqi: 378, status: "Severe" },
+    { rank: 11, city: "Phalodi", aqi: 375, status: "Severe" },
+    { rank: 12, city: "Noida", aqi: 373, status: "Severe" },
+    { rank: 13, city: "Bhiwani", aqi: 370, status: "Severe" },
+    { rank: 14, city: "Kamarhati", aqi: 365, status: "Severe" },
+    { rank: 15, city: "Bikaner", aqi: 365, status: "Severe" },
+    { rank: 16, city: "Lucknow", aqi: 364, status: "Severe" },
+    { rank: 17, city: "Meerut", aqi: 360, status: "Severe" },
+    { rank: 18, city: "Bhiwadi", aqi: 349, status: "Severe" },
+    { rank: 19, city: "Hapur", aqi: 348, status: "Severe" },
+    { rank: 20, city: "Muzaffarnagar", aqi: 344, status: "Severe" },
+    { rank: 21, city: "Shrirampur", aqi: 344, status: "Severe" },
+    { rank: 22, city: "Jalandhar", aqi: 342, status: "Severe" },
+    { rank: 23, city: "Panipat", aqi: 341, status: "Severe" },
+    { rank: 24, city: "Faridabad", aqi: 340, status: "Severe" },
+    { rank: 25, city: "Kanpur", aqi: 335, status: "Severe" },
+    { rank: 26, city: "Jammu", aqi: 330, status: "Severe" },
+    { rank: 27, city: "Chandigarh", aqi: 320, status: "Severe" },
+    { rank: 28, city: "Patiala", aqi: 315, status: "Severe" },
+    { rank: 29, city: "Gurugram", aqi: 310, status: "Severe" },
+    { rank: 30, city: "Ambala", aqi: 305, status: "Severe" },
+    { rank: 31, city: "Agra", aqi: 300, status: "Severe" },
+    { rank: 32, city: "Bhopal", aqi: 295, status: "Severe" },
+    { rank: 33, city: "Indore", aqi: 290, status: "Severe" },
+    { rank: 34, city: "Chennai", aqi: 280, status: "Very Unhealthy" },
+    { rank: 35, city: "Bhubaneswar", aqi: 270, status: "Very Unhealthy" },
+    { rank: 36, city: "Kolkata", aqi: 260, status: "Very Unhealthy" },
+    { rank: 37, city: "Pune", aqi: 250, status: "Very Unhealthy" },
+    { rank: 38, city: "Nagpur", aqi: 240, status: "Very Unhealthy" },
+    { rank: 39, city: "Jaipur", aqi: 230, status: "Very Unhealthy" },
+    { rank: 40, city: "Surat", aqi: 220, status: "Very Unhealthy" },
+    { rank: 41, city: "Vadodara", aqi: 210, status: "Very Unhealthy" },
+    { rank: 42, city: "Ludhiana", aqi: 200, status: "Very Unhealthy" },
+    { rank: 43, city: "Gwalior", aqi: 190, status: "Very Unhealthy" },
+    { rank: 44, city: "Agartala", aqi: 180, status: "Very Unhealthy" },
+    { rank: 45, city: "Lucknow", aqi: 170, status: "Unhealthy" },
+    { rank: 46, city: "Ranchi", aqi: 160, status: "Unhealthy" },
+    { rank: 47, city: "Shimla", aqi: 150, status: "Unhealthy" },
+    { rank: 48, city: "Dehradun", aqi: 140, status: "Unhealthy" },
+    { rank: 49, city: "Haridwar", aqi: 130, status: "Unhealthy" },
+    { rank: 50, city: "Nashik", aqi: 120, status: "Unhealthy" },
+  ]
   const weatherData = [
     { rank: 1, city: "Mumbai", temp: 32, humidity: 80 },
     { rank: 2, city: "Delhi", temp: 28, humidity: 60 },
@@ -181,7 +221,7 @@ const App = () => {
 
   // Filter cities based on search term
   const filteredCities = selectedData.filter((data) =>
-    data?.city?.toLowerCase().includes(searchTerm.toLowerCase())
+    data.city.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Pagination logic
@@ -232,7 +272,7 @@ const App = () => {
     <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className=" mt-20 text-white min-h-screen p-6">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-center mb-6">
-          Top 70 Polluted Cities Analysis
+          Top 50 Polluted Cities Analysis
         </h1>
 
         {/* Location and Ranking Selector */}
