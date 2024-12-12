@@ -126,7 +126,7 @@ const Resources = () => {
     };
 
     return (
-        <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="flex flex-col text-white pt-20 w-full items-center">
+        <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="flex flex-col pb-8 text-white pt-20 w-full items-center">
             
             <Header search={search} setSearch={setSearch} searchPressed={searchPressed} />
             <div className="flex flex-col text-white lg:flex-row w-full max-w-6xl mt-8">
@@ -137,7 +137,7 @@ const Resources = () => {
                     <TemperatureRanking data={searchHistory} deleteEntry={deleteEntry} />
                 </div>
             </div>
-            <WeatherApp /> 
+            {/* <WeatherApp />  */}
         </div>
     );
 };
