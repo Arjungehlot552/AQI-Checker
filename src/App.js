@@ -25,6 +25,7 @@ import AboutSensors from './Sensors/AboutSensors';
 import HeatMap from './Components/HeatMap';
 import Pollutants from './Calsi/Pollutants';
 import AdminLetter from './Admin/Letter';
+import Comparison from './Components/Comparison';
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
         <Route path="/air-quality" element={<AboutSensors />} />
         <Route path='/pollutants' element={<Pollutants />} />
         <Route path='/letter' element={<AdminLetter />} />
+        <Route path='/compare' element={<Comparison />} />
       </Routes>
       <Footer />
     </>
