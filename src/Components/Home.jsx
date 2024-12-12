@@ -30,8 +30,8 @@ import Main from '../Home/Main';
 // import Contact from './Contact';
 // import Thing from '../Thing_Speak/Thing';
 
-import AuthPage from './AuthPage';
-import AQIPage from './SearchAqi';
+// import AuthPage from './AuthPage';
+// import AQIPage from './SearchAqi';
 import { useNavigate } from 'react-router';
 // import AdminLetter from '../Admin/Letter';
 
@@ -103,7 +103,7 @@ const Home = () => {
           {/* <AuthPage /> */}
           {/* <AdminLetter /> */}
           <Swiper />
-          <AQIPage />
+          {/* <AQIPage /> */}
 
           <AQIScale />
           <MapComponent />
