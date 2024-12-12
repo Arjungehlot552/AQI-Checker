@@ -192,7 +192,7 @@ const AQIPage = () => {
                   <XAxis dataKey="date" />
                   <YAxis />
                   <Tooltip
-                    labelStyle={{ color: "#fff" }}
+                    labelStyle={{ color: "cyan" }}
                     contentStyle={{
                       backgroundColor: "rgb(0, 0, 0, 0.8)",
                       border: "none",
@@ -202,8 +202,20 @@ const AQIPage = () => {
                   />
                   <Line
                     type="monotone"
-                    dataKey="aqi"
-                    stroke="#8884d8"
+                    dataKey="pm10"
+                    stroke="white"
+                    activeDot={{ r: 8 }}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="pm25"
+                    stroke="white"
+                    activeDot={{ r: 8 }}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="o3"
+                    stroke="white"
                     activeDot={{ r: 8 }}
                   />
                 </LineChart>
