@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { fetchingData } from "../Components/CustomMapPath";
-import { fetchData } from "../Components/ComparisonData";
+// import { fetchData } from "../Components/ComparisonData";
 import Slider from "rc-slider";
 
 // Mock Data: Replace with your actual API or dataset
@@ -73,7 +73,7 @@ const getColor = (value) => {
 
 const CalendarPage = () => {
   const [selectedYear, setSelectedYear] = useState(2024);
-  const [selectedMonth, setSelectedMonth] = useState("December");
+  const [selectedMonth, setSelectedMonth] = useState("December"); 
   const [selectedPollutant, setSelectedPollutant] = useState("AQI");
 
   const monthData =
@@ -204,12 +204,14 @@ const CalendarPage = () => {
               </select>
             </div>
           </div>
+          <button className="bg-blue-500 mt-8 text-white p-2 rounded-lg w-36 space-y-4 hover:bg-blue-600" onClick={ DownloadButton }>Download as Csv</button>
+
         </div>
 
         {/* Calendar */}
         <div className="overflow-hidden rounded-lg">
           <div className="p-4 flex flex-col">
-            <button className="bg-blue-500 text-white p-2 rounded-lg w-36 space-y-4 hover:bg-blue-600" onClick={ DownloadButton }>Download as Csv</button>
+           
             <div className="flex justify-between text-sm mb-2">
                 <span>Good</span>
                 <span>Poor</span>
