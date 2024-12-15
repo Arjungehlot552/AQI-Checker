@@ -242,6 +242,7 @@ const historicData = [
 
   // Handle chart data
   const chartData = {
+    
     labels: currentCities.map((data) => data.city),
     datasets: [
       {

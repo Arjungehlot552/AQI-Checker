@@ -11,12 +11,15 @@ const DailyForecast = () => {
     // Random AQI between 250 to 480
     const [data, setData] = useState({});
     const [aqi, setAqi] = useState(0);
+   
     const [weather, setWeather] = useState({});
     const apiKey = "b63160ff-205c-40cc-a6c6-aea3ab7d6aa1"; // Replace with your API key
 
 
     const location = useLocation().pathname.split('/').at(-1);
+    localStorage.setItem("arjun",data)
 
+    
     const fetchAQI = async () => {
         try {
             const response = await fetch(`https://api.waqi.info/feed/${location}/?token=2957d73d72e0f99e73a757c6c091c83fd6415f7c`);
