@@ -58,7 +58,6 @@ const Dashboard = () => {
                 </p>
               </div>
             </div>
-
             <div className="mt-6">
               <p className="text-lg font-medium text-gray-50">
                 <strong>Address:</strong>
