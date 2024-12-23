@@ -28,6 +28,7 @@ import AdminLetter from "./Admin/Letter";
 import AuthPage from "./Components/AuthPage";
 import Comparison from "./Components/Comparison"
 import Thing from "./ThinkSpeak/Thing";
+import LearnMore from "./Media/LearnMore";
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
         <Route path='/pollutants' element={<Pollutants />} />
         <Route path='/letter' element={<AdminLetter />} />
         <Route path='/compare' element={<Comparison />} />
+        <Route path='/LearnMore' element={<LearnMore/>}/>
       </Routes>
       <Footer />
     </>

@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import { Link } from "react-router-dom";
+
+
 // import LineChart from "./LineChart";
 
 export default function Main() {
   const phrase = "Welcome to DPCC Web";
   const [currentText, setCurrentText] = useState("");
+
+ 
 
   useEffect(() => {
     let charIndex = 0;
@@ -47,9 +52,11 @@ export default function Main() {
             to provide accurate, reliable air quality updates for healthier
             lives.
           </p>
-          <button className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-green-500 text-white px-6 py-3 rounded-full font-medium hover:scale-110 transform transition duration-300 shadow-md hover:shadow-lg">
-            Learn More <ArrowOutwardIcon />
-          </button>
+          <Link to="/LearnMore">
+             <button className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-green-500 text-white px-6 py-3 mt-3 rounded-full font-medium hover:scale-110 transform transition duration-300 shadow-md hover:shadow-lg">
+                Learn More <ArrowOutwardIcon />
+             </button>
+          </Link>
         </div>
 
         {/* Right Section (Image Grid) */}
