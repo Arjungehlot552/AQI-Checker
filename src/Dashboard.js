@@ -48,7 +48,6 @@ const Dashboard = () => {
                   <strong>Age:</strong> {userData.age}
                 </p>
               </div>
-
               <div className="space-y-4">
                 <p className="text-lg font-medium text-gray-50">
                   <strong>Contact Number:</strong> {userData.contactNumber}
