@@ -142,8 +142,8 @@ const MyAQIMap = () => {
       const googleMap = new window.google.maps.Map(
         document.getElementById("map"),
         {
-          center: { lat: 21.2369408, lng: 81.3400064 },
-          zoom: 11,
+          center: { lat: 21.2369408, lng: 71.3400064 },
+          zoom: 3,
           mapTypeId: window.google.maps.MapTypeId.ROADMAP,
         }
       );

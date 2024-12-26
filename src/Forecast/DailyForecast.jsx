@@ -72,7 +72,7 @@ const DailyForecast = () => {
             {/* Live AQI Section */}
             <div className=" text-white  p-3 rounded-lg mb-6">
                 <div className="bg-red-600 flex border-2 border-white p-1 h-10 w-16 text-center rounded-lg mb-2"> <div className="h-2 w-2 bg-white rounded-full m-auto"></div> <h2 className="text-md m-auto  ">Live</h2></div>
-                <p className="text-3xl mb-3">{location} Air Quality Index (AQI) | Air Pollution</p>
+                <p className="text-3xl mb-3">{location.toUpperCase()} Air Quality Index (AQI) | Air Pollution</p>
                 <p className="mb-1">Real-time PM2.5, PM10 air pollution level in India</p>
                 <p>Last Updated: {new Date().toString()}</p>
             </div>
