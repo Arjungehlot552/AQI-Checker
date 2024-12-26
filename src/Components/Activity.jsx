@@ -105,7 +105,6 @@ const EnhancedActivityPage = () => {
                 <h1 className="text-4xl font-bold text-gray-50">Your Activity Tracker</h1>
                 <p className="text-lg mt-5 text-gray-50">Track your activities, locations, and set reminders!</p>
             </div>
-
               {/* Mobile Number and Reminder Section */}
               <div className="mt-6 p-6 bg-gray-800 border mb-9 rounded-lg shadow-sm">
                 <h2 className="text-2xl font-semibold text-gray-50">Set Reminder with Mobile Number</h2>
