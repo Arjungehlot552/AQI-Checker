@@ -29,11 +29,13 @@ import AuthPage from "./Components/AuthPage";
 import Comparison from "./Components/Comparison"
 import Thing from "./ThinkSpeak/Thing";
 import LearnMore from "./Media/LearnMore";
+import ScrollToTop from "./ScrollToTop";
 
 function App() {
   return (
     <>
       <Navbar />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/heatmap" element={<HeatMap />} />
