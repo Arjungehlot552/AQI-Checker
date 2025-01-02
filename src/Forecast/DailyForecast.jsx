@@ -150,6 +150,7 @@ const DailyForecast = () => {
                         style={{ border: 0, rounded: "10px" }}
                         allowFullScreen=""
                         loading="lazy"
+                        zoom="2"
                         referrerPolicy="no-referrer-when-downgrade"
                         className="rounded-xl"
                     ></iframe>
