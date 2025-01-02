@@ -62,22 +62,22 @@ export default function Main() {
         {/* Right Section (Image Grid) */}
         <div className="lg:w-1/2 grid grid-cols-2 gap-6">
           <img
-            src='https://sscbs.du.ac.in/wp-content/uploads/2024/09/IMG-20240905-WA0003.jpg'
+            src='https://t3.ftcdn.net/jpg/03/45/37/40/360_F_345374024_toXIjm8hecDggxAgFZ9nJRvT4v2rlQ4V.jpg'
             alt="Economic Times"
             className="rounded-lg h-60 w-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out hover:rotate-2 hover:shadow-pink-500"
           />
           <img
-            src='https://dyncdn.exampathfinder.net/epf_n_attachments/organisation/OoKfvyM1/logo.png'
+            src='https://as1.ftcdn.net/v2/jpg/03/99/75/28/1000_F_399752812_83CXgeUwyy0zzwUkPCFmM9aLZpsB6ns5.jpg'
             alt="Economic Times"
             className="rounded-lg h-60 w-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out hover:-rotate-2 hover:shadow-blue-500"
           />
           <img
-            src='https://www.jammable.com/cdn-cgi/image/width=3840,quality=25,format=webp/https://imagecdn.voicify.ai/models/5a15dc54-9ec9-40c8-981c-c03d9b32bd0e.png'
+            src='https://cdn.pixabay.com/photo/2023/04/22/11/12/environment-7943580_640.jpg'
             alt="Economic Times"
             className="rounded-lg h-60 w-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out hover:rotate-3 hover:shadow-green-500"
           />
           <img
-            src='https://www.cheggindia.com/wp-content/uploads/2024/05/Districts-from-NCR--1024x614.png'
+            src='https://img.freepik.com/premium-photo/tree-grows-from-polluted-ground-symbolizing-hope-greener-future_885831-170855.jpg'
             alt="Economic Times"
             className="rounded-lg h-60 w-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out hover:-rotate-3 hover:shadow-yellow-500"
           />

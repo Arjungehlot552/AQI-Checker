@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import LOGO from "../Images/LOGO.png";
 // import Modi_ji from "../Images/Modi-Ji.png"
-import SIH from "../Images/SIH_logo_2024.png"
+// import SIH from "../Images/SIH_logo_2024.png"
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link, redirect, Router, useLocation, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -77,15 +77,19 @@ const Navbar = () => {
 
   return (
     <div onMouseLeave={setShowDropdown.bind(this, false)}>
-      <nav className="bg-gray-900 shadow-md fixed top-0 w-full z-50 py-3">
+      <nav className="bg-gray-900 shadow-md fixed top-0 w-full z-50 py-5">
         <div className="container flex items-center justify-between px-6 lg:px-12 mx-auto">
           {/* Logo and Search */}
           <div className="flex items-center space-x-6">
-            <img
+            {/* <img
               src={SIH}
               alt="AQI Logo"
               className="w-32 "
-            />
+            /> */}
+        <div className="flex items-center">
+          <span className="text-yellow-500 font-bold text-2xl">Smart</span>-
+          <span className="text-white font-bold text-2xl">AQI</span>
+        </div>
             <div className="relative hidden lg:flex lg:flex-row lg:items-center w-[30rem] px-4 space-x-2 border border-white rounded-full">
               <CiSearch color="white" />
               <input
