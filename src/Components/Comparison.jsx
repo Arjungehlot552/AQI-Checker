@@ -3,6 +3,7 @@ import { fetchMonthlyData } from './ComparisonData';
 import { useState } from 'react';
 import { Box, CircularProgress } from '@mui/material';
 import { redirect } from 'react-router';
+import { capitalizeFirstLetter } from '../utils';
 
 const Comparison = () => {
 
@@ -13,6 +14,8 @@ const Comparison = () => {
     const [data, setData] = useState([]);
     const [prev, setPrev] = useState([]);
     const [city, setCity] = useState('');
+    const [error, setError] = useState('');
+    const [fecthedCity, setFetchedCity] = useState('');
 
     const [loading, setLoading] = useState(false);
     const role = localStorage.getItem('role');
@@ -22,10 +25,15 @@ const Comparison = () => {
 
     const fetch = async (city) => {
         setLoading(true);
-        const res1 = await fetchMonthlyData(city, 12, 2024, 'pm10');
+        const res1 = await fetchMonthlyData(city, new Date(Date.now()).getMonth() + 1, new Date(Date.now()).getFullYear(), 'pm10');
         setData(res1);
-        const res2 = await fetchMonthlyData(city, 12, 2023, 'pm10');
+        console.log(res1);
+        const res2 = await fetchMonthlyData(city, new Date(Date.now()).getMonth() + 1, new Date(Date.now()).getFullYear() - 1, 'pm10');
         setPrev(res2);
+        if (res1.length === 0 || res2.length === 0) {
+            setError('Data not found');
+        }
+        setFetchedCity(city);
         setLoading(false);
     }
 
@@ -45,6 +53,8 @@ const Comparison = () => {
         {loading && <Box style={{ backgroundColor: "rgb(5, 8, 22)" }} className="my-8 flex items-center justify-center">
             <CircularProgress />
         </Box>}
+        <div className='text-red-600 text-lg text-center mb-7' > { error } </div>
+
         <div className='flex items-center justify-center'>
             <LineChart 
                 width={800} 
@@ -73,6 +83,7 @@ const Comparison = () => {
                 <Line type="monotone" dataKey="aqi" stroke="#82ca9d" fill='blue' />
             </LineChart>
         </div>
+        {fecthedCity && <div className='mt-7 font-medium text-lg text-white text-center'>AQI Comparison of {capitalizeFirstLetter(fecthedCity)}</div>}
     </div>
 
   )
