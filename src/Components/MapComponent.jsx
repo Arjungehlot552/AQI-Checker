@@ -45,6 +45,7 @@ const AQIPage = () => {
         setLocationData(result.data);
         localStorage.setItem("aqiValue", result.data.current.pollution.aqius);
         fetchHistoricalData(result.data.city);
+        console.log('This is my result',result);
         setError("");
       } else {
         setError("Failed to fetch AQI data.");
@@ -181,7 +182,7 @@ const AQIPage = () => {
           </div>
 
           {/* AQI Trend Chart */}
-          {historicalAQIData.length > 0 && (
+          {historicalAQIData?.length > 0 && (
             <div className={`w-full max-w-2xl flex-1 text-white rounded-lg shadow-lg px-8 py-6 ${getGradientBackground(locationData.current.pollution.aqius)}`}>
               <h3 className="text-2xl font-semibold mb-4 text-center text-white">
                 AQI Forecast
