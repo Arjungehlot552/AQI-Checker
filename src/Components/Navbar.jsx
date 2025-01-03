@@ -160,7 +160,7 @@ const Navbar = () => {
                       SmartAQI
                     </Link>)}
                     {role !== 'admin' ? (<></>) : (<Link to="/letter" className="flex items-center hover:bg-gray-200 border-b h-12 px-4 py-1 rounded-md">
-                      letter
+                      Letter
                     </Link>)}
                   </div>
                 )}
