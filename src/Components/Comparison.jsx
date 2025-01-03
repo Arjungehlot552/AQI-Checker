@@ -22,9 +22,9 @@ const Comparison = () => {
 
     const fetch = async (city) => {
         setLoading(true);
-        const res1 = await fetchMonthlyData(city, 12, 2024, 'pm10');
+        const res1 = await fetchMonthlyData(city, 1, 2025, 'pm10');
         setData(res1);
-        const res2 = await fetchMonthlyData(city, 12, 2023, 'pm10');
+        const res2 = await fetchMonthlyData(city, 1, 2024, 'pm10');
         setPrev(res2);
         setLoading(false);
     }

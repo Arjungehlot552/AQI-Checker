@@ -71,5 +71,10 @@ export const getPoints = () => {
       location: new window.google.maps.LatLng(28.5504249, 77.2159377),
       aqi: 251,
     },
+    { location: new window.google.maps.LatLng(23.2598, 77.4125), aqi: 251 },
+    { location: new window.google.maps.LatLng(23.2109, 77.4261), aqi: 200 },
+    { location: new window.google.maps.LatLng(23.2358, 77.3986), aqi: 251 },
+    { location: new window.google.maps.LatLng(23.2100, 77.4231), aqi: 251 },
+
   ];
 };

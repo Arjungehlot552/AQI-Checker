@@ -24,12 +24,13 @@ const HeatMap = () => {
       (position) => {
         const userLat = position.coords.latitude;
         const userLng = position.coords.longitude;
+        console.log(userLat, userLng)
 
         // Initialize the map
         const tempMap = new window.google.maps.Map(
           document.getElementById("map"),
           {
-            zoom: 10,
+            zoom: 8,
             center: { lat: userLat, lng: userLng },
             mapTypeId: "hybrid",
             tilt: 45, // Enable 3D tilt (default 45 degrees)
@@ -59,8 +60,8 @@ const HeatMap = () => {
               <div style="padding: 10px; font-size: 14px;">
                 <strong>AQI:</strong> ${point.aqi} (Good)<br />
                 <strong>Location:</strong> ${point.location
-                  .lat()
-                  .toFixed(6)}, ${point.location.lng().toFixed(6)}
+                .lat()
+                .toFixed(6)}, ${point.location.lng().toFixed(6)}
               </div>
             `);
             infoWindow.open(tempMap, marker);
