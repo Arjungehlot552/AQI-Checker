@@ -18,6 +18,7 @@ const Navbar = () => {
 
   const email = localStorage.getItem("email");
   const role = localStorage.getItem("role");
+
   const navigate = useNavigate();
 
   // Effect to apply dark mode based on the state
