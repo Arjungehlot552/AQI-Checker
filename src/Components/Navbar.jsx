@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 // import Modi_ji from "../Images/Modi-Ji.png"
 // import SIH from "../Images/SIH_logo_2024.png"
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { Link,  useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Moon from "../Images/Moon.png"
 import { CiSearch } from "react-icons/ci";
 import { BiSolidDownArrow, BiSolidUpArrow } from "react-icons/bi";
@@ -82,10 +82,10 @@ const Navbar = () => {
               alt="AQI Logo"
               className="w-32 "
             /> */}
-        <div className="flex items-center">
-          <span className="text-yellow-500 font-bold text-2xl">Smart</span>-
-          <span className="text-white font-bold text-2xl">AQI</span>
-        </div>
+            <div className="flex items-center cursor-pointer">
+              <span className="text-yellow-500 font-bold text-2xl">Smart</span>-
+              <span className="text-white font-bold text-2xl">AQI</span>
+            </div>
             <div className="relative hidden lg:flex lg:flex-row lg:items-center w-[30rem] px-4 space-x-2 border border-white rounded-full">
               <CiSearch color="white" />
               <input
@@ -259,37 +259,52 @@ const Navbar = () => {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="lg:hidden bg-gray-800 mt-20 text-white py-1 rounded-md px-6">
+        <div className="lg:hidden sticky top-0 bg-gray-800 mt-20 text-white py-4 px-6 rounded-lg shadow-lg space-y-4 z-50">
+          {/* Search Input */}
+          <div className="flex flex-row items-center w-full px-4 py-2 space-x-2 border border-white rounded-full bg-[#111827]">
+            <input
+              type="text"
+              placeholder="Search Location City or Area"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={handleKeyPress}
+              className="bg-transparent flex-1 text-white placeholder-gray-400 py-2 px-2 rounded-full outline-none"
+            />
+          </div>
+
+          {/* Navigation Links */}
           <Link
             to="/"
-            className="block py-2 hover:text-blue-400"
+            className="block py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
             onClick={toggleMenu}
           >
             Home
           </Link>
           <Link
             to="/Ranking"
-            className="block py-2 hover:text-blue-400"
+            className="block py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
             onClick={toggleMenu}
           >
             Ranking
           </Link>
           <Link
             to="/Monitor"
-            className="block py-2 hover:text-blue-400"
+            className="block py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
             onClick={toggleMenu}
           >
             Monitors
           </Link>
           <Link
             to="/Resources"
-            className="block py-2 hover:text-blue-400"
+            className="block py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
             onClick={toggleMenu}
           >
             Resources
           </Link>
         </div>
       )}
+
+
     </div>
   );
 };

@@ -24,7 +24,7 @@ const Footer = () => {
   // }, []);
 
   return (
-    <footer   className=" px-24 bg-gray-900 text-white py-24">
+    <footer className=" px-4 bg-gray-900 text-white py-5">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between">
           {/* Logo Section */}
@@ -76,7 +76,7 @@ const Footer = () => {
           </div>
 
           {/* Get Our App Section */}
-          <div className="mb-6 md:mb-0">
+          <div className="mb-6 hidden md:block md:mb-0">
             <h5 className="text-lg font-semibold">GET OUR APP</h5>
             <ul className="mt-2">
               <li>
@@ -103,7 +103,7 @@ const Footer = () => {
           <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 text-2xl hover:text-blue-400">
             <i className="fab fa-linkedin-in"></i>
           </a>
-            
+
         </div>
 
         {/* Copyright Section */}
