@@ -60,7 +60,9 @@ const MoreWeather = () => {
           bgColor="bg-gray-700"
         />
         {/* Suggestions Section */}
-        <div className="bg-gray-900 p-6 mx-4 md:mx-10 flex flex-col sm:flex-row items-center rounded-lg w-full max-w-lg shadow-lg">
+        <div
+          className={`p-6 rounded-lg w-72 shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105 flex flex-col items-center border-4 border-transparent bg-opacity-80 bg-gray-700`}
+        >
           <div className="flex-1 sm:ml-8 space-y-4">
             <h2 className="text-lg  sm:text-xl font-bold mb-4 text-center sm:text-left">
               Suggestions for Today
