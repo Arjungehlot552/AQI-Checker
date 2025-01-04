@@ -74,6 +74,7 @@ const AdminLetter = () => {
   };
 
   return (
+   <div className="bg-gray-900 p-16">
     <div className="p-6 max-w-4xl  mx-auto border mt-20 bg-gray-800 rounded-lg shadow-md">
       <h1 className="text-3xl  text-white text-center mb-4">
         Administration Letter Management
@@ -190,6 +191,7 @@ const AdminLetter = () => {
           </div>
         </div>
       )}
+     </div>
     </div>
   );
 };
