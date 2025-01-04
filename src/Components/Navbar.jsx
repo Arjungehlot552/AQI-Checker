@@ -18,8 +18,6 @@ const Navbar = () => {
 
   const email = localStorage.getItem("email");
   const role = localStorage.getItem("role");
-  const arjun = localStorage.getItem("arjun")
-  console.log(arjun);
 
   const navigate = useNavigate();
 
