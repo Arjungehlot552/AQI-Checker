@@ -43,7 +43,7 @@ const AuthPage = () => {
         return;
       }
       try {
-        
+
         const response = await loginUser(); // Call login function from context
         if (response.status === 400) {
           setError("Invalid Password!.");
@@ -85,9 +85,9 @@ const AuthPage = () => {
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8 hover:shadow-lg transition-shadow">
-        <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
+    <main className="min-h-screen flex items-center justify-center bg-[#050816]">
+      <div className="w-full max-w-md bg-gray-700 rounded-lg shadow-md p-8 hover:shadow-lg transition-shadow">
+        <h1 className="text-2xl font-bold text-center text-white mb-6">
           {forget ? "Reset Password" : toggle ? "Welcome Back" : "Join Us"}
         </h1>
         {error && (
@@ -99,7 +99,7 @@ const AuthPage = () => {
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-white"
               >
                 Name
               </label>
@@ -110,7 +110,7 @@ const AuthPage = () => {
                 onChange={(e) =>
                   setUserDetails({ ...userDetails, name: e.target.value })
                 }
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-500"
+                className="mt-1 block w-full p-2 bg-transparent border border-white rounded-md focus:outline-none focus:ring-white focus:border-white"
                 placeholder="Enter your name"
                 required
               />
@@ -121,7 +121,7 @@ const AuthPage = () => {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-white"
             >
               Email
             </label>
@@ -132,7 +132,7 @@ const AuthPage = () => {
               onChange={(e) =>
                 setUserDetails({ ...userDetails, email: e.target.value })
               }
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-500"
+              className="mt-1 block w-full p-2 bg-transparent border border-white rounded-md focus:outline-none focus:ring-white focus:border-white"
               placeholder="Enter your email"
               required
             />
@@ -142,7 +142,7 @@ const AuthPage = () => {
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-white"
             >
               {forget ? "New Password" : "Password"}
             </label>
@@ -153,7 +153,7 @@ const AuthPage = () => {
               onChange={(e) =>
                 setUserDetails({ ...userDetails, password: e.target.value })
               }
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-500"
+              className="mt-1 block w-full p-2 bg-transparent border border-white rounded-md focus:outline-none focus:ring-white focus:border-white"
               placeholder="Enter your password"
               required
             />
@@ -162,7 +162,7 @@ const AuthPage = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-gray-800 text-white py-2 px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+            className="w-full font-bold bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
           >
             {forget ? "Reset Password" : toggle ? "Sign In" : "Sign Up"}
           </button>
@@ -170,8 +170,12 @@ const AuthPage = () => {
           {/* Forget Password Option */}
           {toggle && (
             <p
-              className="text-blue-600 text-sm text-center cursor-pointer"
-              onClick={() => setForget(!forget)}
+              className="text-yellow-500 text-sm text-center cursor-pointer"
+              onClick={() => {
+                setForget(!forget)
+                setToggle(false); // Reset toggle state
+              }
+              }
             >
               Forget Password?
             </p>
@@ -182,10 +186,10 @@ const AuthPage = () => {
             {forget
               ? "Remembered your password?"
               : toggle
-              ? "New here?"
-              : "Already have an account?"}{" "}
+                ? "New here?"
+                : "Already have an account?"}{" "}
             <span
-              className="text-blue-600 cursor-pointer"
+              className="text-yellow-500 cursor-pointer"
               onClick={() => {
                 setToggle(!toggle);
                 setForget(false); // Reset forget state
