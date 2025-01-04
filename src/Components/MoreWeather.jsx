@@ -121,7 +121,7 @@ const MoreWeather = () => {
 // Enhanced Weather Card Component with Transparent Outer Background and Light Gray Inner Background
 const WeatherCard = ({ title, value, description, icon, bgColor }) => (
   <div
-    className={`p-6  rounded-lg w-72 shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105 flex flex-col items-center border-4 border-transparent ${bgColor} bg-opacity-80 hover:border-${bgColor.replace(
+    className={`p-6 rounded-lg w-72 shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105 flex flex-col items-center border-4 border-transparent ${bgColor} bg-opacity-80 hover:border-${bgColor.replace(
       "bg-",
       ""
     )}`}
