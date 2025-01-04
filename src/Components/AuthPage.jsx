@@ -75,7 +75,6 @@ const AuthPage = () => {
         } else if (response.status === 500) {
           setError("Registration failed. Please try again.");
         } else {
-          localStorage.setItem("email", userDetails.email);
           navigate("/");
         }
       } catch (err) {

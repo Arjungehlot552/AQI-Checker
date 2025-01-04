@@ -17,7 +17,14 @@ const AdminLetter = () => {
     { name: "Industry B", email: "industryB@example.com" },
     { name: "Industry C", email: "industryC@example.com" },
   ];
-
+  const role = localStorage.getItem("role");
+  if (role !== "admin") {
+    return (
+      <div className="text-white text-center text-3xl font-bold">
+        You are not authorized to access this page
+      </div>
+    );
+  }
   const handleGenerateLetter = () => {
     const generatedLetter = `
       ${date}
@@ -79,15 +86,25 @@ const AdminLetter = () => {
         className="space-y-4 "
       >
         {[
-          { label: "Industry Name", value: industryName, setter: setIndustryName },
+          {
+            label: "Industry Name",
+            value: industryName,
+            setter: setIndustryName,
+          },
           { label: "Address", value: address, setter: setAddress },
           { label: "City", value: city, setter: setCity },
           { label: "Postal Code", value: postalCode, setter: setPostalCode },
           { label: "Date", value: date, setter: setDate, type: "date" },
-          { label: "Department Name", value: department, setter: setDepartment },
+          {
+            label: "Department Name",
+            value: department,
+            setter: setDepartment,
+          },
         ].map(({ label, value, setter, type = "text" }) => (
           <div key={label}>
-            <label className="block text-gray-50 my-3 font-medium">{label}:</label>
+            <label className="block text-gray-50 my-3 font-medium">
+              {label}:
+            </label>
             <input
               type={type}
               value={value}
@@ -99,24 +116,27 @@ const AdminLetter = () => {
           </div>
         ))}
 
-        {["Gases Emitted Contributing to AQI", "Actions Required to Mitigate Emissions"].map(
-          (label, idx) => (
-            <div key={idx}>
-              <label className="block text-gray-50 my-3 font-medium">{label}:</label>
-              <textarea
-                value={idx === 0 ? issueDetails : actionsRequired}
-                onChange={(e) =>
-                  idx === 0
-                    ? setIssueDetails(e.target.value)
-                    : setActionsRequired(e.target.value)
-                }
-                placeholder={`Enter ${label}`}
-                required
-                className="w-full p-2 text-white border rounded-lg bg-transparent  "
-              ></textarea>
-            </div>
-          )
-        )}
+        {[
+          "Gases Emitted Contributing to AQI",
+          "Actions Required to Mitigate Emissions",
+        ].map((label, idx) => (
+          <div key={idx}>
+            <label className="block text-gray-50 my-3 font-medium">
+              {label}:
+            </label>
+            <textarea
+              value={idx === 0 ? issueDetails : actionsRequired}
+              onChange={(e) =>
+                idx === 0
+                  ? setIssueDetails(e.target.value)
+                  : setActionsRequired(e.target.value)
+              }
+              placeholder={`Enter ${label}`}
+              required
+              className="w-full p-2 text-white border rounded-lg bg-transparent  "
+            ></textarea>
+          </div>
+        ))}
 
         <button
           type="submit"
@@ -147,9 +167,15 @@ const AdminLetter = () => {
               onChange={(e) => setSelectedIndustry(e.target.value)}
               className="w-full p-2 border text-white rounded-lg bg-transparent "
             >
-              <option className="text-gray-500" value="">Select Industry</option>
+              <option className="text-gray-500" value="">
+                Select Industry
+              </option>
               {industries.map((industry, index) => (
-                <option className="text-black" key={index} value={industry.name}>
+                <option
+                  className="text-black"
+                  key={index}
+                  value={industry.name}
+                >
                   {industry.name}
                 </option>
               ))}

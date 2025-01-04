@@ -4,6 +4,7 @@ import { getPoints } from "../constants/point";
 const HeatMap = () => {
   const [map, setMap] = useState(null);
   const [heatmap, setHeatMap] = useState(null);
+  
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -18,13 +19,21 @@ const HeatMap = () => {
       if (script) document.head.removeChild(script);
     };
   }, []);
+  const role = localStorage.getItem("role");
+  if (role !== "admin") {
+    return (
+      <div className="text-white text-center text-3xl font-bold">
+        You are not authorized to access this page
+      </div>
+    );
+  }
 
   const initializeMap = () => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const userLat = position.coords.latitude;
         const userLng = position.coords.longitude;
-        console.log(userLat, userLng)
+        console.log(userLat, userLng);
 
         // Initialize the map
         const tempMap = new window.google.maps.Map(
@@ -60,8 +69,8 @@ const HeatMap = () => {
               <div style="padding: 10px; font-size: 14px;">
                 <strong>AQI:</strong> ${point.aqi} (Good)<br />
                 <strong>Location:</strong> ${point.location
-                .lat()
-                .toFixed(6)}, ${point.location.lng().toFixed(6)}
+                  .lat()
+                  .toFixed(6)}, ${point.location.lng().toFixed(6)}
               </div>
             `);
             infoWindow.open(tempMap, marker);

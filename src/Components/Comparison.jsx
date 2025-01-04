@@ -1,16 +1,11 @@
-import { CartesianGrid, LineChart, XAxis, YAxis, Legend, Tooltip, Line } from 'recharts';
+import { CartesianGrid, LineChart, XAxis, YAxis,  Tooltip, Line } from 'recharts';
 import { fetchMonthlyData } from './ComparisonData';
 import { useState } from 'react';
 import { Box, CircularProgress } from '@mui/material';
-import { redirect } from 'react-router';
 import { capitalizeFirstLetter } from '../utils';
 
 const Comparison = () => {
 
-    if (localStorage.getItem('role') !== 'admin') {
-        redirect('/');
-    }
-    
     const [data, setData] = useState([]);
     const [prev, setPrev] = useState([]);
     const [city, setCity] = useState('');

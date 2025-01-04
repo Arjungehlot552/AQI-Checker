@@ -53,6 +53,14 @@ const Thing = () => {
     getAQI();
 
   }, []);
+  const role = localStorage.getItem("role");
+  if (role !== "admin") {
+    return (
+      <div className="text-white text-center text-3xl font-bold">
+        You are not authorized to access this page
+      </div>
+    );
+  }
 
   return (
     <main className="min-h-screen  w-full flex flex-col items-center justify-center bg-gray-800 py-10 sm:px-40 px-5">
