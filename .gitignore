@@ -1,2 +1,4 @@
 node_modules/
 public/pollution-effect.mp4
+
+.env

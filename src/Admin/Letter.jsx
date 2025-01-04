@@ -1,4 +1,12 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
+
+const EMAILJS_TEMPLATE_ID =
+  process.env.EMAILJS_TEMPLATE_ID || "template_kc6c39e";
+const EMAILJS_PUBLIC_KEY =
+  process.env.EMAILJS_PUBLIC_KEY || "wPt866htdnLLUnL6G";
+const EMAILJS_SERVICE_KEY =
+  process.env.EMAILJS_SERVICE_KEY || "service_8ovesi4";
 
 const AdminLetter = () => {
   const [industryName, setIndustryName] = useState("");
@@ -65,8 +73,26 @@ const AdminLetter = () => {
     );
 
     if (selectedIndustryData) {
-      alert(
-        `Letter sent to ${selectedIndustryData.name} at ${selectedIndustryData.email} \n\n${letter}`
+      emailjs.send(
+        EMAILJS_SERVICE_KEY,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: "Admin Letter Management",
+          from_email: "arjungehlot552@gmail.com",
+          to_name: selectedIndustryData.name,
+          to_email: selectedIndustryData.email,
+          subject:
+            "Urgent Action Required to Reduce Gas Emissions Impacting AQI Levels",
+          message: letter,
+        },
+        EMAILJS_PUBLIC_KEY
+      ).then(
+        () => {
+          alert("Email sent successfully");
+        }, (error) => {
+          console.error(error)
+          alert('Ahh Something Went Wrong')
+        }
       );
     } else {
       alert("Please select a valid industry to send the letter.");
@@ -74,122 +100,124 @@ const AdminLetter = () => {
   };
 
   return (
-    <div className="p-6 max-w-4xl  mx-auto border mt-20 bg-gray-800 rounded-lg shadow-md">
-      <h1 className="text-3xl  text-white text-center mb-4">
-        Administration Letter Management
-      </h1>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleGenerateLetter();
-        }}
-        className="space-y-4 "
-      >
-        {[
-          {
-            label: "Industry Name",
-            value: industryName,
-            setter: setIndustryName,
-          },
-          { label: "Address", value: address, setter: setAddress },
-          { label: "City", value: city, setter: setCity },
-          { label: "Postal Code", value: postalCode, setter: setPostalCode },
-          { label: "Date", value: date, setter: setDate, type: "date" },
-          {
-            label: "Department Name",
-            value: department,
-            setter: setDepartment,
-          },
-        ].map(({ label, value, setter, type = "text" }) => (
-          <div key={label}>
-            <label className="block text-gray-50 my-3 font-medium">
-              {label}:
-            </label>
-            <input
-              type={type}
-              value={value}
-              onChange={(e) => setter(e.target.value)}
-              placeholder={`Enter ${label}`}
-              required
-              className="w-full p-2 border text-white rounded-lg bg-transparent "
-            />
-          </div>
-        ))}
-
-        {[
-          "Gases Emitted Contributing to AQI",
-          "Actions Required to Mitigate Emissions",
-        ].map((label, idx) => (
-          <div key={idx}>
-            <label className="block text-gray-50 my-3 font-medium">
-              {label}:
-            </label>
-            <textarea
-              value={idx === 0 ? issueDetails : actionsRequired}
-              onChange={(e) =>
-                idx === 0
-                  ? setIssueDetails(e.target.value)
-                  : setActionsRequired(e.target.value)
-              }
-              placeholder={`Enter ${label}`}
-              required
-              className="w-full p-2 text-white border rounded-lg bg-transparent  "
-            ></textarea>
-          </div>
-        ))}
-
-        <button
-          type="submit"
-          className="w-40 bg-blue-500 text-white font-medium py-2 rounded-lg hover:bg-blue-600"
+    <div className="bg-gray-900 p-16">
+      <div className="p-6 max-w-4xl  mx-auto border mt-20 bg-gray-800 rounded-lg shadow-md">
+        <h1 className="text-3xl  text-white text-center mb-4">
+          Administration Letter Management
+        </h1>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleGenerateLetter();
+          }}
+          className="space-y-4 "
         >
-          Generate Letter
-        </button>
-      </form>
+          {[
+            {
+              label: "Industry Name",
+              value: industryName,
+              setter: setIndustryName,
+            },
+            { label: "Address", value: address, setter: setAddress },
+            { label: "City", value: city, setter: setCity },
+            { label: "Postal Code", value: postalCode, setter: setPostalCode },
+            { label: "Date", value: date, setter: setDate, type: "date" },
+            {
+              label: "Department Name",
+              value: department,
+              setter: setDepartment,
+            },
+          ].map(({ label, value, setter, type = "text" }) => (
+            <div key={label}>
+              <label className="block text-gray-50 my-3 font-medium">
+                {label}:
+              </label>
+              <input
+                type={type}
+                value={value}
+                onChange={(e) => setter(e.target.value)}
+                placeholder={`Enter ${label}`}
+                required
+                className="w-full p-2 border text-white rounded-lg bg-transparent "
+              />
+            </div>
+          ))}
 
-      {letter && (
-        <div className="mt-6">
-          <h2 className="text-xl font-semibold text-gray-800 mb-2">
-            Generated Letter:
-          </h2>
-          <textarea
-            value={letter}
-            onChange={(e) => setLetter(e.target.value)}
-            className="w-full p-2 border text-white rounded-lg bg-transparent  "
-            rows="10"
-          ></textarea>
+          {[
+            "Gases Emitted Contributing to AQI",
+            "Actions Required to Mitigate Emissions",
+          ].map((label, idx) => (
+            <div key={idx}>
+              <label className="block text-gray-50 my-3 font-medium">
+                {label}:
+              </label>
+              <textarea
+                value={idx === 0 ? issueDetails : actionsRequired}
+                onChange={(e) =>
+                  idx === 0
+                    ? setIssueDetails(e.target.value)
+                    : setActionsRequired(e.target.value)
+                }
+                placeholder={`Enter ${label}`}
+                required
+                className="w-full p-2 text-white border rounded-lg bg-transparent  "
+              ></textarea>
+            </div>
+          ))}
 
-          <div className="mt-4">
-            <label className="block text-gray-50 mb-3 font-medium">
-              Select Industry to Send:
-            </label>
-            <select
-              value={selectedIndustry}
-              onChange={(e) => setSelectedIndustry(e.target.value)}
-              className="w-full p-2 border text-white rounded-lg bg-transparent "
-            >
-              <option className="text-gray-500" value="">
-                Select Industry
-              </option>
-              {industries.map((industry, index) => (
-                <option
-                  className="text-black"
-                  key={index}
-                  value={industry.name}
-                >
-                  {industry.name}
+          <button
+            type="submit"
+            className="w-40 bg-blue-500 text-white font-medium py-2 rounded-lg hover:bg-blue-600"
+          >
+            Generate Letter
+          </button>
+        </form>
+
+        {letter && (
+          <div className="mt-6">
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">
+              Generated Letter:
+            </h2>
+            <textarea
+              value={letter}
+              onChange={(e) => setLetter(e.target.value)}
+              className="w-full p-2 border text-white rounded-lg bg-transparent  "
+              rows="10"
+            ></textarea>
+
+            <div className="mt-4">
+              <label className="block text-gray-50 mb-3 font-medium">
+                Select Industry to Send:
+              </label>
+              <select
+                value={selectedIndustry}
+                onChange={(e) => setSelectedIndustry(e.target.value)}
+                className="w-full p-2 border text-white rounded-lg bg-transparent "
+              >
+                <option className="text-gray-500" value="">
+                  Select Industry
                 </option>
-              ))}
-            </select>
+                {industries.map((industry, index) => (
+                  <option
+                    className="text-black"
+                    key={index}
+                    value={industry.name}
+                  >
+                    {industry.name}
+                  </option>
+                ))}
+              </select>
 
-            <button
-              onClick={handleSendLetter}
-              className="w-40 bg-green-500 text-white font-medium py-2 rounded-lg mt-4 hover:bg-green-600"
-            >
-              Send Letter
-            </button>
+              <button
+                onClick={handleSendLetter}
+                className="w-40 bg-green-500 text-white font-medium py-2 rounded-lg mt-4 hover:bg-green-600"
+              >
+                Send Letter
+              </button>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

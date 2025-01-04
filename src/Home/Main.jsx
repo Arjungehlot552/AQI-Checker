@@ -50,9 +50,9 @@ export default function Main() {
             lives.
           </p>
           <div className="flex justify-center md:justify-start">
-            <Link to="/LearnMore">
+            <Link to="/Subscription">
               <button className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-green-500 text-white px-6 py-3 mt-3 rounded-full font-medium hover:scale-110 transform transition duration-300 shadow-md hover:shadow-lg">
-                Learn More <ArrowOutwardIcon />
+                Get Subscription <ArrowOutwardIcon />
               </button>
             </Link>
           </div>

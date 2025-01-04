@@ -34,15 +34,21 @@ export default function TermsAndConditions() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center px-4">
+        <div className="flex flex-col lg:flex-row min-h-screen bg-gray-900 text-white items-center justify-center px-4">
             {/* Toast Container */}
             <ToastContainer />
 
-            <div className="mr-32">
-                <img className="h-[50%] w-full " src="https://cdni.iconscout.com/illustration/premium/thumb/artificial-intelligence-robot-handshake-with-human-illustration-download-in-svg-png-gif-file-formats--agreement-computer-robots-and-for-business-pack-science-technology-illustrations-9416910.png" alt="" />
+            {/* Image Section */}
+            <div className="lg:w-1/2 flex items-center justify-center p-4">
+                <img
+                    className="max-h-80 max-w-full lg:max-h-full lg:max-w-lg"
+                    src="https://cdni.iconscout.com/illustration/premium/thumb/artificial-intelligence-robot-handshake-with-human-illustration-download-in-svg-png-gif-file-formats--agreement-computer-robots-and-for-business-pack-science-technology-illustrations-9416910.png"
+                    alt="AI Handshake"
+                />
             </div>
 
-            <div className="bg-gray-800 rounded-lg p-6 max-w-lg w-full shadow-lg">
+            {/* Terms and Conditions Section */}
+            <div className="lg:w-1/2 bg-gray-800 rounded-lg p-6 max-w-lg w-full shadow-lg">
                 <h2 className="text-2xl font-bold mb-4">Terms and Conditions</h2>
                 {/* Scrollable Content */}
                 <div

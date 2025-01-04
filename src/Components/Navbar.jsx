@@ -255,7 +255,7 @@ const Navbar = () => {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="lg:hidden fixed w-full bg-gray-800 mt-20 text-white py-8 px-6 rounded-lg shadow-lg space-y-4 z-50">
+        <div className="lg:hidden top-0 fixed w-full bg-gray-800 mt-20 text-white py-8 px-6 rounded-lg shadow-lg space-y-4 z-50">
           {/* Search Input */}
           <div className="flex flex-row items-center w-full px-4 py-2 space-x-2 border border-white rounded-full bg-[#111827]">
             <input
@@ -297,6 +297,38 @@ const Navbar = () => {
           >
             Resources
           </Link>
+          <Link to="/resources" className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+          >
+            Resources
+          </Link>
+          <Link to="/Doctor" className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+          >
+            Doctor
+          </Link>
+          <Link to="/ngos" className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+          >
+            NGOs
+          </Link>
+          <Link to="/aqi-info" className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300" >
+            AQI Calculation
+          </Link>
+          <Link to="/pollutants" className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300">
+            Pollutants Calculator
+          </Link>
+          {role !== 'admin' ? (<></>) : (<Link to="/compare" className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300">
+            Comparisons
+          </Link>)}
+          {role !== 'admin' ? (<></>) : (<Link to="/heatmap" className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300">
+            Heat Map
+          </Link>)}
+          {role !== 'admin' ? (<></>) : (<Link to="/thing" className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300">
+            SmartAQI
+          </Link>)}
+          {role !== 'admin' ? (<></>) : (<Link to="/letter" className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300">
+            Letter
+          </Link>)}
+
+
         </div>
       )}
 

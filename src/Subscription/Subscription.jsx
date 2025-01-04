@@ -1,15 +1,15 @@
+
+import { Button } from '@mui/material';
 import React from 'react';
-import { useNavigate } from 'react-router';
-import { Link } from 'react-router-dom';
+
 
 const SubscriptionModel = () => {
-
-  const navigate = useNavigate();
 
   const subscriptionData = [
     {
       title: 'User Subscription',
-      description: 'Stay informed and take care of your health with real-time AQI updates, personalized health advice, and pre-alerts for highly polluted areas.',
+      description:
+        'Stay informed and take care of your health with real-time AQI updates, personalized health advice, and pre-alerts for highly polluted areas.',
       features: [
         'Real-time AQI updates',
         'Health advice and mask alerts',
@@ -25,7 +25,8 @@ const SubscriptionModel = () => {
     },
     {
       title: 'Government Subscription',
-      description: 'Empower governments with advanced AQI insights, industrial zone data, and actionable solutions to minimize pollution.',
+      description:
+        'Empower governments with advanced AQI insights, industrial zone data, and actionable solutions to minimize pollution.',
       features: [
         'Industrial area AQI data',
         'Traffic zone pollution monitoring',
@@ -41,7 +42,8 @@ const SubscriptionModel = () => {
     },
     {
       title: 'Company Subscription',
-      description: 'Support businesses selling air purifiers, masks, and electric vehicles with targeted AQI insights and advertising opportunities.',
+      description:
+        'Support businesses selling air purifiers, masks, and electric vehicles with targeted AQI insights and advertising opportunities.',
       features: [
         'Market insights for air quality products',
         'Targeted advertising opportunities',
@@ -56,7 +58,8 @@ const SubscriptionModel = () => {
     },
     {
       title: 'Public Awareness Partnerships',
-      description: 'Collaborate with NGOs or organizations running environmental campaigns and charge for sponsored content or banners.',
+      description:
+        'Collaborate with NGOs or organizations running environmental campaigns and charge for sponsored content or banners.',
       features: [
         'Sponsored content opportunities',
         'Campaign collaborations',
@@ -88,9 +91,8 @@ const SubscriptionModel = () => {
               {section.plans.map((plan, planIndex) => (
                 <div
                   key={planIndex}
-                  className={`relative bg-gray-800 rounded-lg shadow-xl transform transition duration-500 hover:scale-105 hover:shadow-2xl p-8 ${
-                    plan.popular ? 'ring-4 ring-blue-500' : ''
-                  }`}
+                  className={`relative bg-gray-800 rounded-lg shadow-xl transform transition duration-500 hover:scale-105 hover:shadow-2xl p-8 ${plan.popular ? 'ring-4 ring-blue-500' : ''
+                    }`}
                 >
                   {plan.popular && (
                     <span className="absolute top-4 right-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
@@ -107,9 +109,13 @@ const SubscriptionModel = () => {
                       </li>
                     ))}
                   </ul>
-                  <Link to={"/subscribe"} className="bg-blue-500 hover:bg-blue-600 transition-colors duration-300 text-white py-2 px-6 rounded-lg font-semibold">
+                  <Button
+                    to="/subscribe"
+                    state={{ selectedPlan: plan }} // Passing the selected plan data as state
+                    className="bg-blue-500 hover:bg-blue-600 transition-colors duration-300 text-white py-2 px-6 rounded-lg font-semibold"
+                  >
                     Subscribe Now
-                  </Link>
+                  </Button>
                 </div>
               ))}
             </div>
