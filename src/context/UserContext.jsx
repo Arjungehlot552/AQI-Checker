@@ -2,7 +2,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { createContext, useState } from "react";
 
-const BACKEND_URI = "http://localhost:3001";
+const BACKEND_URI = "https://smartaqi.onrender.com";
 
 export const UserContext = createContext();
 

@@ -3,14 +3,10 @@ import React, { useState, useEffect } from "react";
 // import Modi_ji from "../Images/Modi-Ji.png"
 // import SIH from "../Images/SIH_logo_2024.png"
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { Link, redirect, Router, useLocation, useNavigate } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
+import { Link,  useLocation, useNavigate } from "react-router-dom";
 import Moon from "../Images/Moon.png"
 import { CiSearch } from "react-icons/ci";
 import { BiSolidDownArrow, BiSolidUpArrow } from "react-icons/bi";
-import axios from "axios";
-
-const BACKEND_URI = "http://localhost:3001/api/users"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +30,7 @@ const Navbar = () => {
     } else {
       document.documentElement.classList.remove('dark'); // Disable dark mode
     }
-  }, []);
+  }, [darkMode]);
 
   // Function to toggle dark mode
   const toggleDarkMode = () => {

@@ -37,9 +37,9 @@ const Blog = () => {
 
   const items = blogs.map((blog, index) => (
     <div
-      className="p-4 max-w-xs ml-12 h-[20rem] mb-8 cursor-pointer bg-gray-800 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 overflow-hidden"
+      className="p-4 max-w-xs ml-10 h-[20rem] mb-8 cursor-pointer bg-gray-800 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 overflow-hidden"
       key={index}
-      onClick={() => navigate(`/blog/blog-page`, { state: { blog } })} // Navigate to the detailed blog page
+      onClick={() => navigate(`/blog/blog-page`, { state: { blog } })}
     >
       <img
         src={blog.image}

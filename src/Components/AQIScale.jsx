@@ -41,8 +41,8 @@ const AQIData = [
 
 const AQIScale = () => {
   return (
-    <div  style={{ backgroundColor: "rgb(5, 8, 22)" }} className="flex flex-col  mb-32 mt-32   items-center justify-center">
-      <h1 className="text-4xl text-[#289BD1]  font-bold mb-10">Air Quality Index (AQI) Scale</h1>
+    <div  style={{ backgroundColor: "rgb(5, 8, 22)" }} className="flex flex-col  mb-32 mt-32 px-5   items-center justify-center">
+      <h1 className="text-4xl text-[#289BD1] text-center sm:text-balance  font-bold mb-10">Air Quality Index (AQI) Scale</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:w-full  max-w-5xl">
         {AQIData.map((item, index) => (
         <div
