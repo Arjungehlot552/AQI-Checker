@@ -24,15 +24,18 @@ const Footer = () => {
   // }, []);
 
   return (
-    <footer className=" px-4 bg-gray-900 text-white py-5">
-      <div className="container mx-auto px-4">
+    <footer className="px-4 bg-gray-900 text-white py-12">
+      <div className="container  mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between">
           {/* Logo Section */}
-          <div className="mb-6 md:mb-0">
+          <div className="mb-6 flex flex-col items-center justify-start  ml- md:mb-0">
             <img src={Modi} alt="AQI India Logo" className="h-[10rem] w-[10rem] lg:ml-6 border-b" />
             <p className="mt-8 text-gray-400">Real-time Air Quality Monitoring</p>
           </div>
+          
+          <div className='flex flex-row gap-20 justify-between'>
 
+         
           {/* Resources Section */}
           <div className="mb-6 md:mb-0">
             <h5 className="text-lg font-semibold">RESOURCES</h5>
@@ -56,6 +59,8 @@ const Footer = () => {
               <li><a href="/terms" className="text-gray-400 hover:text-blue-400">Terms & Conditions</a></li>
               <li><a href="/blog" className="text-gray-400 hover:text-blue-400">Blog</a></li>
             </ul>
+          </div>
+
           </div>
 
           {/* Location Section */}

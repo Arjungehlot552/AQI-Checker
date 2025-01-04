@@ -3,7 +3,7 @@ import contactimg from "../Images/Contact.png";
 
 const Contact = () => {
   return (
-    <div className="min-h-screen flex flex-col mt-16 md:flex-row items-center justify-center ">
+    <div className="min-h-screen flex flex-col mt-5 bg-gray-900 md:flex-row items-center justify-center ">
            {/* Right Side: Image */}
       <div className="w-full md:w-1/2 flex items-center justify-center m-4">
         <img

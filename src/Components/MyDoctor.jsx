@@ -66,7 +66,7 @@ const doctorData = [
 
 const Doctor =()=> {
     return (
-        <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="min-h-screen lg:mt-20  p-8">
+        <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="min-h-screen mt-20 p-8">
             {/* Page Heading */}
             <h1 className="text-center text-4xl font-extrabold text-white mb-4">
                 Our Trusted Medical Professionals

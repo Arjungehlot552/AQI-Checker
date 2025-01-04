@@ -50,7 +50,7 @@ const NGOs = () => {
   ];
 
   return (
-    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className='flex flex-col p-10 lg:mt-20 rounded-md text-white'>
+    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className='flex flex-col p-10 mt-20  text-white'>
       <h1 className='text-4xl font-bold text-center mb-8 text-green-700'>NGOs & Plant Sources</h1>
       <p className='text-center text-lg text-white mb-12'>
         Find contact details and locations of NGOs promoting environmental conservation and places where you can get plants.

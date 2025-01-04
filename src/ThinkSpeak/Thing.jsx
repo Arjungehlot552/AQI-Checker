@@ -63,19 +63,19 @@ const Thing = () => {
   }
 
   return (
-    <main className="min-h-screen  w-full flex flex-col items-center justify-center bg-gray-800 py-10 sm:px-40 px-5">
-      <div className="w-full shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow">
+    <main className="mt-20 w-full flex flex-col items-center justify-center bg-gray-800 py-10 sm:px-40 px-5">
+      <div className="w-full border shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow">
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-6">
           AQI Data Dashboard
         </h1>
 
         {loading ? (
-          <div className="flex items-center justify-center py-6">
+          <div className="flex items-center  justify-center py-6">
             <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-gray-800"></div>
             <p className="ml-4 text-gray-600">Fetching data...</p>
           </div>
         ) : error ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <DataCard title="Created At" value={data?.created_at} />
             <DataCard title="Entry ID" value={data?.entry_id} />
             <DataCard title="Temperature" value={`${data?.temperature} °C`} />
@@ -95,7 +95,7 @@ const Thing = () => {
 
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-6">
             <DataCard title="Created At" value={data?.created_at} />
             <DataCard title="Entry ID" value={data?.entry_id} />
             <DataCard title="Temperature" value={`${data?.temperature} °C`} />
@@ -121,9 +121,9 @@ const Thing = () => {
 };
 
 const DataCard = ({ title, value }) => (
-  <div className="bg-orange-300  p-4 rounded-md shadow-md hover:shadow-lg transition-shadow">
-    <h3 className="text-lg font-semibold text-gray-700">{title}</h3>
-    <p className="text-xl text-gray-800 font-bold mt-2">{value}</p>
+  <div className=" p-4 rounded-md bg-gray-500 shadow-md hover:shadow-lg transition-shadow">
+    <h3 className="text-lg font-semibold text-gray-50">{title}</h3>
+    <p className="text-xl text-gray-50 font-bold mt-2">{value}</p>
   </div>
 );
 

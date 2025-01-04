@@ -78,7 +78,7 @@ const MyProfile = () => {
     };
 
     return (
-        <div  style={{ backgroundColor: "rgb(5, 8, 22)" }} className='p-20'>
+        <div  style={{ backgroundColor: "rgb(5, 8, 22)" }} className='p-4 md:p-20'>
 
         
         <div  className="max-w-3xl mx-auto p-10 bg-gray-900 border  rounded-lg shadow-lg mt-20">
