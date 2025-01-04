@@ -28,8 +28,9 @@ import AdminLetter from "./Admin/Letter";
 import AuthPage from "./Components/AuthPage";
 import Comparison from "./Components/Comparison"
 import Thing from "./ThinkSpeak/Thing";
-import LearnMore from "./Media/LearnMore";
 import ScrollToTop from "./ScrollToTop";
+import SubscriptionModel from "./Media/LearnMore";
+import GetSubscribe from "./Subscription/GetSubscribe";
 
 function App() {
   return (
@@ -66,7 +67,8 @@ function App() {
         <Route path='/pollutants' element={<Pollutants />} />
         <Route path='/letter' element={<AdminLetter />} />
         <Route path='/compare' element={<Comparison />} />
-        <Route path='/LearnMore' element={<LearnMore/>}/>
+        <Route path='/Subscription' element={<SubscriptionModel />}/>
+        <Route path="/subscribe" element={<GetSubscribe />}/>
       </Routes>
       <Footer />
     </>

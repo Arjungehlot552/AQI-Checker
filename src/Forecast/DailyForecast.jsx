@@ -87,7 +87,7 @@ const DailyForecast = () => {
                             max={500}
                             value={aqi}
                             trackStyle={{ background: "transparent" }}
-                            railStyle={{ background: "linear-gradient(to right, #4caf50, #ffeb3b, #f44336)", height: 14 }}
+                            railStyle={{ background: "linear-gradient(to right, #4caf50, #ffeb3b, #f44336)", height: 10 }}
                             handleStyle={{ border: "2px solid black" }}
                             disabled
                         />
