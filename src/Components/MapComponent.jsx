@@ -124,7 +124,7 @@ const AQIPage = () => {
   return (
     <div
       style={{ backgroundColor: "rgb(5, 8, 22)" }}
-      className="py-16 min-h-[70vh] border-2 rounded-3xl border-emerald-200 flex flex-col items-center justify-center text-white p-6"
+      className="py-16 mx-auto w-[90vw] min-h-[70vh] border-2 rounded-3xl border-emerald-200 flex flex-col items-center justify-center text-white p-6"
     >
       <h1 className="text-4xl font-bold mb-6 animate-pulse text-center">
         Real-Time AQI Checker
