@@ -107,21 +107,21 @@ const MyGraph = () => {
   };
 
   return (
-    <div className="w-full h-screen bg-gray-900 text-white p-10 overflow-y-auto">
+    <div className="w-full h-screen bg-gray-900 text-white p-10 overflow-y-auto rounded-xl">
       <h1 className="text-3xl font-bold text-center mb-10">Air Quality Monitoring Dashboard</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Historical AQI Data */}
         <div className="p-5 bg-gray-800 rounded-lg">
           <h2 className="text-xl mb-5">Historical AQI Data</h2>
-          <div className="h-80">
+          <div className="h-36 md:h-80">
             <Line data={historyData} options={commonOptions} />
           </div>
         </div>
-        
+
         {/* Forecast Data */}
         <div className="p-5 bg-gray-800 rounded-lg">
           <h2 className="text-xl mb-5">10-Day AQI Forecast</h2>
-          <div className="h-80">
+          <div className="h-36 md:h-80">
             <Line data={forecastChartData} options={commonOptions} />
           </div>
         </div>
@@ -129,7 +129,7 @@ const MyGraph = () => {
         {/* Column Chart */}
         <div className="p-5 bg-gray-800 rounded-lg">
           <h2 className="text-xl mb-5">Gas Concentration</h2>
-          <div className="h-80">
+          <div className="h-36 md:h-80">
             <Bar data={columnChartData} options={commonOptions} />
           </div>
         </div>
@@ -138,12 +138,12 @@ const MyGraph = () => {
         {/* Polar Area Chart */}
         <div className="p-5 bg-gray-800 rounded-lg">
           <h2 className="text-xl mb-5">Weather Metrics</h2>
-          <div className="h-80  text-white">
+          <div className="h-36 md:h-80 text-white">
             <PolarArea data={polarData} />
           </div>
         </div>
       </div>
-     
+
     </div>
   );
 };

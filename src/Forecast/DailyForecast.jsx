@@ -59,22 +59,21 @@ const DailyForecast = () => {
             </div>
 
             <div className="flex flex-col lg:flex-row gap-8 mt-10">
-                <div className={`bg-gradient-to-t rounded-3xl w-full lg:w-2/3 h-[50vh] p-6 shadow-lg ${getGradient(aqi)}`}>
+                <div className={`bg-gradient-to-t rounded-3xl w-full lg:w-2/3 px-6 md:px-10 py-8 shadow-lg ${getGradient(aqi)}`}>
                     <div className="flex items-center mb-4">
                         <div className="h-2 w-2 bg-red-600 rounded-full animate-ping mr-3"></div>
-                        <h3 className="text-2xl font-semibold">Live AQI</h3>
+                        <h3 className="flex items-center gap-5 text-2xl font-semibold">Live AQI <span className="md:hidden font-extrabold text-5xl">{aqi}</span></h3>
                     </div>
-                    <div className="text-6xl font-bold ml-4 -mt-2 mb-4">{aqi}</div>
+                    <div className="text-6xl font-bold ml-4 -mt-2 mb-4 hidden md:block">{aqi}</div>
                     <div className="flex items-center mb-4">
-                        <span className="text-lg font-medium">Air Quality is:</span>
-                        <div className="text-xl font-bold px-4 py-2 ml-4 rounded-xl bg-lightgray text-black">{airQuality}</div>
+                        <span className="text-lg font-medium">Air Quality is: <span className="font-extrabold text-2xl">{airQuality}</span></span>
                     </div>
-                    <div className="flex justify-between mb-4">
+                    <div className="flex flex-col md:flex-row justify-between mb-4">
                         <div>
                             <p className="text-lg mb-2">PM10: {data?.iaqi?.pm10?.v} µg/m³</p>
                             <p className="text-lg">PM2.5: {data?.iaqi?.pm25?.v} µg/m³</p>
                         </div>
-                        <div className="-mt-8">
+                        <div className="mt-4 md:-mt-8">
                             <p className="text-2xl font-semibold">14°C Clear</p>
                             <p className="text-lg">Humidity: {Math.floor(Math.random() * 50) + 40} %</p>
                             <p className="text-lg">Wind Speed: {Math.floor(Math.random() * 15) + 5} km/h</p>
@@ -89,6 +88,7 @@ const DailyForecast = () => {
                             trackStyle={{ background: "transparent" }}
                             railStyle={{ background: "linear-gradient(to right, #4caf50, #ffeb3b, #f44336)", height: 14 }}
                             handleStyle={{ border: "2px solid black" }}
+                            style={{ backgroundColor: 'transparent', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
                             disabled
                         />
                         <div className="flex justify-between text-sm mt-2">

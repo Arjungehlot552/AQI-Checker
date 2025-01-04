@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 // import Modi_ji from "../Images/Modi-Ji.png"
 // import SIH from "../Images/SIH_logo_2024.png"
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, redirect, Router, useLocation, useNavigate } from "react-router-dom";
 import Moon from "../Images/Moon.png"
 import { CiSearch } from "react-icons/ci";
 import { BiSolidDownArrow, BiSolidUpArrow } from "react-icons/bi";
@@ -20,6 +20,7 @@ const Navbar = () => {
   const role = localStorage.getItem("role");
 
   const navigate = useNavigate();
+  const path = useLocation();
 
   // Effect to apply dark mode based on the state
   useEffect(() => {
@@ -40,19 +41,16 @@ const Navbar = () => {
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" || e.keyCode === 13) {
       fetchForecastAQI();
     }
   };
 
   const fetchForecastAQI = () => {
-    if (searchQuery) {
-      navigate(`/CustomMapPath/${searchQuery}`);
-      setSearchQuery("");
-    }
-  }
-
-
+    const query = searchQuery;
+    setSearchQuery("");
+    navigate(`/CustomMapPath/${query}`);
+  };
 
   const handleNavigation = (path) => {
     navigate(path);
