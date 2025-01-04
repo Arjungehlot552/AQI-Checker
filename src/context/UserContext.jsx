@@ -6,7 +6,6 @@ const BACKEND_URI = "https://smartaqi.onrender.com";
 
 export const UserContext = createContext();
 
-
 const UserProvider = ({ children }) => {
     const [userDetails, setUserDetails] = useState({
         name: "",
