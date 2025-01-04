@@ -1,4 +1,12 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
+
+const EMAILJS_TEMPLATE_ID =
+  process.env.EMAILJS_TEMPLATE_ID || "service_8ovesi4";
+const EMAILJS_PUBLIC_KEY =
+  process.env.EMAILJS_PUBLIC_KEY || "wPt866htdnLLUnL6G";
+const EMAILJS_SERVICE_KEY =
+  process.env.EMAILJS_SERVICE_KEY || "template_kc6c39e";
 
 const AdminLetter = () => {
   const [industryName, setIndustryName] = useState("");
@@ -67,6 +75,20 @@ const AdminLetter = () => {
     if (selectedIndustryData) {
       alert(
         `Letter sent to ${selectedIndustryData.name} at ${selectedIndustryData.email} \n\n${letter}`
+      );
+      emailjs.send(
+        EMAILJS_SERVICE_KEY,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: "Admin Letter Management",
+          from_email: "arjungehlot552@gmail.com",
+          to_name: selectedIndustryData.name,
+          to_email: "keshav.iesbpl@gmail.com",
+          subject:
+            "Urgent Action Required to Reduce Gas Emissions Impacting AQI Levels",
+          message: letter,
+        },
+        EMAILJS_PUBLIC_KEY
       );
     } else {
       alert("Please select a valid industry to send the letter.");
