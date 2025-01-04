@@ -4,11 +4,10 @@ import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
 const Blog = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-  useEffect(()=>{
-    window.scrollTo(0,0);
-  },[])
-  
   const carouselRef = useRef(null); // Create a ref for the carousel
   const navigate = useNavigate(); // Initialize the navigate function
 
@@ -16,30 +15,36 @@ const Blog = () => {
     {
       date: "07 Sep 2024",
       title: "How to Check Air Quality in Your Area? A complete guide!",
-      image: "https://www.aqi.in/blog/wp-content/uploads/2024/09/how-to-check-air-quality-850x600.webp",
+      image:
+        "https://www.aqi.in/blog/wp-content/uploads/2024/09/how-to-check-air-quality-850x600.webp",
     },
     {
       date: "26 Aug 2024",
-      title: "Air Pollution and Inequality: The Heavy Burden on Low-Income Communities",
-      image: "https://static.toiimg.com/thumb/msid-105025095,width-1070,height-580,imgsize-67826,resizemode-75,overlay-toi_sw,pt-32,y_pad-40/photo.jpg",
+      title:
+        "Air Pollution and Inequality: The Heavy Burden on Low-Income Communities",
+      image:
+        "https://static.toiimg.com/thumb/msid-105025095,width-1070,height-580,imgsize-67826,resizemode-75,overlay-toi_sw,pt-32,y_pad-40/photo.jpg",
     },
     {
       date: "26 Aug 2024",
-      title: "Air Pollution and Inequality: The Heavy Burden on Low-Income Communities",
-      image: "https://www.aqi.in/blog/wp-content/uploads/2024/08/air-pollution-and-inequality-in-communities.webp",
+      title:
+        "Air Pollution and Inequality: The Heavy Burden on Low-Income Communities",
+      image:
+        "https://www.aqi.in/blog/wp-content/uploads/2024/08/air-pollution-and-inequality-in-communities.webp",
     },
     {
       date: "08 Aug 2024",
       title: "Our Diet and Nutrition: How Air Pollution Affects Our Food?",
-      image: "https://www.aqi.in/blog/wp-content/uploads/2024/08/air-pollution-affects-our-food.webp",
+      image:
+        "https://www.aqi.in/blog/wp-content/uploads/2024/08/air-pollution-affects-our-food.webp",
     },
   ];
 
   const items = blogs.map((blog, index) => (
     <div
-      className="p-4 max-w-xs ml-12 h-[20rem] mb-8 cursor-pointer bg-gray-800 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 overflow-hidden"
+      className="mx-10 h-[20rem] mb-8 cursor-pointer bg-gray-800 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 overflow-hidden"
       key={index}
-      onClick={() => navigate(`/blog/blog-page`, { state: { blog } })} // Navigate to the detailed blog page
+      onClick={() => navigate(`/blog/blog-page`, { state: { blog } })}
     >
       <img
         src={blog.image}
@@ -48,18 +53,24 @@ const Blog = () => {
       />
       <div className="p-4">
         <p className="text-sm text-gray-50">{blog.date}</p>
-        <h3 className="text-lg font-semibold mt-2 text-gray-50">{blog.title}</h3>
+        <h3 className="text-lg font-semibold mt-2 text-gray-50">
+          {blog.title}
+        </h3>
       </div>
     </div>
   ));
 
   return (
-    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="py-16 mt-12  h-[45rem] ">
+    <div
+      style={{ backgroundColor: "rgb(5, 8, 22)" }}
+      className="py-16 mt-12 h-[45rem] "
+    >
       <h1 className="text-5xl font-bold text-[#289BD1] text-center">
         Recent Blogs
       </h1>
       <p className="text-center text-white mt-6 max-w-2xl mx-auto">
-        Here Are Some Resources That You Can Go Through To Find Out More About Air Quality & Pollution.
+        Here Are Some Resources That You Can Go Through To Find Out More About
+        Air Quality & Pollution.
       </p>
 
       <div className="relative mt-12 max-w-7xl  mx-auto">
@@ -70,13 +81,16 @@ const Blog = () => {
             items={items}
             responsive={{
               0: { items: 1 },
+              768: { items: 2 },
               1024: { items: 3 },
             }}
-            controlsStrategy="responsive"
+            controlsStrategy=""
             infinite
             disableDotsControls
             disableButtonsControls
             animationDuration={800}
+            paddingLeft={4}
+            activeIndex={2}
           />
         </div>
 

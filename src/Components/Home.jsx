@@ -5,7 +5,7 @@ import Blog from '../Blog/Blog';
 import AQIAppPage from './AQIAppPage';
 import MapComponent from './MapComponent';
 import Swiper from './Swiper';
-import MyVideo from './MyVideo';
+// import MyVideo from './MyVideo';
 import MoreWeather from './MoreWeather';
 import EditorsPick from '../Media/Editor';
 import Main from '../Home/Main';
@@ -33,7 +33,7 @@ const Home = () => {
           <MapComponent />
           <MoreWeather />
           <Know />
-          <MyVideo />
+          {/* <MyVideo /> */}
           <Blog />
           <EditorsPick />
           <AQIAppPage />
