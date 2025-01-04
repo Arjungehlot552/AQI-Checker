@@ -61,17 +61,17 @@ const MoreWeather = () => {
         />
         {/* Suggestions Section */}
         <div
-          className={`p-6 rounded-lg w-72 shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105 flex flex-col items-center border-4 border-transparent bg-opacity-80 bg-gray-700`}
+          className={`py-6 px-8 rounded-lg max-w-xl shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105 flex flex-col items-center border-4 border-transparent bg-opacity-80 bg-gray-700`}
         >
-          <div className="flex-1 sm:ml-8 space-y-4">
-            <h2 className="text-lg  sm:text-xl font-bold mb-4 text-center sm:text-left">
+          <div className="flex-1 space-y-4">
+            <h2 className="text-lg font-bold mb-4 text-center sm:text-left">
               Suggestions for Today
             </h2>
             {suggestions &&
               Object.entries(suggestions).map(([key, value]) => (
                 <div
                   key={key}
-                  className="flex w-full flex-wrap justify-between items-center gap-2 text-sm sm:text-lg"
+                  className="flex w-full flex-wrap justify-between items-center gap-2 text-sm md:text-lg"
                 >
                   <span className="text-gray-400 capitalize">{key}:</span>
                   <span className="text-green-400">{value}</span>

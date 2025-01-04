@@ -18,9 +18,6 @@ const Navbar = () => {
 
   const email = localStorage.getItem("email");
   const role = localStorage.getItem("role");
-  const arjun = localStorage.getItem("arjun")
-  console.log(arjun);
-
   const navigate = useNavigate();
 
   // Effect to apply dark mode based on the state
@@ -82,10 +79,10 @@ const Navbar = () => {
               alt="AQI Logo"
               className="w-32 "
             /> */}
-            <div className="flex items-center cursor-pointer">
-              <span className="text-yellow-500 font-bold text-2xl">Smart</span>-
+            <Link to={'/'} className="flex items-center select-none cursor-pointer">
+              <span className="text-yellow-500 font-bold text-2xl">Smart</span>
               <span className="text-white font-bold text-2xl">AQI</span>
-            </div>
+            </Link>
             <div className="relative hidden lg:flex lg:flex-row lg:items-center w-[30rem] px-4 space-x-2 border border-white rounded-full">
               <CiSearch color="white" />
               <input
@@ -259,7 +256,7 @@ const Navbar = () => {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="lg:hidden sticky top-0 bg-gray-800 mt-20 text-white py-4 px-6 rounded-lg shadow-lg space-y-4 z-50">
+        <div className="lg:hidden fixed w-full bg-gray-800 mt-20 text-white py-8 px-6 rounded-lg shadow-lg space-y-4 z-50">
           {/* Search Input */}
           <div className="flex flex-row items-center w-full px-4 py-2 space-x-2 border border-white rounded-full bg-[#111827]">
             <input
@@ -275,28 +272,28 @@ const Navbar = () => {
           {/* Navigation Links */}
           <Link
             to="/"
-            className="block py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+            className="flex items-center py-2 px-4 h-12 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
             onClick={toggleMenu}
           >
             Home
           </Link>
           <Link
             to="/Ranking"
-            className="block py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+            className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
             onClick={toggleMenu}
           >
             Ranking
           </Link>
           <Link
             to="/Monitor"
-            className="block py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+            className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
             onClick={toggleMenu}
           >
             Monitors
           </Link>
           <Link
             to="/Resources"
-            className="block py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+            className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
             onClick={toggleMenu}
           >
             Resources
