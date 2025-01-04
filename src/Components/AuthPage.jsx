@@ -6,9 +6,9 @@ import { UserContext } from "../context/UserContext";
 const AuthPage = () => {
   useEffect(() => {
     if (localStorage.getItem("email")) {
-      redirect('/')
+      redirect("/");
     }
-  })
+  });
 
   const [toggle, setToggle] = useState(true); // Toggle between login/register
   const [forget, setForget] = useState(false); // Forget password toggle
@@ -37,26 +37,24 @@ const AuthPage = () => {
     }
 
     if (toggle) {
-      // Login Logic  
+      // Login Logic
       if (!userDetails.email || !userDetails.password) {
         setError("Email and password are required!");
         return;
       }
       try {
+        
         const response = await loginUser(); // Call login function from context
         if (response.status === 400) {
           setError("Invalid Password!.");
-          return
+          return;
         } else if (response.status === 500) {
           setError("Invalid credentials! Please try again.");
-          return
-        }
-        else if(response.code === 'ERR_NETWORK'){
+          return;
+        } else if (response.code === "ERR_NETWORK") {
           setError("Network Error! Please try again.");
-          return
-        }
-        else {
-          console.log(response);
+          return;
+        } else {
           localStorage.setItem("email", userDetails.email);
           navigate("/");
         }
@@ -66,11 +64,7 @@ const AuthPage = () => {
       }
     } else {
       // Registration Logic
-      if (
-        !userDetails.name ||
-        !userDetails.email ||
-        !userDetails.password
-      ) {
+      if (!userDetails.name || !userDetails.email || !userDetails.password) {
         setError("All fields are required for registration!");
         return;
       }
@@ -189,8 +183,8 @@ const AuthPage = () => {
             {forget
               ? "Remembered your password?"
               : toggle
-                ? "New here?"
-                : "Already have an account?"}{" "}
+              ? "New here?"
+              : "Already have an account?"}{" "}
             <span
               className="text-blue-600 cursor-pointer"
               onClick={() => {

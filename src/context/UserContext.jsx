@@ -2,7 +2,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { createContext, useState } from "react";
 
-const BACKEND_URI = "https://smartaqi.onrender.com";
+const BACKEND_URI = "https://aqi-server-6e08.onrender.com";
 
 export const UserContext = createContext();
 
@@ -36,7 +36,7 @@ const UserProvider = ({ children }) => {
         `${BACKEND_URI}/api/auth/login`,
         userDetails
       );
-      console.log("reaching here", response);
+      
       if (response.data.email) {
         localStorage?.setItem("email", response.data.email);
         localStorage?.setItem("role", response.data.role);
