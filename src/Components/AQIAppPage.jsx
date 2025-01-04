@@ -5,7 +5,7 @@ import Mobileapp from './../Images/Mobileapp.png';
 
 const AQIAppPage = () => {
   return (
-    <div  style={{ backgroundColor: "rgb(5, 8, 22)" }} className="min-h-screen  flex flex-col items-center py-6">
+    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="hidden min-h-screen md:flex flex-col items-center py-6">
       <header className="text-center mb-10">
         <h1 className="text-5xl font-bold text-[#289BD1] text-center mb-4">AQI Air Quality App</h1>
         <p className="mt-4 text-lg text-white">Free AQI Mobile App For Your IOS, Android, And Smart TV Devices</p>
@@ -13,7 +13,7 @@ const AQIAppPage = () => {
 
       {/* Responsive Layout for App Image and Features */}
       <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="flex flex-col md:flex-row  items-center justify-center w-full max-w-7xl px-4">
-        
+
         {/* App Image Section */}
         <div className="flex justify-center mb-4 md:mb-0 md:w-1/2">
           <img
