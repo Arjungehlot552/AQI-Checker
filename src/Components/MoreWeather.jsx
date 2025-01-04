@@ -48,7 +48,7 @@ const MoreWeather = () => {
   return (
     <div
       style={{ backgroundColor: "rgb(5, 8, 22)" }}
-      className=" text-white min-h-screen flex flex-col justify-center items-center p-6 space-y-8"
+      className=" text-white mx-4 min-h-screen flex flex-col justify-center items-center p-6 space-y-8"
     >
       <div className="flex  flex-wrap justify-center gap-6 mb-8">
         {/* Dynamic Weather Info Cards */}
@@ -60,7 +60,7 @@ const MoreWeather = () => {
           bgColor="bg-gray-700"
         />
         {/* Suggestions Section */}
-        <div className="bg-gray-900 p-6 mx-4 sm:mx-10 flex flex-col sm:flex-row items-center rounded-lg w-full max-w-lg shadow-lg">
+        <div className="bg-gray-900 p-6 mx-4 md:mx-10 flex flex-col sm:flex-row items-center rounded-lg w-full max-w-lg shadow-lg">
           <div className="flex-1 sm:ml-8 space-y-4">
             <h2 className="text-lg  sm:text-xl font-bold mb-4 text-center sm:text-left">
               Suggestions for Today
@@ -121,7 +121,7 @@ const MoreWeather = () => {
 // Enhanced Weather Card Component with Transparent Outer Background and Light Gray Inner Background
 const WeatherCard = ({ title, value, description, icon, bgColor }) => (
   <div
-    className={`p-6 rounded-lg w-72 shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105 flex flex-col items-center border-4 border-transparent ${bgColor} bg-opacity-80 hover:border-${bgColor.replace(
+    className={`p-6  rounded-lg w-72 shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105 flex flex-col items-center border-4 border-transparent ${bgColor} bg-opacity-80 hover:border-${bgColor.replace(
       "bg-",
       ""
     )}`}
