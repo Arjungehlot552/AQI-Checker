@@ -215,14 +215,14 @@ const MyAQIMap = () => {
     <>
       <div
         style={{ backgroundColor: "rgb(5, 8, 22)" }}
-        className="pl-20 pr-20  text-white min-h-screen"
+        className="px-8 md:px-20  text-white min-h-screen"
       >
         <div
           style={{ backgroundColor: "rgb(5, 8, 22)" }}
           className=" text-white min-h-screen"
         >
           <div className="text-center">
-            <p className="text-4xl p-10 mt-20 font-serif font-bold text-gradient">
+            <p className="text-3xl md:text-4xl p-10 mt-20 font-serif font-bold text-gradient">
               Live AQI Stations Around the World
             </p>
             {/* <div className="h-1 mt-2 rounded-xl bg-gradient-to-r from-white via-green-300 to-white relative" /> */}
@@ -230,7 +230,7 @@ const MyAQIMap = () => {
 
           {/* <MonitorMap /> */}
 
-          <div className="flex justify-center items-center space-x-4 mb-8">
+          <div className="flex justify-center items-center space-x-4">
             {/* <input
               type="text"
               onKeyDown={handleKeyPress}
@@ -257,7 +257,7 @@ const MyAQIMap = () => {
             className="min-h-screen rounded-3xl flex flex-col items-center"
             style={{ backgroundColor: "rgb(5, 8, 22)" }}
           > */}
-            {/* Header Section
+          {/* Header Section
             <header className="text-center mt-10 px-5">
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate__animated animate__fadeIn">
                 Real-time Weather and AQI Information
@@ -274,7 +274,7 @@ const MyAQIMap = () => {
               </p>
             </header> */}
 
-            {/* AQI Details Section
+          {/* AQI Details Section
             <div className="flex items-center ml-96 -mr-40 mt-10 justify-center">
               <section className="grid grid-cols-1 items-center sm:grid-cols-2 lg:grid-cols-3 gap-8 px-5 w-full max-w-6xl">
                 <div className="bg-gray-800 bg-opacity-70 p-5 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
@@ -296,8 +296,8 @@ const MyAQIMap = () => {
               </section>
             </div> */}
 
-            {/* Graph Section */}
-            {/* <div
+          {/* Graph Section */}
+          {/* <div
               className="mt-10 w-full max-w-4xl p-5 rounded-lg shadow-lg bg-gray-900"
               style={{
                 background: `linear-gradient(to right, ${aqiColor}, #000)`,
@@ -306,8 +306,8 @@ const MyAQIMap = () => {
               <Line data={chartData} options={chartOptions} />
             </div> */}
 
-            {/* Learn More Link */}
-            {/* <Link
+          {/* Learn More Link */}
+          {/* <Link
               to="/more-weather"
               className="mt-10 mb-10  text-lg font-bold text-white underline hover:text-gray-300 transition-colors"
             >

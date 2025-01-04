@@ -16,7 +16,7 @@ const App = () => {
     { rank: 3, city: "Jodhpur", aqi: 450, status: "Hazardous" },
     { rank: 4, city: "Sonipat", aqi: 449, status: "Hazardous" },
     { rank: 5, city: "New Delhi", aqi: 430, status: "Hazardous" },
-    { rank: 6, city: "Amritsar", aqi: 312, status: "Hazardous" },
+    { rank: 6, city: "Amritsar", aqi: 412, status: "Hazardous" },
     { rank: 7, city: "Pali", aqi: 400, status: "Severe" },
     { rank: 8, city: "Ahmedabad", aqi: 394, status: "Severe" },
     { rank: 9, city: "Khem Karan", aqi: 383, status: "Severe" },
