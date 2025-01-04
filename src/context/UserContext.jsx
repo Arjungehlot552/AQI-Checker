@@ -6,7 +6,6 @@ const BACKEND_URI = "http://localhost:3001";
 
 export const UserContext = createContext();
 
-
 const UserProvider = ({ children }) => {
     const [userDetails, setUserDetails] = useState({
         name: "",
