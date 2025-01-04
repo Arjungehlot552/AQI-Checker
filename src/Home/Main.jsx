@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 // import LineChart from "./LineChart";
 
 export default function Main() {
-  const phrase = "Welcome to Smart AQI";
+  const phrase = "Welcome to SmartAQI";
   const [currentText, setCurrentText] = useState("");
 
   useEffect(() => {
@@ -42,18 +42,20 @@ export default function Main() {
             {currentText}
             <span className="inline-block w-1 bg-white animate-blink ml-1"></span>
           </h1>
-          <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
+          <p className="text-lg md:text-sm sm:text-base lg:text-lg leading-relaxed">
             This is the first homepage of our AQI Project! Explore real-time air
             quality data, gain insights into pollution levels in your city, and
             learn how we can make a difference together. Join us on our mission
             to provide accurate, reliable air quality updates for healthier
             lives.
           </p>
-          <Link to="/LearnMore">
-            <button className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-green-500 text-white px-6 py-3 mt-3 rounded-full font-medium hover:scale-110 transform transition duration-300 shadow-md hover:shadow-lg">
-              Learn More <ArrowOutwardIcon />
-            </button>
-          </Link>
+          <div className="flex justify-center md:justify-start">
+            <Link to="/LearnMore">
+              <button className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-green-500 text-white px-6 py-3 mt-3 rounded-full font-medium hover:scale-110 transform transition duration-300 shadow-md hover:shadow-lg">
+                Learn More <ArrowOutwardIcon />
+              </button>
+            </Link>
+          </div>
         </div>
 
         {/* Right Section (Image Grid) */}

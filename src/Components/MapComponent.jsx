@@ -45,7 +45,7 @@ const AQIPage = () => {
         setLocationData(result.data);
         localStorage.setItem("aqiValue", result.data.current.pollution.aqius);
         fetchHistoricalData(result.data.city);
-        console.log('This is my result',result);
+        console.log('This is my result', result);
         setError("");
       } else {
         setError("Failed to fetch AQI data.");
@@ -124,7 +124,7 @@ const AQIPage = () => {
   return (
     <div
       style={{ backgroundColor: "rgb(5, 8, 22)" }}
-      className="py-16 min-h-[70vh] border-2 rounded-3xl border-emerald-200 flex flex-col items-center justify-center text-white p-6"
+      className="py-16 min-h-[70vh] border-2 rounded-3xl border-emerald-200 flex flex-col items-center justify-center text-white p-6 md:mx-8 mx-4"
     >
       <h1 className="text-4xl font-bold mb-6 animate-pulse text-center">
         Real-Time AQI Checker
@@ -160,9 +160,8 @@ const AQIPage = () => {
               <p className="text-lg font-bold">
                 Current AQI Level:
                 <span
-                  className={`text-lg ${
-                    getAqiLevel(locationData.current.pollution.aqius).color
-                  }`}
+                  className={`text-lg ${getAqiLevel(locationData.current.pollution.aqius).color
+                    }`}
                 >
                   {getAqiLevel(locationData.current.pollution.aqius).level}
                 </span>
@@ -171,9 +170,8 @@ const AQIPage = () => {
               <p className="text-2xl font-bold">
                 AQI:
                 <span
-                  className={`text-2xl ${
-                    getAqiLevel(locationData.current.pollution.aqius).color
-                  }`}
+                  className={`text-2xl ${getAqiLevel(locationData.current.pollution.aqius).color
+                    }`}
                 >
                   {locationData.current.pollution.aqius}
                 </span>
