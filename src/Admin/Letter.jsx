@@ -99,6 +99,7 @@ const AdminLetter = () => {
     }
   };
 
+  
   return (
     <div className="bg-gray-900 p-2 md:p-16">
       <div className="p-6 max-w-4xl  mx-auto border mt-20 bg-gray-800 rounded-lg shadow-md">
