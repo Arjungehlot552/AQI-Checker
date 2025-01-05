@@ -6,14 +6,14 @@ import AllCities from "./AllCountry";
 const AqiData = () => {
   const role = localStorage.getItem('role');
   if (role !== 'admin') {
-      return <div className='text-white text-center text-3xl font-bold'>You are not authorized to access this page</div>
+      return <div className='text-white min-h-screen text-center text-3xl font-bold'>You are not authorized to access this page</div>
   }
 
   return (
-    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="min-h-screen mt-6 text-white p-10">
+    <div style={{ backgroundColor: "rgb(5, 8, 22)" }} className="min-h-screen mt-6 text-white p-5 md:p-10">
       {/* Header Section with Animation */}
       <div className="text-center mb-10">
-        <h1 style={{ color: '#24a0d1' }} className="text-5xl  font-bold text-gradient mt-10 animate__animated animate__fadeInDown">
+        <h1 style={{ color: '#24a0d1' }} className="text-5xl font-bold text-gradient mt-16 animate__animated animate__fadeInDown">
           AQI Data for Delhi
         </h1>
         <p className="mt-4 text-xl animate__animated animate__fadeInUp">
@@ -97,7 +97,7 @@ const AqiData = () => {
 
 
       {/* The Detailed AQI Data Section */}
-      <div id="detailed-section" className="bg-gray-900 p-10 text-center mb-10 rounded-lg mt-16">
+      <div id="detailed-section" className="bg-gray-900 p-3 md:p-10 text-center mb-10 rounded-lg mt-16">
         <h2 className="text-4xl font-bold text-center mb-5 animate__animated animate__fadeInUp">
           Detailed Overview of Delhi AQI
         </h2>

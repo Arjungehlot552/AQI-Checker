@@ -45,7 +45,7 @@ const AQIPage = () => {
         setLocationData(result.data);
         localStorage.setItem("aqiValue", result.data.current.pollution.aqius);
         fetchHistoricalData(result.data.city);
-        console.log('This is my result', result);
+        // console.log('This is my result', result);
         setError("");
       } else {
         setError("Failed to fetch AQI data.");

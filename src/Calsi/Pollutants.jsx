@@ -63,9 +63,9 @@ function Pollutants() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050816] pt-36 flex flex-col items-center p-8">
-      <div className="border p-8 rounded-lg shadow-2xl w-full max-w-4xl">
-        <h2 className="text-4xl font-extrabold text-blue-700 mb-6 text-center tracking-tight">
+    <div className="min-h-screen md:mt-20 bg-[#050816] pt-36 flex flex-col items-center p-2 md:p-8">
+      <div className="border p-4 md:p-12 rounded-lg shadow-2xl w-full max-w-4xl">
+        <h2 className="text-4xl font-extrabold text-white mb-6 text-center tracking-tight">
           Carbon Footprint & Pollutant Analysis
         </h2>
 
