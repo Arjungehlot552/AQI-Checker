@@ -222,7 +222,7 @@ const MyAQIMap = () => {
           className=" text-white min-h-screen"
         >
           <div className="text-center">
-            <p className="text-3xl md:text-4xl p-10 mt-20 font-serif font-bold text-gradient">
+            <p className="text-3xl md:text-4xl p-4 mt-20 font-serif font-bold text-gradient">
               Live AQI Stations Around the World
             </p>
             {/* <div className="h-1 mt-2 rounded-xl bg-gradient-to-r from-white via-green-300 to-white relative" /> */}

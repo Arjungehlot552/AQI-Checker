@@ -253,84 +253,119 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Dropdown */}
-      {isOpen && (
-        <div className="lg:hidden top-0 fixed w-full bg-gray-800 mt-20 text-white py-8 px-6 rounded-lg shadow-lg space-y-4 z-50">
-          {/* Search Input */}
-          <div className="flex flex-row items-center w-full px-4 py-2 space-x-2 border border-white rounded-full bg-[#111827]">
-            <input
-              type="text"
-              placeholder="Search Location City or Area"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyDown={handleKeyPress}
-              className="bg-transparent flex-1 text-white placeholder-gray-400 py-2 px-2 rounded-full outline-none"
-            />
-          </div>
+   {/* Mobile Dropdown */}
+{isOpen && (
+  <div
+    className="lg:hidden top-0 fixed w-full bg-gray-800 mt-20 text-white py-8 px-6 rounded-lg shadow-lg space-y-4 z-50"
+    style={{
+      maxHeight: "calc(100vh - 80px)", // Adjust max height to fit the screen
+      overflowY: "auto", // Enable vertical scrolling
+    }}
+  >
+    {/* Search Input */}
+    <div className="flex flex-row items-center w-full px-4 py-2 space-x-2 border border-white rounded-full bg-[#111827]">
+      <input
+        type="text"
+        placeholder="Search Location City or Area"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        onKeyDown={handleKeyPress}
+        className="bg-transparent flex-1 text-white placeholder-gray-400 py-2 px-2 rounded-full outline-none"
+      />
+    </div>
 
-          {/* Navigation Links */}
-          <Link
-            to="/"
-            className="flex items-center py-2 px-4 h-12 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
-            onClick={toggleMenu}
-          >
-            Home
-          </Link>
-          <Link
-            to="/Ranking"
-            className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
-            onClick={toggleMenu}
-          >
-            Ranking
-          </Link>
-          <Link
-            to="/Monitor"
-            className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
-            onClick={toggleMenu}
-          >
-            Monitors
-          </Link>
-          <Link
-            to="/Resources"
-            className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
-            onClick={toggleMenu}
-          >
-            Resources
-          </Link>
-          <Link to="/resources" className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
-          >
-            Resources
-          </Link>
-          <Link to="/Doctor" className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
-          >
-            Doctor
-          </Link>
-          <Link to="/ngos" className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
-          >
-            NGOs
-          </Link>
-          <Link to="/aqi-info" className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300" >
-            AQI Calculation
-          </Link>
-          <Link to="/pollutants" className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300">
-            Pollutants Calculator
-          </Link>
-          {role !== 'admin' ? (<></>) : (<Link to="/compare" className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300">
-            Comparisons
-          </Link>)}
-          {role !== 'admin' ? (<></>) : (<Link to="/heatmap" className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300">
-            Heat Map
-          </Link>)}
-          {role !== 'admin' ? (<></>) : (<Link to="/thing" className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300">
-            SmartAQI
-          </Link>)}
-          {role !== 'admin' ? (<></>) : (<Link to="/letter" className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300">
-            Letter
-          </Link>)}
+    {/* Navigation Links */}
+    <Link
+      to="/"
+      className="flex items-center py-2 px-4 h-12 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+      onClick={toggleMenu}
+    >
+      Home
+    </Link>
+    <Link
+      to="/Ranking"
+      className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+      onClick={toggleMenu}
+    >
+      Ranking
+    </Link>
+    <Link
+      to="/Monitor"
+      className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+      onClick={toggleMenu}
+    >
+      Monitors
+    </Link>
+    <Link
+      to="/Resources"
+      className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+      onClick={toggleMenu}
+    >
+      Resources
+    </Link>
+    <Link
+      to="/Doctor"
+      onClick={toggleMenu}
+      className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+    >
+      Doctor
+    </Link>
+    <Link
+      to="/ngos"
+      onClick={toggleMenu}
+      className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+    >
+      NGOs
+    </Link>
+    <Link
+      to="/aqi-info"
+      onClick={toggleMenu}
+      className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+    >
+      AQI Calculation
+    </Link>
+    <Link
+      to="/pollutants"
+      onClick={toggleMenu}
+      className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+    >
+      Pollutants Calculator
+    </Link>
+    {role !== "admin" ? null : (
+      <>
+        <Link
+          to="/compare"
+          onClick={toggleMenu}
+          className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+        >
+          Comparisons
+        </Link>
+        <Link
+          to="/heatmap"
+          onClick={toggleMenu}
+          className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+        >
+          Heat Map
+        </Link>
+        <Link
+          to="/thing"
+          onClick={toggleMenu}
+          className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+        >
+          SmartAQI
+        </Link>
+        <Link
+          to="/letter"
+          onClick={toggleMenu}
+          className="flex items-center h-12 py-2 px-4 bg-gray-700 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+        >
+          Letter
+        </Link>
+      </>
+    )}
+  </div>
+)}
 
-
-        </div>
-      )}
 
 
     </div>

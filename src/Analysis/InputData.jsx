@@ -121,7 +121,7 @@ function PollutionAnalysis() {
   return (
     <div
       style={{ backgroundColor: "rgb(5, 8, 22)" }}
-      className="min-h-screen mt-20 flex items-center justify-center p-8  to-blue-700"
+      className="md:min-h-screen mt-20 flex items-center justify-center p-2  to-blue-700"
     >
       <div className="bg-gray-800 p-10 rounded-lg shadow-xl w-full max-w-3xl">
         <div className="flex flex-col md:flex-row justify-center items-center mb-4 rounded-lg  space-y-4 md:space-y-0 md:space-x-6">
@@ -316,13 +316,13 @@ function PollutionAnalysis() {
 
         <button
           onClick={handleSubmit}
-          className="bg-gradient-to-r from-blue-600 to-indigo-600 lg:ml-48 mb-14  text-white py-3 px-8 rounded-lg text-lg font-semibold shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 w-72 mx-auto mt-6"
+          className="bg-gradient-to-r from-blue-600 to-indigo-600 md:ml-48 mb-14  text-white py-2 px-3 rounded-lg text-lg font-semibold shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300  mx-auto mt-6"
         >
           Analyze Pollution Impact
         </button>
         {/* Display the result */}
         {finalAqi !== null && (
-          <div className=" text-center bg-gradient-to-r from-blue-600 to-indigo-900 p-8 rounded-lg shadow-xl">
+          <div className=" text-center bg-gradient-to-r from-blue-600 to-indigo-900 p-2 rounded-lg shadow-xl">
             <h2 className="text-4xl font-bold text-white mb-6 animate__animated animate__fadeIn">
               Final AQI Calculation
             </h2>
