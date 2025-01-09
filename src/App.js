@@ -1,3 +1,4 @@
+import { Route, Routes } from "react-router-dom"; 
 import Home from "./Components/Home";
 import Navbar from "./Components/Navbar";
 import Ranking from "./Components/Ranking";
@@ -11,7 +12,6 @@ import Activity from "./Components/Activity";
 import ProblemArise from "./Components/ProblemArise";
 import MyScore from "./Components/MyScore";
 import MyRedeem from "./Components/MyRedeem";
-import { Route, Routes } from "react-router-dom"; // Remove BrowserRouter import
 import Blog from "./Blog/Blog";
 import AboutUs from "./Components/AboutUs";
 import DailyForecast from "./Forecast/DailyForecast";
