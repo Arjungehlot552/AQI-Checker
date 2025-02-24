@@ -3,7 +3,7 @@ import AQIScale from './AQIScale';
 import Know from './Know';
 import Blog from '../Blog/Blog';
 import AQIAppPage from './AQIAppPage';
-import MapComponent from './MapComponent';
+// import MapComponent from './MapComponent';
 import Swiper from './Swiper';
 // import MyVideo from './MyVideo';
 import MoreWeather from './MoreWeather';
@@ -30,7 +30,7 @@ const Home = () => {
           <Swiper />
 
           <AQIScale />
-          <MapComponent />
+          {/* <MapComponent /> */}
           <MoreWeather />
           <Know />
           {/* <MyVideo /> */}
