@@ -112,9 +112,6 @@ const Footer = () => {
         </div>
 
         {/* Copyright Section */}
-        <div className="mt-10 text-center text-gray-400">
-          <p>© {new Date().getFullYear()} AQI India. All rights reserved.</p>
-        </div>
       </div>
     </footer>
   );
