@@ -9,7 +9,7 @@ const Blog = () => {
   }, []);
 
   const carouselRef = useRef(null); // Create a ref for the carousel
-  console.log(carouselRef)
+  // console.log(carouselRef)
   const navigate = useNavigate(); // Initialize the navigate function
 
   const blogs = [
